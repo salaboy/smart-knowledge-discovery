@@ -1,0 +1,35 @@
+h1 {
+  font-size: 2em;
+  font-weight: bold;
+  color: #777777;
+  margin: 40px 0px 70px;
+  text-align: center;
+}
+
+body {
+  padding: 15px;
+}
+
+.button {
+  display: block;
+  width: 150px;
+  font-size: 16pt;
+}
+
+.listHeader {
+  background-color: #2062B8;
+  color: white;
+  font-style: italic;
+}
+
+.list {
+  border: 1px solid silver;
+  padding: 2px;
+  margin-bottom:6px;
+}
+
+.label {
+	background-color: #2062B8;
+	color: white;
+  	font-style: italic;
+}
