@@ -35,14 +35,14 @@ public class QuestionairePersistenceTest extends TestCase {
     public void simpleQuestionaireWithPersistence(){
         Question question = new Question("This is a simple question?");
         question.setRole("Simple Employee");
-        question.setCategory("My Category");
-        question.setTag("Simple Tag");
-        question.setTag("Second Tag");
-        
-        Questionaire questionaire = new Questionaire("My First Questionaire");
-        questionaire.addQuestion(question);
-        questionaire.setCategory("Employee oriented Question");
-        questionaire.setTag("Employee oriented tag");
+//        question.setCategory("My Category");
+//        question.setTag("Simple Tag");
+//        question.setTag("Second Tag");
+//        
+//        Questionaire questionaire = new Questionaire("My First Questionaire");
+//        questionaire.addQuestion(question);
+//        questionaire.setCategory("Employee oriented Question");
+//        questionaire.setTag("Employee oriented tag");
         //@TODO: add persistence
         //em.persist(questionaire);
     }
