@@ -10,6 +10,14 @@
   <version>1.0-SNAPSHOT</version>
   <name>GWT Maven Archetype</name>
 
+  <repositories>
+  	<repository>
+  		<id>smartclient</id>
+  		<name>smartclient.com</name>
+  		<url>http://www.smartclient.com/maven2</url>
+  	</repository>
+  </repositories>
+  
   <properties>
     <!-- Convenience property to set the GWT version -->
     <gwtVersion>2.1.0</gwtVersion>
@@ -35,9 +43,16 @@
     <dependency>
       <groupId>junit</groupId>
       <artifactId>junit</artifactId>
-      <version>4.7</version>
+      <version>4.8.1</version>
       <scope>test</scope>
     </dependency>
+    
+    <dependency>
+    	<groupId>com.smartgwt</groupId>
+    	<artifactId>smartgwt</artifactId>
+    	<version>2.4</version>
+    </dependency>
+    
   </dependencies>
 
   <build>
