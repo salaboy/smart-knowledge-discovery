@@ -2,20 +2,16 @@ package com.worpdress.salaboy.smartprocessdiscovery.client;
 
 import java.util.LinkedList;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.CheckBox;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
 
 public class CuestionaryPanel extends HorizontalPanel {
 	
 	private VerticalPanel verticalPanel = new VerticalPanel();
 	private Button createCuestionaryButton = new Button("Create Cuestionary");
-	private Button backButton = new Button("Back");
 	private FlexTable questionTable = new FlexTable();
 	
 	public CuestionaryPanel() {
@@ -26,15 +22,6 @@ public class CuestionaryPanel extends HorizontalPanel {
 		
 		verticalPanel.add(questionTable);
 		verticalPanel.add(createCuestionaryButton);
-		verticalPanel.add(backButton);
-		
-		backButton.addClickHandler(new ClickHandler() {
-
-			public void onClick(ClickEvent event) {
-				RootPanel.get().clear();
-				RootPanel.get().add(new MainPanel());
-			}
-		});
 		
 		questionTable.getRowFormatter().addStyleName(0, "listHeader");
 		questionTable.addStyleName("list");

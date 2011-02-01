@@ -8,6 +8,7 @@ public class SmartProcessDiscovery implements EntryPoint {
 	
 	public void onModuleLoad() {
 	
-		RootPanel.get().add(new MainPanel());
+		RootPanel.get("topMenu").add(new TopMenu());
+		RootPanel.get().add(new CrudQuestions());
 	}
 }

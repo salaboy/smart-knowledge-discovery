@@ -9,7 +9,6 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.Label;
 import com.google.gwt.user.client.ui.PopupPanel;
-import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.VerticalPanel;
@@ -22,7 +21,6 @@ public class CrudQuestions extends HorizontalPanel {
 	private Label descriptionLabel = new Label("Description:");
 	private TextArea description = new TextArea();
 	private Button addQuestionButton = new Button("Add question");
-	private Button backButton = new Button("Back");
 	
 	public CrudQuestions() {
 		
@@ -31,7 +29,6 @@ public class CrudQuestions extends HorizontalPanel {
 		verticalPanel.add(descriptionLabel);
 		verticalPanel.add(description);
 		verticalPanel.add(addQuestionButton);
-		verticalPanel.add(backButton);
 		
 		add(verticalPanel);
 		
@@ -43,15 +40,6 @@ public class CrudQuestions extends HorizontalPanel {
 		CheckBoxList checkBoxList = new CheckBoxList("Categories", categories);
 		
 		add(checkBoxList);
-
-		//TODO: Nueva clase que encapsule el backButton?
-		backButton.addClickHandler(new ClickHandler() {
-			
-			public void onClick(ClickEvent event) {
-				RootPanel.get().clear();
-				RootPanel.get().add(new MainPanel());
-			}
-		});
 		
 		addQuestionButton.addClickHandler(new ClickHandler() {
 			
