@@ -13,20 +13,20 @@ import org.junit.Test;
  *
  * @author salaboy
  */
-public class QuestionairePersistenceTest extends TestCase {
+public class QuestionairePersistenceTest  {
     
-    public QuestionairePersistenceTest(String testName) {
-        super(testName);
+    public QuestionairePersistenceTest() {
+
     }
 
-    @Override
+
     protected void setUp() throws Exception {
-        super.setUp();
+
     }
 
-    @Override
+
     protected void tearDown() throws Exception {
-        super.tearDown();
+
     }
 
     // TODO add test methods here. The name must begin with 'test'. For example:
