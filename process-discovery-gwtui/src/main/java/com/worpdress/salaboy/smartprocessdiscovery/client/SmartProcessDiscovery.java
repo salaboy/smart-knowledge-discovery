@@ -5,13 +5,13 @@ import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.ui.RootLayoutPanel;
 import com.smartgwt.client.widgets.layout.VLayout;
 
-public class SmartProcessDiscovery implements EntryPoint
-{
+public class SmartProcessDiscovery implements EntryPoint {
+	
 	private VLayout northLayout = new VLayout();
 	private VLayout mainLayout = new VLayout();
 	
-	public void onModuleLoad()
-	{
+	public void onModuleLoad() {
+		
 		Window.enableScrolling(false);
 		Window.setMargin("0px");
 		

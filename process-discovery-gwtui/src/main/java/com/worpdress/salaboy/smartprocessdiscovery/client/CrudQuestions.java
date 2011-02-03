@@ -3,6 +3,8 @@ package com.worpdress.salaboy.smartprocessdiscovery.client;
 import com.smartgwt.client.types.SelectionAppearance;
 import com.smartgwt.client.types.SelectionStyle;
 import com.smartgwt.client.widgets.IButton;
+import com.smartgwt.client.widgets.events.ClickEvent;
+import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.grid.ListGridField;
 import com.smartgwt.client.widgets.layout.HLayout;
@@ -25,9 +27,6 @@ public class CrudQuestions extends HLayout {
 		setMembersMargin(40);
 
 		buttonLayout.setMembers(addQuestionButton, editQuestionButton, removeQuestionButton);
-		crudLayout.setMembers(questionList, buttonLayout);
-		crudLayout.setMembersMargin(10);
-		addMember(crudLayout);
 		
 		ListGridField categoryNameField = new ListGridField("category", "Categories");  
 
@@ -37,14 +36,23 @@ public class CrudQuestions extends HLayout {
 		categoryList.setShowAllRecords(true);
 		categoryList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
 		
-		ListGridField questionNameField = new ListGridField("question", "Question");  
-
-		questionList.setFields(questionNameField);
-		questionList.setWidth(500);
+		questionList.setDataSource(new LocalDataSource());
+		questionList.setAutoFetchData(true);
+		questionList.setWidth(600);
 		questionList.setHeight(200);
 		questionList.setShowAllRecords(true);
 		questionList.setSelectionType(SelectionStyle.SINGLE);
 		
+		removeQuestionButton.addClickHandler(new ClickHandler() {
+			
+			public void onClick(ClickEvent event) {
+				questionList.removeSelectedData();				
+			}
+		});
+		
+		crudLayout.setMembers(questionList, buttonLayout);
+		crudLayout.setMembersMargin(10);
+		addMember(crudLayout);
 		addMember(categoryList);
 	}
 }
