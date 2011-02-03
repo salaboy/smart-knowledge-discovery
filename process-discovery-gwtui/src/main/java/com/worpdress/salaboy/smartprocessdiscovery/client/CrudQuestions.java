@@ -1,70 +1,50 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client;
 
+import com.smartgwt.client.types.SelectionAppearance;
+import com.smartgwt.client.types.SelectionStyle;
+import com.smartgwt.client.widgets.IButton;
+import com.smartgwt.client.widgets.grid.ListGrid;
+import com.smartgwt.client.widgets.grid.ListGridField;
+import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.VLayout;
 
-import java.util.LinkedList;
+public class CrudQuestions extends HLayout {
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.PopupPanel;
-import com.google.gwt.user.client.ui.TextArea;
-import com.google.gwt.user.client.ui.TextBox;
-import com.google.gwt.user.client.ui.VerticalPanel;
-
-public class CrudQuestions extends HorizontalPanel {
-
-	private VerticalPanel verticalPanel = new VerticalPanel();
-	private Label questionLabel = new Label("Question:");
-	private TextBox textBoxQuestion = new TextBox(); 
-	private Label descriptionLabel = new Label("Description:");
-	private TextArea description = new TextArea();
-	private Button addQuestionButton = new Button("Add question");
+	private VLayout crudLayout = new VLayout();
+	private ListGrid questionList = new ListGrid();	
+	private ListGrid categoryList = new ListGrid();
+	
+	private HLayout buttonLayout = new HLayout();
+	private IButton addQuestionButton = new IButton("Add Question");
+	private IButton editQuestionButton = new IButton("Edit Question");
+	private IButton removeQuestionButton = new IButton("Remove Question");
 	
 	public CrudQuestions() {
 		
-		verticalPanel.add(questionLabel);
-		verticalPanel.add(textBoxQuestion);
-		verticalPanel.add(descriptionLabel);
-		verticalPanel.add(description);
-		verticalPanel.add(addQuestionButton);
+		removeQuestionButton.setWidth(130);
+		setMembersMargin(40);
+
+		buttonLayout.setMembers(addQuestionButton, editQuestionButton, removeQuestionButton);
+		crudLayout.setMembers(questionList, buttonLayout);
+		crudLayout.setMembersMargin(10);
+		addMember(crudLayout);
 		
-		add(verticalPanel);
+		ListGridField categoryNameField = new ListGridField("category", "Categories");  
+
+		categoryList.setFields(categoryNameField);
+		categoryList.setWidth(200);
+		categoryList.setHeight(100);
+		categoryList.setShowAllRecords(true);
+		categoryList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
 		
-		LinkedList<String> categories = new LinkedList<String>();//TODO: Hardcodeado
-		//Hacer peticion al core por las categorias.
-		categories.add("Easy");
-		categories.add("Difficult");
+		ListGridField questionNameField = new ListGridField("question", "Question");  
+
+		questionList.setFields(questionNameField);
+		questionList.setWidth(500);
+		questionList.setHeight(200);
+		questionList.setShowAllRecords(true);
+		questionList.setSelectionType(SelectionStyle.SINGLE);
 		
-		CheckBoxList checkBoxList = new CheckBoxList("Categories", categories);
-		
-		add(checkBoxList);
-		
-		addQuestionButton.addClickHandler(new ClickHandler() {
-			
-			public void onClick(ClickEvent event) {
-				//TODO: Mandar peticion de agregar una pregunta.
-				
-				final PopupPanel popUp = new PopupPanel(true);
-				VerticalPanel popUpContent = new VerticalPanel();
-				
-				Label label = new Label("The question was added.");
-				Button closeButton = new Button("Close");
-				
-				popUpContent.add(label);
-				popUpContent.add(closeButton);
-				
-				popUp.add(popUpContent);
-				popUp.center();
-				
-				closeButton.addClickHandler(new ClickHandler() {
-					
-					public void onClick(ClickEvent event) {
-						popUp.hide();
-					}
-				});
-			}
-		});
+		addMember(categoryList);
 	}
 }

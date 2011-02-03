@@ -1,45 +1,49 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client;
 
-import java.util.LinkedList;
+import com.smartgwt.client.types.SelectionAppearance;
+import com.smartgwt.client.widgets.IButton;
+import com.smartgwt.client.widgets.grid.ListGrid;
+import com.smartgwt.client.widgets.grid.ListGridField;
+import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.VLayout;
 
-import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.CheckBox;
-import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.HorizontalPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
-
-public class CuestionaryPanel extends HorizontalPanel {
+public class CuestionaryPanel extends HLayout {
 	
-	private VerticalPanel verticalPanel = new VerticalPanel();
-	private Button createCuestionaryButton = new Button("Create Cuestionary");
-	private FlexTable questionTable = new FlexTable();
+	private VLayout vLayout = new VLayout();
+	private ListGrid questionList = new ListGrid();
+	private ListGrid categoryList = new ListGrid();
+	private IButton createQuestionaryButton = new IButton("Create Questionary");
 	
 	public CuestionaryPanel() {
 	
-		questionTable.setText(0, 0, "Select");
-		questionTable.setText(0, 1, "Question");
-		questionTable.setText(0, 2, "Description");
+		createQuestionaryButton.setWidth(150);
+		questionList.setWidth(500);
+		questionList.setHeight(200);
+		questionList.setShowAllRecords(true);
+		questionList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
 		
-		verticalPanel.add(questionTable);
-		verticalPanel.add(createCuestionaryButton);
+		ListGridField questionField = new ListGridField("question", "Question");  
+		ListGridField descriptionField = new ListGridField("description", "Description");  
+		ListGridField categoryField = new ListGridField("category", "Category");  
 		
-		questionTable.getRowFormatter().addStyleName(0, "listHeader");
-		questionTable.addStyleName("list");
+		questionList.setFields(questionField, descriptionField, categoryField);  
+  
+		vLayout.addMember(questionList);
+		vLayout.addMember(createQuestionaryButton);
+		vLayout.setMembersMargin(40);
 		
-		add(verticalPanel);
-		
-		LinkedList<String> categories = new LinkedList<String>();//TODO: Hardcodeado
-		categories.add("Easy");
-		categories.add("Difficult");
-		add(new CheckBoxList("Categories", categories));
-		
-		addQuestion();
-	}
+		addMember(vLayout);
 	
-	private void addQuestion() {
+		ListGridField categoryNameField = new ListGridField("category", "Categories");  
+
+		categoryList.setFields(categoryNameField);
+		categoryList.setWidth(200);
+		categoryList.setHeight(100);
+		categoryList.setShowAllRecords(true);
+		categoryList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
 		
-		questionTable.setWidget(1, 0, new CheckBox());
-		questionTable.setText(1, 1, "Ugis o La Continental?");
-		questionTable.setText(1, 2, "Pregunta decisiva.");
+		addMember(categoryList);
+		
+		setMembersMargin(40);
 	}
 }

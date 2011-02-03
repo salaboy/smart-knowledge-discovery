@@ -1,28 +1,28 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.user.client.ui.RootPanel;
-import com.smartgwt.client.util.SC;
-import com.smartgwt.client.widgets.IButton;
-import com.smartgwt.client.widgets.events.ClickEvent;
-import com.smartgwt.client.widgets.events.ClickHandler;
+import com.google.gwt.user.client.Window;
+import com.google.gwt.user.client.ui.RootLayoutPanel;
+import com.smartgwt.client.widgets.layout.VLayout;
 
 public class SmartProcessDiscovery implements EntryPoint
 {
+	private VLayout northLayout = new VLayout();
+	private VLayout mainLayout = new VLayout();
+	
 	public void onModuleLoad()
 	{
-		RootPanel.get("topMenu").add(new TopMenu());
-		RootPanel.get().add(new CrudQuestions());
+		Window.enableScrolling(false);
+		Window.setMargin("0px");
 		
-		IButton button = new IButton("Hello world");
-		button.addClickHandler(new ClickHandler()
-		{
-			public void onClick(ClickEvent event)
-			{
-				SC.say("Hello World from SmartGWT");
-			}
-		});
+		northLayout.setHeight("150px");
 		
-		button.draw();
+		northLayout.addMember(new HeaderArea());
+		northLayout.addMember(new Menu());
+		
+		mainLayout.addMember(northLayout);
+		mainLayout.addMember(new CrudQuestions());
+		
+		RootLayoutPanel.get().add(mainLayout);
 	}
 }
