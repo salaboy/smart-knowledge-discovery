@@ -11,11 +11,11 @@ public class QuestionListRecord extends ListGridRecord {
 		setItemDescription(description);
 		setItemCategory(category);		
 	}
-
-	private void setItemId(int id) {
+	
+	public void setItemId(int id) {
 		setAttribute("itemId", id);	
 	}
-	
+
 	public void setItemQuestion(String question) {
 		setAttribute("itemQuestion", question);	
 	}

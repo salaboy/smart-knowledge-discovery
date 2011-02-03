@@ -6,11 +6,20 @@ import com.smartgwt.client.data.fields.DataSourceTextField;
 
 public class LocalDataSource extends DataSource {
 
-	public LocalDataSource() {
+	private static LocalDataSource instance = null;  
+	
+	public static LocalDataSource getInstance() {  
+		if (instance == null) {  
+			instance = new LocalDataSource("supplyItemLocalDS");  
+		}  
+		return instance;  
+	}  
+
+	private LocalDataSource(String id) {
 		
-		setID("supplyItemLocalDS");
+		setID(id);
 		
-		DataSourceIntegerField pkField = new DataSourceIntegerField("itemID");  
+		DataSourceIntegerField pkField = new DataSourceIntegerField("itemId");  
 		pkField.setHidden(true);  
 		pkField.setPrimaryKey(true);
 		

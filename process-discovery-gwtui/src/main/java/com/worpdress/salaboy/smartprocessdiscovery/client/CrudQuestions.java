@@ -1,5 +1,6 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client;
 
+import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.types.SelectionAppearance;
 import com.smartgwt.client.types.SelectionStyle;
 import com.smartgwt.client.widgets.IButton;
@@ -36,7 +37,9 @@ public class CrudQuestions extends HLayout {
 		categoryList.setShowAllRecords(true);
 		categoryList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
 		
-		questionList.setDataSource(new LocalDataSource());
+		DataSource dataSource = LocalDataSource.getInstance();
+		
+		questionList.setDataSource(dataSource);
 		questionList.setAutoFetchData(true);
 		questionList.setWidth(600);
 		questionList.setHeight(200);
