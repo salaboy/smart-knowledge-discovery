@@ -9,6 +9,7 @@ import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
+import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 
@@ -21,14 +22,22 @@ public class AddQuestionPopUp extends PopupPanel {
 	private IButton addButton = new IButton("Add");
 	private IButton cancelButton = new IButton("Cancel");
 	
-	public AddQuestionPopUp(DataSource dataSource) {
+	public AddQuestionPopUp(DataSource dataSource, ListGrid list) {
+		
+		form.setIsGroup(true);
+		form.setDataSource(dataSource);
+		
+		if (list != null) {
+			form.editSelectedData(list);
+			form.setGroupTitle("Edit");
+		} else {
+			form.setGroupTitle("Add");
+		}
 		
 		center();
 		setModal(true);
 		
 		buttonLayout.setMembers(addButton, cancelButton);
-		
-		form.setDataSource(dataSource);
 		
 		popUpContent.addMember(form);
 		popUpContent.addMember(buttonLayout);

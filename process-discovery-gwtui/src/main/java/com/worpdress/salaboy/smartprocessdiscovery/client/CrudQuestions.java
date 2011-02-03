@@ -3,6 +3,7 @@ package com.worpdress.salaboy.smartprocessdiscovery.client;
 import com.smartgwt.client.data.DataSource;
 import com.smartgwt.client.types.SelectionAppearance;
 import com.smartgwt.client.types.SelectionStyle;
+import com.smartgwt.client.util.SC;
 import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
@@ -28,6 +29,7 @@ public class CrudQuestions extends HLayout {
 		setMembersMargin(40);
 
 		buttonLayout.setMembers(addQuestionButton, editQuestionButton, removeQuestionButton);
+		buttonLayout.setMembersMargin(5);
 		
 		ListGridField categoryNameField = new ListGridField("category", "Categories");  
 
@@ -53,10 +55,23 @@ public class CrudQuestions extends HLayout {
 			}
 		});
 		
+		editQuestionButton.addClickHandler(new ClickHandler() {
+			
+			public void onClick(ClickEvent event) {
+				
+				if (questionList.anySelected()) {
+
+					new AddQuestionPopUp(dataSource, questionList).show();
+				} else {
+					SC.say("You have to select a question.");
+				}
+			}
+		});
+		
 		addQuestionButton.addClickHandler(new ClickHandler() {
 			
 			public void onClick(ClickEvent event) {
-				new AddQuestionPopUp(dataSource).show();
+				new AddQuestionPopUp(dataSource, null).show();
 			}
 		});
 		
