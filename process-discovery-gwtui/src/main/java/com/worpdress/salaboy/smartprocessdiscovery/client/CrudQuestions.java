@@ -37,7 +37,7 @@ public class CrudQuestions extends HLayout {
 		categoryList.setShowAllRecords(true);
 		categoryList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
 		
-		DataSource dataSource = LocalDataSource.getInstance();
+		final DataSource dataSource = LocalDataSource.getInstance();
 		
 		questionList.setDataSource(dataSource);
 		questionList.setAutoFetchData(true);
@@ -50,6 +50,13 @@ public class CrudQuestions extends HLayout {
 			
 			public void onClick(ClickEvent event) {
 				questionList.removeSelectedData();				
+			}
+		});
+		
+		addQuestionButton.addClickHandler(new ClickHandler() {
+			
+			public void onClick(ClickEvent event) {
+				new AddQuestionPopUp(dataSource).show();
 			}
 		});
 		
