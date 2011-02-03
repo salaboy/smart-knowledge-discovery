@@ -51,7 +51,11 @@ public class CrudQuestions extends HLayout {
 		removeQuestionButton.addClickHandler(new ClickHandler() {
 			
 			public void onClick(ClickEvent event) {
-				questionList.removeSelectedData();				
+				if (questionList.anySelected()) {
+					questionList.removeSelectedData();	
+				} else {
+					SC.say("You have to select a question.");
+				}								
 			}
 		});
 		
@@ -60,7 +64,6 @@ public class CrudQuestions extends HLayout {
 			public void onClick(ClickEvent event) {
 				
 				if (questionList.anySelected()) {
-
 					new AddQuestionPopUp(dataSource, questionList).show();
 				} else {
 					SC.say("You have to select a question.");
