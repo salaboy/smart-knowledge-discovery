@@ -1,20 +1,22 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client;
 
-import com.google.gwt.user.client.ui.RootLayoutPanel;
-import com.google.gwt.user.client.ui.Widget;
 import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.StretchImgButton;
 import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.layout.HLayout;
+import com.smartgwt.client.widgets.layout.Layout;
 
 public class Menu extends HLayout {
 
 	private StretchImgButton crudQuestionsButton = new IButton("Crud Questions");
 	private IButton createQuestionaryButton = new IButton("Create Questionary");
 	private IButton addResultButton = new IButton("Add Result");
-
-	public Menu() {
+	private Layout southLayout;
+	
+	public Menu(Layout layout) {
+	
+		southLayout = layout;
 		
 		setMembersMargin(10);
 		createQuestionaryButton.setWidth(150);
@@ -46,8 +48,8 @@ public class Menu extends HLayout {
 		});
 	}
 	
-	private void changeMainPanel(Widget widget) {
-		RootLayoutPanel.get().clear();
-		RootLayoutPanel.get().add(widget);
+	private void changeMainPanel(Layout layout) {
+		southLayout.removeChild(southLayout.getChildren()[0]);
+		southLayout.addChild(layout);
 	}
 }

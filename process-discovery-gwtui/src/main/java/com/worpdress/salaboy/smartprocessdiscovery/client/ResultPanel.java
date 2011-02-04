@@ -14,18 +14,21 @@ public class ResultPanel extends VLayout {
 		
 		DataSource humanTaskDataSource = new DataSource();
 		DataSourceIntegerField idHumanTaskField = new DataSourceIntegerField("id", "Id", 4, true);
+		idHumanTaskField.setPrimaryKey(true);
 		DataSourceTextField humanTaskNameField = new DataSourceTextField("name", "Name", 40, true);
 		humanTaskDataSource.setClientOnly(true);
 		humanTaskDataSource.setFields(idHumanTaskField, humanTaskNameField);
 
 		DataSource systemTaskDataSource = new DataSource();
 		DataSourceIntegerField idSystemTaskField = new DataSourceIntegerField("id", "Id", 4, true);
+		idSystemTaskField.setPrimaryKey(true);
 		DataSourceTextField systemTaskNameField = new DataSourceTextField("name", "Name", 40, true);
 		systemTaskDataSource.setClientOnly(true);
 		systemTaskDataSource.setFields(idSystemTaskField, systemTaskNameField);
 		
 		DataSource resourceDataSource = new DataSource();
 		DataSourceIntegerField idTaskField = new DataSourceIntegerField("id", "Id", 4, true);
+		idTaskField.setPrimaryKey(true);
 		DataSourceTextField resourceField = new DataSourceTextField("resource", "Resource", 50, true);
 		resourceDataSource.setClientOnly(true);
 		resourceDataSource.setFields(idTaskField, resourceField);

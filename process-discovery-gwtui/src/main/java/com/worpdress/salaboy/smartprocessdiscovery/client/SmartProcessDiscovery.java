@@ -8,6 +8,7 @@ import com.smartgwt.client.widgets.layout.VLayout;
 public class SmartProcessDiscovery implements EntryPoint {
 	
 	private VLayout northLayout = new VLayout();
+	private VLayout southLayout = new VLayout();
 	private VLayout mainLayout = new VLayout();
 	
 	public void onModuleLoad() {
@@ -16,12 +17,11 @@ public class SmartProcessDiscovery implements EntryPoint {
 		Window.setMargin("0px");
 		
 		northLayout.setHeight("150px");
+		northLayout.setMembers(new HeaderArea(),  new Menu(southLayout));
+	
+		southLayout.addMember(new CrudQuestions());
 		
-		northLayout.addMember(new HeaderArea());
-		northLayout.addMember(new Menu());
-		
-		mainLayout.addMember(northLayout);
-		mainLayout.addMember(new CrudQuestions());
+		mainLayout.setMembers(northLayout, southLayout);
 		
 		RootLayoutPanel.get().add(mainLayout);
 	}
