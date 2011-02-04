@@ -5,8 +5,9 @@
 
 package com.worpdress.salaboy.smartprocessdiscovery;
 
+import com.worpdress.salaboy.smartprocessdiscovery.model.common.Category;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionaire;
+import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionnaire;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -17,9 +18,9 @@ import org.junit.Test;
  *
  * @author salaboy
  */
-public class QuestionaireTest {
+public class QuestionnaireTest {
 
-    public QuestionaireTest() {
+    public QuestionnaireTest() {
     }
 
     @BeforeClass
@@ -40,20 +41,21 @@ public class QuestionaireTest {
 
    
     @Test
-    public void simpleQuestionaire() {
+    public void simpleQuestionnaire() {
         Question question = new Question("This is a simple question?");
-        question.setRole("Simple Employee");
-        question.addCategory("My Category");
+
+        question.addCategory(new Category("My Category"));
         question.addTag("Simple Tag");
         question.addTag("Second Tag");
         
-        Questionaire questionaire = new Questionaire("My First Questionaire");
-        questionaire.addQuestion(question);
-        questionaire.addCategory("Employee oriented Question");
-        questionaire.addTag("Employee oriented tag");
-        //@TODO: override toString to iterate all the questions inside the questionaire
-        System.out.println("Questionaire -> "+questionaire.toString());
-        
+        Questionnaire questionnaire = new Questionnaire("My First Questionnaire");
+        questionnaire.addQuestion(question);
+        questionnaire.addCategory(new Category("Employee oriented Question"));
+        questionnaire.addTag("Employee oriented tag");
+        //@TODO: override toString to iterate all the questions inside the questionnaire
+        System.out.println("Questionnaire -> "+ questionnaire.toString());
+
+
         
     }
     

@@ -5,8 +5,6 @@
 
 package com.worpdress.salaboy.smartprocessdiscovery;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionaire;
-import junit.framework.TestCase;
 import org.junit.Test;
 
 /**
@@ -34,12 +32,12 @@ public class QuestionairePersistenceTest  {
      @Test 
     public void simpleQuestionaireWithPersistence(){
         Question question = new Question("This is a simple question?");
-        question.setRole("Simple Employee");
+
 //        question.setCategory("My Category");
 //        question.setTag("Simple Tag");
 //        question.setTag("Second Tag");
 //        
-//        Questionaire questionaire = new Questionaire("My First Questionaire");
+//        Questionnaire questionaire = new Questionnaire("My First Questionnaire");
 //        questionaire.addQuestion(question);
 //        questionaire.setCategory("Employee oriented Question");
 //        questionaire.setTag("Employee oriented tag");

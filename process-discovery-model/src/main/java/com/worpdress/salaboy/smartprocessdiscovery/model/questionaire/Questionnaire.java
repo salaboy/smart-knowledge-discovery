@@ -1,0 +1,93 @@
+/*
+ * To change this template, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package com.worpdress.salaboy.smartprocessdiscovery.model.questionaire;
+
+import com.worpdress.salaboy.smartprocessdiscovery.model.common.Categorizable;
+import com.worpdress.salaboy.smartprocessdiscovery.model.common.Category;
+import com.worpdress.salaboy.smartprocessdiscovery.model.common.Taggeable;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+/**
+ *
+ * @author salaboy
+ */
+public class Questionnaire implements Categorizable, Taggeable {
+
+    private String name;
+    private List<Category> categories;
+    private Set<String> tags;
+    private List<Question> questions = new ArrayList<Question>();
+
+    private Long goalId;
+
+    public Questionnaire(String name) {
+        this.name = name;
+    }
+
+    public List<Category> getCategories() {
+        return categories;
+    }
+
+    public Long getGoalId() {
+        return goalId;
+    }
+
+    public void setGoalId(Long goalId) {
+        this.goalId = goalId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+
+
+    public List<Question> getQuestions() {
+        return questions;
+    }
+
+    public void setQuestions(List<Question> questions) {
+        this.questions = questions;
+    }
+    
+    public void addQuestion(Question question){
+        if( this.questions == null ){
+            this.questions = new ArrayList<Question>();        
+        }
+        this.questions.add(question);
+    }
+
+    public Set<String> getTags() {
+        return this.tags;
+    }
+
+
+    
+    public void addCategory(Category category) {
+        if( this.categories == null ){
+            this.categories = new ArrayList<Category>();
+
+        }
+        this.categories.add(category);
+    }
+
+    public void addTag(String tag) {
+        if( this.tags == null){
+            this.tags = new HashSet<String>();
+        }
+        this.tags.add(tag);
+    }
+    
+    
+}

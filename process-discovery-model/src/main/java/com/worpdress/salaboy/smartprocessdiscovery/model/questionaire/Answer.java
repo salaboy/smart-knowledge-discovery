@@ -1,8 +1,3 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 package com.worpdress.salaboy.smartprocessdiscovery.model.questionaire;
 
 import com.worpdress.salaboy.smartprocessdiscovery.model.common.Categorizable;
@@ -15,23 +10,38 @@ import java.util.List;
 import java.util.Set;
 
 /**
- *
- * @author salaboy
+ * Created by IntelliJ IDEA.
+ * User: salaboy
+ * Date: 2/4/11
+ * Time: 2:21 PM
+ * To change this template use File | Settings | File Templates.
  */
-
-public class Question implements Categorizable, Taggeable {
+public class Answer implements Categorizable, Taggeable {
     private Long id;
+    private Question question;
     private String text;
-    private String notes;
     private List<Category> categories;
     private Set<String> tags;
 
+    public Answer() {
 
-    public Question(String text) {
-        this.text = text;
     }
 
+    public Long getId() {
+        return id;
+    }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public Question getQuestion() {
+        return question;
+    }
+
+    public void setQuestion(Question question) {
+        this.question = question;
+    }
 
     public String getText() {
         return text;
@@ -41,41 +51,25 @@ public class Question implements Categorizable, Taggeable {
         this.text = text;
     }
 
-    public String getNotes() {
-        return notes;
-    }
-
-    public void setNotes(String notes) {
-        this.notes = notes;
-    }
-
-
     public List<Category> getCategories() {
         return this.categories;
     }
 
     public void addCategory(Category category) {
-        if(this.categories == null){
-             this.categories =  new ArrayList<Category>();
+        if ( this.categories == null ){
+            this.categories =  new ArrayList<Category>();
         }
         this.categories.add(category);
     }
 
     public Set<String> getTags() {
-
-        return this.tags;
+        return tags;
     }
 
     public void addTag(String tag) {
-        if(this.tags == null){
+        if ( this.tags == null ){
             this.tags = new HashSet<String>();
-
         }
         this.tags.add(tag);
     }
-    
-    
-    
-    
-    
 }
