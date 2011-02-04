@@ -11,31 +11,33 @@ import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.grid.ListGrid;
 
-public class AddQuestionPopUp extends Dialog {
+public class AddEditDialog extends Dialog {
 
 	private DynamicForm form = new DynamicForm();	
 	
-	private IButton addButton = new IButton("Add");
+	private IButton okButton = new IButton();
 	private IButton cancelButton = new IButton("Cancel");
 	
-	public AddQuestionPopUp(DataSource dataSource, ListGrid list) {
+	public AddEditDialog(DataSource dataSource, ListGrid list) {
 		
 		setIsModal(true);
 		setAutoSize(true);
-		setToolbarButtons(addButton, cancelButton);
+		setToolbarButtons(okButton, cancelButton);
 
 		form.setDataSource(dataSource);
 		
 		if (list != null) {
 			form.editSelectedData(list);
-			setTitle("Edit Question");
+			setTitle("Edit");
+			okButton.setTitle("Edit");
 		} else {
-			setTitle("Add Question");
+			setTitle("Add");
+			okButton.setTitle("Add");
 		}	
 
 		addItem(form);
 		
-		addButton.addClickHandler(new ClickHandler() {
+		okButton.addClickHandler(new ClickHandler() {
 
 			public void onClick(ClickEvent event) {
 				form.saveData(new DSCallback() {  
