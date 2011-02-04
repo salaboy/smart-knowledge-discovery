@@ -21,8 +21,9 @@ public class LocalDataSource extends DataSource {
 		setID(id);
 		
 		DataSourceIntegerField pkField = new DataSourceIntegerField("itemId");  
-		pkField.setHidden(true);  
+		pkField.setHidden(false);  
 		pkField.setPrimaryKey(true);
+		pkField.setCanEdit(false);
 		
 		DataSourceTextField questionField = new DataSourceTextField("itemQuestion", "Question", 300, true);
 		DataSourceTextField descriptionField = new DataSourceTextField("itemDescription", "Description", 2000, true);
