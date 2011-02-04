@@ -1,6 +1,7 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client;
 
 import com.smartgwt.client.data.DataSource;
+import com.smartgwt.client.data.fields.DataSourceEnumField;
 import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
 
@@ -25,7 +26,7 @@ public class LocalDataSource extends DataSource {
 		
 		DataSourceTextField questionField = new DataSourceTextField("itemQuestion", "Question", 300, true);
 		DataSourceTextField descriptionField = new DataSourceTextField("itemDescription", "Description", 2000, true);
-		DataSourceTextField categoryField = new DataSourceTextField("itemCategory", "Category", 30, true);
+		DataSourceEnumField categoryField = new DataSourceEnumField("itemCategory", "Category", 30, true);
         
 		setFields(pkField, questionField, descriptionField, categoryField);
 		

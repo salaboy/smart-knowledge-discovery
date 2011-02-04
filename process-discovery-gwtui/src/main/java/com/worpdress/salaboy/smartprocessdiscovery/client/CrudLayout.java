@@ -24,8 +24,10 @@ public class CrudLayout extends VLayout {
 		editItemButton.setTitle("Edit " + itemName);
 		removeItemButton.setTitle("Remove " + itemName);
 		
-		removeItemButton.setWidth(130);
-				
+		addItemButton.setAutoFit(true);
+		editItemButton.setAutoFit(true);
+		removeItemButton.setAutoFit(true);
+		
 		setMembersMargin(10);
 
 		buttonLayout.setMembers(addItemButton, editItemButton, removeItemButton);
