@@ -1,22 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <web-app version="2.5" xmlns="http://java.sun.com/xml/ns/javaee"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
-	<display-name>knowledge-discovery-rest</display-name>
-	
-	 <servlet>
-        <servlet-name>Jersey</servlet-name>
-        <servlet-class>com.sun.jersey.spi.container.servlet.ServletContainer</servlet-class>
-        <init-param>
-            <param-name>com.sun.jersey.config.property.packages</param-name>
-            <param-value>com.wordpress.salaboy.smartknowledgediscovery</param-value>
-        </init-param>
-        <load-on-startup>1</load-on-startup>
-    </servlet>
- 
-    <servlet-mapping>
-        <servlet-name>Jersey</servlet-name>
-        <url-pattern>/rest/*</url-pattern>
-    </servlet-mapping>
-	
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd">
+  <display-name>knowledge-discovery-rest</display-name>
+
+  <servlet>
+    <servlet-name>Resteasy</servlet-name>
+    <servlet-class>org.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+    <init-param>
+      <param-name>contextConfigLocation</param-name>
+      <param-value>classpath:springmvc-servlet.xml</param-value>
+    </init-param>
+    <load-on-startup>1</load-on-startup>
+  </servlet>
+
+
+  <listener>
+    <listener-class>
+      org.jboss.resteasy.plugins.server.servlet.ResteasyBootstrap</listener-class>
+  </listener>
+  <listener>
+    <listener-class>
+      org.jboss.resteasy.plugins.spring.SpringContextLoaderListener</listener-class>
+  </listener>
+
+
+  <servlet-mapping>
+    <servlet-name>Jersey</servlet-name>
+    <url-pattern>/rest/*</url-pattern>
+  </servlet-mapping>
+
 </web-app>
