@@ -20,12 +20,17 @@ import java.util.Set;
  */
 public class Questionnaire implements Categorizable, Taggeable {
 
+	private Long id;
     private String name;
     private List<Category> categories;
     private Set<String> tags;
     private List<Question> questions = new ArrayList<Question>();
 
     private Long goalId;
+    
+    public Questionnaire() {
+		
+	}
 
     public Questionnaire(String name) {
         this.name = name;
@@ -51,7 +56,9 @@ public class Questionnaire implements Categorizable, Taggeable {
         this.name = name;
     }
 
-
+    public Long getId() {
+    	return id;
+    }
 
     public List<Question> getQuestions() {
         return questions;
@@ -67,6 +74,13 @@ public class Questionnaire implements Categorizable, Taggeable {
         }
         this.questions.add(question);
     }
+    
+    public void removeQuestion(Question question) {
+    	// TODO eliminar la pregunta de todos los answered questionnaires
+    	if(this.questions!=null) {
+    		this.questions.remove(question);
+    	}
+    }
 
     public Set<String> getTags() {
         return this.tags;
@@ -81,6 +95,12 @@ public class Questionnaire implements Categorizable, Taggeable {
         }
         this.categories.add(category);
     }
+    
+    public void removeCategory(Category category) {
+    	if(this.categories!=null) {
+    		this.categories.remove(category);
+    	}
+    }
 
     public void addTag(String tag) {
         if( this.tags == null){
@@ -89,5 +109,10 @@ public class Questionnaire implements Categorizable, Taggeable {
         this.tags.add(tag);
     }
     
+    public void removeTag(String tag) {
+    	if( this.tags != null) {
+    		this.tags.remove(tag);
+    	}
+    }
     
 }

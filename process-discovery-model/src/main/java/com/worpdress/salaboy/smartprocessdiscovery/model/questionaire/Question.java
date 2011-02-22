@@ -65,6 +65,12 @@ public class Question implements Categorizable, Taggeable {
         }
         this.categories.add(category);
     }
+    
+    public void removeCategory(Category category) {
+    	if(this.categories!=null) {
+    		this.categories.remove(category);
+    	}
+    }
 
     public Long getId() {
         return this.id;
@@ -83,7 +89,11 @@ public class Question implements Categorizable, Taggeable {
         this.tags.add(tag);
     }
     
-    
+    public void removeTag(String tag) {
+    	if(this.tags!=null) {
+    		this.tags.remove(tag);
+    	}
+    }
     
     
     
