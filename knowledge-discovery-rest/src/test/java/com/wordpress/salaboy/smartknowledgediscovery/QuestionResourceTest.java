@@ -19,7 +19,7 @@ public class QuestionResourceTest {
 	            "<description>Not relevant.</description>" +
 	        "</question>";
 
-	    PostMethod postMethod = new PostMethod("http://localhost:8080/knowledge-discovery-rest/rest/question/add");
+		PostMethod postMethod = new PostMethod("http://127.0.0.1:8080/knowledge-discovery-rest/question/add");
 	    RequestEntity entity = new InputStreamRequestEntity(new ByteArrayInputStream(addCustomerXML.getBytes()), "application/xml");
 	    postMethod.setRequestEntity(entity);
 	    HttpClient client = new HttpClient();
