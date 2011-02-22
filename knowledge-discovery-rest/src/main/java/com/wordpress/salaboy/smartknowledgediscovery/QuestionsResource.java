@@ -5,7 +5,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URI;
-import java.util.LinkedList;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -25,13 +24,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
+import com.wordpress.salaboy.smartknowledgediscovery.services.QuestionService;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
  
 @Path("question")
 public class QuestionsResource {
     
-	//TODO: Implement persistence.
-	static private LinkedList<Question> questionList = new LinkedList<Question>();
+	private QuestionService questionService;
 	
 	@POST
     @Consumes("application/xml")    
@@ -39,9 +38,9 @@ public class QuestionsResource {
     public Response addQuestion(InputStream questionData) throws IOException, ParserConfigurationException, SAXException {
         
 		Question question = buildQuestion(questionData);
-		questionList.add(question);
+		questionService.add(question);
 		
-		return Response.created(URI.create("/" + (questionList.size() - 1))).build();
+		return Response.created(URI.create("/" + (question.getId() - 1))).build();
     }
 	
 	//TODO:  Use JAXB to parse XML or JSON instead of XML.  
@@ -88,7 +87,7 @@ public class QuestionsResource {
 	@Path("get/{id}")
 	public StreamingOutput getQuestion(@PathParam ("id") String questionId) {
 
-		final Question question = questionList.get(Integer.parseInt(questionId));
+		final Question question = questionService.findById(Long.parseLong(questionId));
 		
 		return new StreamingOutput() {
 			public void write(OutputStream outputStream) {
