@@ -103,4 +103,12 @@ public class QuestionsResource {
 
 		};
 	}
+
+    public void setQuestionService(QuestionService questionService) {
+        this.questionService = questionService;
+    }
+
+    public QuestionService getQuestionService() {
+        return questionService;
+    }
 }
