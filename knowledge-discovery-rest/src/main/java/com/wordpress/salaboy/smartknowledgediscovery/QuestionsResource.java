@@ -24,6 +24,8 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
+
+import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
  
 @Path("question")
 public class QuestionsResource {
@@ -72,7 +74,7 @@ public class QuestionsResource {
 				if (tagName.equals("text")) {
 					question.setText(textContent);
 				} else if (tagName.equals("description")) {
-					question.setDescription(textContent);
+					question.setNotes(textContent);
 				}            
 			}
 		} 
@@ -95,7 +97,7 @@ public class QuestionsResource {
 				out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
 							"<question>" + 
 							"<text>" + question.getText() + "</text>" + 
-							"<description>" + question.getDescription() + "</description>" +
+							"<description>" + question.getNotes() + "</description>" +
 							"</question>");
 				out.close();
 			}

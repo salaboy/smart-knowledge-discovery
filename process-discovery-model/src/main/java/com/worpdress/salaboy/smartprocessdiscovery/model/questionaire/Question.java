@@ -33,7 +33,12 @@ public class Question implements Categorizable, Taggeable {
 
 
 
-    public String getText() {
+    public Question() {
+	}
+
+
+
+	public String getText() {
         return text;
     }
 
