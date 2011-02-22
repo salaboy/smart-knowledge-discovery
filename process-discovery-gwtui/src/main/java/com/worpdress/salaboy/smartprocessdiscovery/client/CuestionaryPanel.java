@@ -20,7 +20,7 @@ public class CuestionaryPanel extends HLayout {
 		questionList.setHeight(200);
 		questionList.setShowAllRecords(true);
 		questionList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
-		questionList.setDataSource(LocalDataSource.getInstance());
+		questionList.setDataSource(QuestionRestDS.getInstance());
 		questionList.setAutoFetchData(true);
   
 		vLayout.addMember(questionList);

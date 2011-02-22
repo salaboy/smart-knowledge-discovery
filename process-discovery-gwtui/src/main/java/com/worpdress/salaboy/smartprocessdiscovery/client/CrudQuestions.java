@@ -8,7 +8,7 @@ public class CrudQuestions extends HLayout {
 
 	public CrudQuestions() {
 
-		DataSource questionDataSource = LocalDataSource.getInstance();
+		DataSource questionDataSource = QuestionRestDS.getInstance();
 
 		CrudLayout crudQuestion = new CrudLayout(questionDataSource, "Question");
 		CategoryList categoryList = new CategoryList(crudQuestion.getListGrid());
