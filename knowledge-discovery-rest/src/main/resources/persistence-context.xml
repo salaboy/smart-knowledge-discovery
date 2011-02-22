@@ -15,7 +15,7 @@
 
   <bean id="ds" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
     <property name="driverClassName" value="org.h2.Driver" />
-    <property name="url" value="jdbc:h2:mem::" />
+    <property name="url" value="jdbc:h2:mem:db1;DB_CLOSE_DELAY=-1" />
     <property name="username" value="sa" />
     <property name="password" value="" />
   </bean>
@@ -25,11 +25,11 @@
     <property name="persistenceUnitName" value="smart-knowledge-discovery" />
   </bean>
 
-
-  <!--
   <bean id="txManager" class="org.springframework.orm.jpa.JpaTransactionManager">
     <property name="entityManagerFactory" ref="myEmf" />
   </bean>
+  
+  <!-- 
     <aop:config>
       <aop:pointcut id="serviceMethods" expression="execution(* ServiceJpa.*(..))"/>
       <aop:advisor advice-ref="txAdvice" pointcut-ref="serviceMethods"/>
