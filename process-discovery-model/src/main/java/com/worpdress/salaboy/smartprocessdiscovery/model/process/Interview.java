@@ -1,8 +1,8 @@
 package com.worpdress.salaboy.smartprocessdiscovery.model.process;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionnaire;
-
 import java.util.Date;
+
+import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
 
 /**
  * Created by IntelliJ IDEA.
@@ -14,7 +14,7 @@ import java.util.Date;
 public class Interview {
     private Long id;
     private String description;
-    private Questionnaire questionnaire;
+    private AnsweredQuestionnaire questionnaire;
     private Person person;
     private Date startDate;
     private Date endDate;
@@ -39,11 +39,11 @@ public class Interview {
         this.description = description;
     }
 
-    public Questionnaire getQuestionnaire() {
+    public AnsweredQuestionnaire getQuestionnaire() {
         return questionnaire;
     }
 
-    public void setQuestionnaire(Questionnaire questionnaire) {
+    public void setQuestionnaire(AnsweredQuestionnaire questionnaire) {
         this.questionnaire = questionnaire;
     }
 
