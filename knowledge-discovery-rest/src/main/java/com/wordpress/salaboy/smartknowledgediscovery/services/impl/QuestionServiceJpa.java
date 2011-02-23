@@ -33,7 +33,8 @@ public class QuestionServiceJpa implements QuestionService {
     }
 
 	public void removeById(Long id) {
-		this.entityManager.remove(id);		
+		Question oldQuestion = findById(id);
+		entityManager.remove(oldQuestion);		
 	}
 
 	public void update(Question question) {
