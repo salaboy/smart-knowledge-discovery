@@ -1,47 +1,14 @@
 package com.plugtree.smartprocessdiscovery.services.impl;
 
-import java.util.List;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-
-import com.plugtree.smartprocessdiscovery.services.QuestionService;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
 
 /**
  * creation date: 2/23/11
  */
-public class QuestionServiceJpa implements QuestionService {
+public class QuestionServiceJpa extends EntityServiceJpa<Question> {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
-    public void add(Question question) {
-        entityManager.persist(question);
+    @Override
+    public Class<Question> getPersistedClass() {
+        return Question.class;
     }
-
-    public Question findById(Long id) {
-        return entityManager.find(Question.class, id); 
-    }
-
-    public List<Question> listAll() {
-        return entityManager.createQuery("SELECT q FROM Question q").getResultList();
-    }
-
-    public void setEntityManager(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
-
-	public void removeById(Long id) {
-		Question oldQuestion = findById(id);
-		entityManager.remove(oldQuestion);		
-	}
-
-	public void update(Question question) {
-		Question oldQuestion = findById(question.getId());
-		oldQuestion.setNotes(question.getNotes());
-		oldQuestion.setText(question.getText());
-		oldQuestion.setCategories(question.getCategories());
-		oldQuestion.setTags(question.getTags());		
-	}
 }

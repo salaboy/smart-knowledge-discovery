@@ -69,9 +69,9 @@
       </exclusions>
     </dependency>
     <dependency>
-      <groupId>javax.persistence</groupId>
-      <artifactId>persistence-api</artifactId>
-      <version>1.0.2</version>
+      <groupId>org.hibernate.java-persistence</groupId>
+      <artifactId>jpa-api</artifactId>
+      <version>2.0-cr-1</version>
     </dependency>
   </dependencies>
 

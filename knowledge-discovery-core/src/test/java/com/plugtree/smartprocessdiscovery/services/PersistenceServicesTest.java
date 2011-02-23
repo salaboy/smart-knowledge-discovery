@@ -20,19 +20,16 @@ public class PersistenceServicesTest {
     @Test
     public void loadSpringPersistenceContext() throws SystemException, NotSupportedException, RollbackException, HeuristicRollbackException, HeuristicMixedException {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:persistence-context.xml");
-        QuestionService questionService = (QuestionService) applicationContext.getBean("questionService");
+        EntityService<Question> questionService = (EntityService<Question>) applicationContext.getBean("questionService");
         Question question = new Question("test");
-        
-        questionService.add(question);
+        questionService.save(question);
         Assert.assertEquals(1, questionService.listAll().size());
-        
         question.setNotes("Updated");
         questionService.update(question);
+        question = questionService.findById(question.getId());
+        Assert.assertEquals("Updated", question.getNotes());
         
-        Question questionUpdated = questionService.findById(question.getId());
-        Assert.assertEquals("Updated", questionUpdated.getNotes());
-        
-        questionService.removeById(question.getId());
+        questionService.remove(question);
         Assert.assertEquals(0, questionService.listAll().size());
     }
 }
