@@ -10,7 +10,7 @@ import javax.xml.bind.Unmarshaller;
 import org.junit.Test;
 
 import com.wordpress.salaboy.smartknowledgediscovery.util.QuestionRequest;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionResourceJAXB {
 	@Test
