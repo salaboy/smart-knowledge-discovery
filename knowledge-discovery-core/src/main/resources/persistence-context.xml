@@ -8,7 +8,21 @@
    http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
    http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd">
 
-  <bean id="questionService" class="com.plugtree.smartprocessdiscovery.dao.impl.QuestionDaoJpa"/>
+  <bean id="questionDao" class="com.plugtree.smartprocessdiscovery.dao.impl.QuestionDaoJpa"/>
+  <bean id="questionnaireDao" class="com.plugtree.smartprocessdiscovery.dao.impl.QuestionnaireDaoJpa"/>
+  <bean id="interviewDao" class="com.plugtree.smartprocessdiscovery.dao.impl.InterviewDaoJpa"/>
+  <bean id="personDao" class="com.plugtree.smartprocessdiscovery.dao.impl.PersonDaoJpa"/>
+  <bean id="answerDao" class="com.plugtree.smartprocessdiscovery.dao.impl.AnswerDaoJpa"/>
+  <bean id="answeredQuestionnaireDao" class="com.plugtree.smartprocessdiscovery.dao.impl.AnsweredQuestionnaireDaoJpa"/>
+  
+  <bean id="interviewService" class="com.plugtree.smartprocessdiscovery.services.impl.InterviewServiceImpl">
+    <property name="interviewDao" ref="interviewDao"/>
+    <property name="questionnaireDao" ref="questionnaireDao"/>
+    <property name="questionDao" ref="questionDao"/>
+    <property name="personDao" ref="personDao"/>
+    <property name="answeredQuestionnaireDao" ref="answeredQuestionnaireDao"/>
+    <property name="answerDao" ref="answerDao"/>
+  </bean>
 
   <!-- bean post-processor for JPA annotations -->
   <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
