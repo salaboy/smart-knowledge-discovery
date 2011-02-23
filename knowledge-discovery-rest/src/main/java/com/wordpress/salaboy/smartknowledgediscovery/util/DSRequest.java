@@ -1,7 +1,6 @@
 package com.wordpress.salaboy.smartknowledgediscovery.util;
 
 import javax.persistence.MappedSuperclass;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -13,19 +12,10 @@ import javax.xml.bind.annotation.XmlType;
 @MappedSuperclass
 public abstract class DSRequest {
 
-	@XmlElement
 	private String dataSource;
-	
-	@XmlElement
 	private OperationType operationType;
-	
-	@XmlElement
 	private int startRow;
-	
-	@XmlElement
-	private int endRow;
-	
-	@XmlElement
+	private int endRow;	
 	private String componentId;
 	
 	public OperationType getOperationType() {
