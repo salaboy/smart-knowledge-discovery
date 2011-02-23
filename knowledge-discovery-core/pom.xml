@@ -17,8 +17,8 @@
       <artifactId>junit</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.worpdress.salaboy.smartprocessdiscovery</groupId>
-      <artifactId>process-discovery-model</artifactId>
+      <groupId>com.plugtree.smartknowledgediscovery</groupId>
+      <artifactId>knowledge-discovery-model</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
     <!-- spring dependencies -->
