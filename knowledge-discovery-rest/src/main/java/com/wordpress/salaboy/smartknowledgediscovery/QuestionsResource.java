@@ -35,75 +35,24 @@ public class QuestionsResource {
 	@POST
     @Consumes("application/xml")    
     @Path("add")
-    public Response addQuestion(InputStream questionData) throws IOException, ParserConfigurationException, SAXException {
-        
-		Question question = buildQuestion(questionData);
-		questionService.add(question);
+    public Response addQuestion(Question question){
+        questionService.add(question);
 		
 		return Response.created(URI.create("/" + (question.getId() - 1))).build();
     }
 	
+	@POST
+    @Consumes("application/xml")    
+    @Path("remove")
+    public Response removeQuestion(Long id){
+        questionService.removeById(id);
+		
+		return Response.created(URI.create("/" + id + - 1)).build();
+    }
+	
 	//TODO:  Use JAXB to parse XML or JSON instead of XML.  
 	//TODO: Modify to support real questions and SmartGwt.
-	private Question buildQuestion(InputStream questionData) throws ParserConfigurationException, SAXException, IOException {
-
-		Question question = new Question();
-
-		DocumentBuilder documentBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
-
-		Document document = documentBuilder.parse(questionData);
-		document.getDocumentElement().normalize();
-
-		NodeList nodeList = document.getElementsByTagName("question");
-		Node customerRoot = nodeList.item(0);
-
-		if (customerRoot.getNodeType() == Node.ELEMENT_NODE) {
-
-			Element element = (Element)customerRoot;
-			NodeList childNodes = element.getChildNodes();
-
-			for (int i = 0; i < childNodes.getLength(); i++) {
-
-				Element childElement = (Element)childNodes.item(i);
-				String tagName = childElement.getTagName();
-				System.out.println(tagName);
-				String textContent = childElement.getTextContent();
-				System.out.println(textContent);
-
-				if (tagName.equals("text")) {
-					question.setText(textContent);
-				} else if (tagName.equals("description")) {
-					question.setNotes(textContent);
-				}            
-			}
-		} 
-
-		return question;
-	}
-
-	//TODO: Support for smartgwt.
-	@GET
-	@Produces("application/xml")
-	@Path("get/{id}")
-	public StreamingOutput getQuestion(@PathParam ("id") String questionId) {
-
-		final Question question = questionService.findById(Long.parseLong(questionId));
 		
-		return new StreamingOutput() {
-			public void write(OutputStream outputStream) {
-				PrintWriter out = new PrintWriter(outputStream);
-				
-				out.println("<?xml version=\"1.0\" encoding=\"UTF-8\"?>" +
-							"<question>" + 
-							"<text>" + question.getText() + "</text>" + 
-							"<description>" + question.getNotes() + "</description>" +
-							"</question>");
-				out.close();
-			}
-
-		};
-	}
-
     public void setQuestionService(QuestionService questionService) {
         this.questionService = questionService;
     }
