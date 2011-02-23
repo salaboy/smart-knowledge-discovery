@@ -50,6 +50,11 @@
       <artifactId>spring-orm</artifactId>
       <version>3.0.5.RELEASE</version>
     </dependency>
+    <dependency>
+      <groupId>aspectj</groupId>
+      <artifactId>aspectjweaver</artifactId>
+      <version>1.5.4</version>
+    </dependency>
     <!-- logging dependencies -->
     <dependency>
       <groupId>org.slf4j</groupId>

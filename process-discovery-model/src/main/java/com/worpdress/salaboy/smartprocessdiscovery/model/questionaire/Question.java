@@ -14,11 +14,6 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- *
- * @author salaboy
- */
-
 public class Question implements Categorizable, Taggeable {
     private Long id;
     private String text;
@@ -31,13 +26,9 @@ public class Question implements Categorizable, Taggeable {
         this.text = text;
     }
 
-
-
     public Question() {
 	}
-
-
-
+    
 	public String getText() {
         return text;
     }
@@ -54,7 +45,14 @@ public class Question implements Categorizable, Taggeable {
         this.notes = notes;
     }
 
-
+    public void setTags(Set<String> tags) {
+        this.tags = tags;
+    }    
+    
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+    
     public List<Category> getCategories() {
         return this.categories;
     }
@@ -97,8 +95,5 @@ public class Question implements Categorizable, Taggeable {
     	if(this.tags!=null) {
     		this.tags.remove(tag);
     	}
-    }
-    
-    
-    
+    }    
 }

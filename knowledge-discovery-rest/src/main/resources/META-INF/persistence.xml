@@ -5,14 +5,10 @@
              version="1.0">
   <persistence-unit name="smart-knowledge-discovery" transaction-type="RESOURCE_LOCAL">
     <provider>org.hibernate.ejb.HibernatePersistence</provider>
-    <class>com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question</class>
-    <class>com.worpdress.salaboy.smartprocessdiscovery.model.common.Category</class>
     <properties>
       <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
       <property name="hibernate.hbm2ddl.auto" value="create"/>
-      <property name="hibernate.show_sql" value="true"/>
-      <!-- These are the default for JBoss EJB3, but not for HEM: -->
-      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.HashtableCacheProvider"/>
+      <property name="hibernate.show_sql" value="false"/>
       </properties>
    </persistence-unit>
 </persistence>
