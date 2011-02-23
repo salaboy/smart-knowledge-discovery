@@ -10,7 +10,7 @@
 
   <modules>
     <module>process-discovery-model</module>
-    <module>process-discovery-core</module>
+    <module>knowledge-discovery-core</module>
     <module>process-discovery-gwtui</module>
     <module>knowledge-discovery-rest</module>
   </modules>
