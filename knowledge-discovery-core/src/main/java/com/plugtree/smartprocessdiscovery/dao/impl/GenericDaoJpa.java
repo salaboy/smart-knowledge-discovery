@@ -10,8 +10,6 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 
-import com.plugtree.smartprocessdiscovery.services.EntityService;
-
 /**
  * creation date: 2/23/11
  */
