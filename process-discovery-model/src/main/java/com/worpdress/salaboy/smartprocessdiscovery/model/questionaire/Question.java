@@ -76,6 +76,10 @@ public class Question implements Categorizable, Taggeable {
         return this.id;
     }
 
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public Set<String> getTags() {
 
         return this.tags;
