@@ -4,3 +4,7 @@ target
 .settings
 process-discovery-gwtui/src/main/webapp/SmartProcessDiscovery/sc/
 process-discovery-gwtui/src/main/webapp/WEB-INF/classes/
+*.iml
+*.ipr
+*.iws
+
