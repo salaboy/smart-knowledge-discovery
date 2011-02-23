@@ -1,4 +1,4 @@
-package com.worpdress.salaboy.smartprocessdiscovery;
+package com.plugtree.smartprocessdiscovery;
 
 /**
  * Hello world!

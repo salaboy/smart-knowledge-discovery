@@ -1,4 +1,4 @@
-package com.worpdress.salaboy.smartprocessdiscovery.services;
+package com.plugtree.smartprocessdiscovery.services;
 
 import java.util.Collection;
 import java.util.Collections;

@@ -3,7 +3,7 @@
  * and open the template in the editor.
  */
 
-package com.worpdress.salaboy.smartprocessdiscovery;
+package com.plugtree.smartprocessdiscovery;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
 import org.junit.Test;
 
