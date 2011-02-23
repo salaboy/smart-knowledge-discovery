@@ -1,5 +1,8 @@
 package com.wordpress.salaboy.smartknowledgediscovery.util;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -11,16 +14,19 @@ public class QuestionResponse extends DSResponse {
 	// Holds all incoming data
 	@XmlElementWrapper(name="data")
 	@XmlElement(name="record")
-	private
-	Question data;
 
-	void setData(Question data) {
-		this.data = data;
-	}
+	ArrayList<Question> data;
 
-	Question getData() {
+	public Collection<Question> getQuestions() {
 		return data;
 	}
-	
-	
+
+	public void addMessage(Question question) {
+		if (data == null) {
+			data = new ArrayList<Question>();
+		}
+		this.data.add(question);
+	}
+
+
 }
