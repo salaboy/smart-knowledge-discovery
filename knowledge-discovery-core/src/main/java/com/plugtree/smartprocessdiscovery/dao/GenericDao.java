@@ -1,8 +1,8 @@
-package com.plugtree.smartprocessdiscovery.services;
+package com.plugtree.smartprocessdiscovery.dao;
 
 import java.util.List;
 
-public interface EntityService<T> {
+public interface GenericDao<T> {
 
 	void save(T entity);
 

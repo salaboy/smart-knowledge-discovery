@@ -1,6 +1,8 @@
-package com.plugtree.smartprocessdiscovery.services.impl;
+package com.plugtree.smartprocessdiscovery.dao.impl;
 
 import java.util.List;
+
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,7 +15,7 @@ import com.plugtree.smartprocessdiscovery.services.EntityService;
 /**
  * creation date: 2/23/11
  */
-public abstract class EntityServiceJpa<T> implements EntityService<T> {
+public abstract class GenericDaoJpa<T> implements GenericDao<T> {
 
     @PersistenceContext
     private EntityManager entityManager;

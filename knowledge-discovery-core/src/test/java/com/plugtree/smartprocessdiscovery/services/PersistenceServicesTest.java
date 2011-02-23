@@ -11,6 +11,7 @@ import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 
 /**
  * creation date: 2/23/11
@@ -20,7 +21,7 @@ public class PersistenceServicesTest {
     @Test
     public void loadSpringPersistenceContext() throws SystemException, NotSupportedException, RollbackException, HeuristicRollbackException, HeuristicMixedException {
         ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:persistence-context.xml");
-        EntityService<Question> questionService = (EntityService<Question>) applicationContext.getBean("questionService");
+        GenericDao<Question> questionService = (GenericDao<Question>) applicationContext.getBean("questionService");
         Question question = new Question("test");
         questionService.save(question);
         Assert.assertEquals(1, questionService.listAll().size());
