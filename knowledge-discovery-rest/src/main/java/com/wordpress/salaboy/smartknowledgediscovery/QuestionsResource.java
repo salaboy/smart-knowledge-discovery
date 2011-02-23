@@ -8,15 +8,15 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
-import com.plugtree.smartprocessdiscovery.services.EntityService;
 import com.wordpress.salaboy.smartknowledgediscovery.util.QuestionRequest;
 
  
 @Path("question")
 public class QuestionsResource {
     
-	private EntityService<Question> questionService;
+	private GenericDao<Question> questionService;
 	
 	@POST
     @Consumes("application/xml")    
@@ -74,11 +74,11 @@ public class QuestionsResource {
 	//TODO:  Use JAXB to parse XML or JSON instead of XML.  
 	//TODO: Modify to support real questions and SmartGwt.
 		
-    public void setQuestionService(EntityService<Question> questionService) {
+    public void setQuestionService(GenericDao<Question> questionService) {
         this.questionService = questionService;
     }
 
-    public EntityService<Question> getQuestionService() {
+    public GenericDao<Question> getQuestionService() {
         return questionService;
     }
 }
