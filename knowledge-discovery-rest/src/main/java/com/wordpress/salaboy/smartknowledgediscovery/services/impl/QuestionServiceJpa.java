@@ -1,12 +1,12 @@
 package com.wordpress.salaboy.smartknowledgediscovery.services.impl;
 
-import com.wordpress.salaboy.smartknowledgediscovery.services.QuestionService;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import java.util.List;
+
+import com.wordpress.salaboy.smartknowledgediscovery.services.QuestionService;
+import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
 
 /**
  * creation date: 2/23/11
@@ -31,4 +31,17 @@ public class QuestionServiceJpa implements QuestionService {
     public void setEntityManager(EntityManager entityManager) {
         this.entityManager = entityManager;
     }
+
+	public void removeById(Long id) {
+		Question oldQuestion = findById(id);
+		entityManager.remove(oldQuestion);		
+	}
+
+	public void update(Question question) {
+		Question oldQuestion = findById(question.getId());
+		oldQuestion.setNotes(question.getNotes());
+		oldQuestion.setText(question.getText());
+		oldQuestion.setCategories(question.getCategories());
+		oldQuestion.setTags(question.getTags());		
+	}
 }
