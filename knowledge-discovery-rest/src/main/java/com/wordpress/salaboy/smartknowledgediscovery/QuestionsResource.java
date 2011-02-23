@@ -9,14 +9,14 @@ import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
-import com.plugtree.smartprocessdiscovery.services.QuestionService;
+import com.plugtree.smartprocessdiscovery.services.EntityService;
 import com.wordpress.salaboy.smartknowledgediscovery.util.QuestionRequest;
 
  
 @Path("question")
 public class QuestionsResource {
     
-	private QuestionService questionService;
+	private EntityService<Question> questionService;
 	
 	@POST
     @Consumes("application/xml")    
@@ -27,7 +27,7 @@ public class QuestionsResource {
 		
 		while(it.hasNext()){
 			question = (Question) it.next();
-			questionService.add(question);
+			questionService.save(question);
 			
 		}
 				
@@ -44,7 +44,7 @@ public class QuestionsResource {
 		
 		while(it.hasNext()){
 			question = (Question) it.next();
-			questionService.removeById(question.getId());
+			questionService.remove(question);
 			
 		}
 		
@@ -74,11 +74,11 @@ public class QuestionsResource {
 	//TODO:  Use JAXB to parse XML or JSON instead of XML.  
 	//TODO: Modify to support real questions and SmartGwt.
 		
-    public void setQuestionService(QuestionService questionService) {
+    public void setQuestionService(EntityService<Question> questionService) {
         this.questionService = questionService;
     }
 
-    public QuestionService getQuestionService() {
+    public EntityService<Question> getQuestionService() {
         return questionService;
     }
 }
