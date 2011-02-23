@@ -19,8 +19,8 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.xml.sax.SAXException;
 
+import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 import com.plugtree.smartprocessdiscovery.services.QuestionnaireService;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 @Path("questionnaire")
 public class QuestionnaireResource {
