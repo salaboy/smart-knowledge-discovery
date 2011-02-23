@@ -7,7 +7,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
-import com.wordpress.salaboy.smartknowledgediscovery.services.QuestionService;
+import com.plugtree.smartprocessdiscovery.services.QuestionService;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
  
 @Path("question")
