@@ -20,6 +20,7 @@ public class PersistenceServicesTest {
         final QuestionService questionService = (QuestionService) applicationContext.getBean("questionService");
         final Question question = new Question("test");
         questionService.add(question);
-        Assert.assertEquals(1, questionService.listAll().size());
+        questionService.removeById(question.getId());
+        Assert.assertEquals(0, questionService.listAll().size());
     }
 }
