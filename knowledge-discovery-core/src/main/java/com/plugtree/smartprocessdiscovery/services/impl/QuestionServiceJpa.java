@@ -1,11 +1,11 @@
-package com.wordpress.salaboy.smartknowledgediscovery.services.impl;
+package com.plugtree.smartprocessdiscovery.services.impl;
 
 import java.util.List;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.wordpress.salaboy.smartknowledgediscovery.services.QuestionService;
+import com.plugtree.smartprocessdiscovery.services.QuestionService;
 import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
 
 /**

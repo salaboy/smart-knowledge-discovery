@@ -1,4 +1,4 @@
-package com.wordpress.salaboy.smartknowledgediscovery.services;
+package com.plugtree.smartprocessdiscovery.services;
 
 import javax.transaction.HeuristicMixedException;
 import javax.transaction.HeuristicRollbackException;
