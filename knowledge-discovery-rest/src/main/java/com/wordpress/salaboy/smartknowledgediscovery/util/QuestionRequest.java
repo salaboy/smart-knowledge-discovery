@@ -17,14 +17,16 @@ public class QuestionRequest extends DSRequest {
 	@XmlElement(name="QuestionDS") 
 	ArrayList<Question> data;
 
+	public QuestionRequest(){
+		data = new ArrayList<Question>();
+	}
+	
 	public Collection<Question> getQuestions() {
 		return data;
 	}
 
 	public void addQuestion(Question question) {
-		if (data == null) {
-			data = new ArrayList<Question>();
-		}
+		
 		data.add(question);
 	}
 }

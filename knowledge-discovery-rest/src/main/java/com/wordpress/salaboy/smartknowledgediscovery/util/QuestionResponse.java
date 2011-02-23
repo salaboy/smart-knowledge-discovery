@@ -14,18 +14,19 @@ public class QuestionResponse extends DSResponse {
 	// Holds all incoming data
 	@XmlElementWrapper(name="data")
 	@XmlElement(name="record")
-
 	ArrayList<Question> data;
+
+	public QuestionResponse(){
+		data = new ArrayList<Question>();
+	}
 
 	public Collection<Question> getQuestions() {
 		return data;
 	}
 
-	public void addMessage(Question question) {
-		if (data == null) {
-			data = new ArrayList<Question>();
-		}
-		this.data.add(question);
+	public void addQuestion(Question question) {
+
+		data.add(question);
 	}
 
 
