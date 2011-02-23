@@ -5,6 +5,8 @@ import java.util.Map;
 
 public class AnsweredQuestionnaire {
 	
+	private Long id;
+	
 	private Questionnaire questionnaire;
 	
 	private Map<Question, Answer> answers;
@@ -49,6 +51,14 @@ public class AnsweredQuestionnaire {
 		} else {
 			return answers.get(question);
 		}
+	}
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 }

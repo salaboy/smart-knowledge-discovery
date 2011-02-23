@@ -12,4 +12,62 @@
       <transient name="tags"/>
     </attributes>
   </entity>
+  
+  <entity class="com.plugtree.smartprocessdiscovery.model.process.Interview">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+      <transient name="description"/>
+      <transient name="questionnaire"/>
+      <transient name="person"/>
+      <transient name="startDate"/>
+      <transient name="endDate"/>
+      <transient name="dueDate"/>
+    </attributes>
+  </entity>
+  
+  <entity class="com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+      <transient name="name"/>
+      <transient name="categories"/>
+      <transient name="tags"/>
+      <transient name="questions"/>
+    </attributes>
+  </entity>
+  
+  <entity class="com.plugtree.smartprocessdiscovery.model.process.Person">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+      <transient name="actorId"/>
+      <transient name="email"/>
+    </attributes>
+  </entity>
+  
+  <entity class="com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+      <transient name="questionnaire"/>
+      <transient name="answers"/>
+    </attributes>
+  </entity>
+  
+  <entity class="com.plugtree.smartprocessdiscovery.model.questionaire.Answer">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+      <transient name="question"/>
+      <transient name="text"/>
+      <transient name="categories"/>
+      <transient name="tags"/>
+    </attributes>
+  </entity>
 </entity-mappings>
