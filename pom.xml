@@ -9,7 +9,7 @@
   <name>Smart Process Discovery :: Parent</name>
 
   <modules>
-    <module>process-discovery-model</module>
+    <module>knowledge-discovery-model</module>
     <module>knowledge-discovery-core</module>
     <module>process-discovery-gwtui</module>
     <module>knowledge-discovery-rest</module>
