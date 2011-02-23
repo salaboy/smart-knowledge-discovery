@@ -3,14 +3,14 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <parent>
-    <artifactId>smart-process-discovery-parent</artifactId>
-    <groupId>com.worpdress.salaboy.smartprocessdiscovery</groupId>
+    <artifactId>smart-knowledge-discovery-parent</artifactId>
+    <groupId>com.plugtree.smartknowledgediscovery</groupId>
     <version>1.0-SNAPSHOT</version>
   </parent>
   <artifactId>knowledge-discovery-rest</artifactId>
   <packaging>war</packaging>
   <version>0.0.1-SNAPSHOT</version>
-  <name>knowledge-discovery-rest</name>
+  <name>Smart Knowledge Discovery :: Rest</name>
 
   <dependencies>
     <dependency>
