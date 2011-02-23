@@ -1,18 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
-package com.worpdress.salaboy.smartprocessdiscovery.model.questionaire;
-
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Categorizable;
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Category;
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Taggeable;
+package com.plugtree.smartprocessdiscovery.model.questionaire;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+
+import com.plugtree.smartprocessdiscovery.model.common.Categorizable;
+import com.plugtree.smartprocessdiscovery.model.common.Category;
+import com.plugtree.smartprocessdiscovery.model.common.Taggeable;
 
 public class Question implements Categorizable, Taggeable {
     private Long id;

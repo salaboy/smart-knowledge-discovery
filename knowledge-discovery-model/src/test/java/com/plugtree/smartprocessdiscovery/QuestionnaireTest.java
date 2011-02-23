@@ -1,23 +1,15 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+package com.plugtree.smartprocessdiscovery;
 
-package com.worpdress.salaboy.smartprocessdiscovery;
-
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Category;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionnaire;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author salaboy
- */
+import com.plugtree.smartprocessdiscovery.model.common.Category;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
+
 public class QuestionnaireTest {
 
     public QuestionnaireTest() {

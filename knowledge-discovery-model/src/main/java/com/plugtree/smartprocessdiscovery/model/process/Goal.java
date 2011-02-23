@@ -1,19 +1,11 @@
-package com.worpdress.salaboy.smartprocessdiscovery.model.process;
-
-import com.worpdress.salaboy.smartprocessdiscovery.model.results.BusinessProcess;
-import com.worpdress.salaboy.smartprocessdiscovery.model.results.BusinessRule;
-
+package com.plugtree.smartprocessdiscovery.model.process;
 
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by IntelliJ IDEA.
- * User: salaboy
- * Date: 2/4/11
- * Time: 2:40 PM
- * To change this template use File | Settings | File Templates.
- */
+import com.plugtree.smartprocessdiscovery.model.results.BusinessProcess;
+import com.plugtree.smartprocessdiscovery.model.results.BusinessRule;
+
 public class Goal {
     public enum GoalStatus { OPEN, CLOSED, SUSPENDED };
     private Long id;

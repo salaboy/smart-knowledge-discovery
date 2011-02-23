@@ -1,21 +1,14 @@
-package com.worpdress.salaboy.smartprocessdiscovery.model.questionaire;
-
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Categorizable;
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Category;
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Taggeable;
+package com.plugtree.smartprocessdiscovery.model.questionaire;
 
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-/**
- * Created by IntelliJ IDEA.
- * User: salaboy
- * Date: 2/4/11
- * Time: 2:21 PM
- * To change this template use File | Settings | File Templates.
- */
+import com.plugtree.smartprocessdiscovery.model.common.Categorizable;
+import com.plugtree.smartprocessdiscovery.model.common.Category;
+import com.plugtree.smartprocessdiscovery.model.common.Taggeable;
+
 public class Answer implements Categorizable, Taggeable {
     private Long id;
     private Question question;

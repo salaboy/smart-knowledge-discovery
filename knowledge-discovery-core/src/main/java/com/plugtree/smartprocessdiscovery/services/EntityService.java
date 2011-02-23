@@ -1,7 +1,5 @@
 package com.plugtree.smartprocessdiscovery.services;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-
 import java.util.List;
 
 public interface EntityService<T> {

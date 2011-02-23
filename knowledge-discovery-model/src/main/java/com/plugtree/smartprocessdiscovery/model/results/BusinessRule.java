@@ -1,21 +1,13 @@
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
+package com.plugtree.smartprocessdiscovery.model.results;
 
-package com.worpdress.salaboy.smartprocessdiscovery.model.results;
-
-/**
- *
- * @author salaboy
- */
-public class BusinessProcess {
+public class BusinessRule {
     private Long id;
-    private String goal;
+    private String name;
     private String description;
     private String owner;
+    private String goal;
 
-    public BusinessProcess() {
+    public BusinessRule() {
     }
 
     public Long getId() {
@@ -26,12 +18,12 @@ public class BusinessProcess {
         this.id = id;
     }
 
-    public String getGoal() {
-        return goal;
+    public String getName() {
+        return name;
     }
 
-    public void setGoal(String goal) {
-        this.goal = goal;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getDescription() {
@@ -48,5 +40,13 @@ public class BusinessProcess {
 
     public void setOwner(String owner) {
         this.owner = owner;
+    }
+
+    public String getGoal() {
+        return goal;
+    }
+
+    public void setGoal(String goal) {
+        this.goal = goal;
     }
 }

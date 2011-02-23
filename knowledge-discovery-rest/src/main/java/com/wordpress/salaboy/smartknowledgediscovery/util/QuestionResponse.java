@@ -7,7 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 @XmlRootElement(name="response")
 public class QuestionResponse extends DSResponse {

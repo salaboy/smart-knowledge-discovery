@@ -1,4 +1,4 @@
-package com.worpdress.salaboy.smartprocessdiscovery.model.questionaire;
+package com.plugtree.smartprocessdiscovery.model.questionaire;
 
 import java.util.HashMap;
 import java.util.Map;

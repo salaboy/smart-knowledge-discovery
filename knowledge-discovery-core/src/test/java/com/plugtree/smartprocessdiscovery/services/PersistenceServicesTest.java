@@ -10,7 +10,7 @@ import org.junit.Assert;
 import org.junit.Test;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 /**
  * creation date: 2/23/11

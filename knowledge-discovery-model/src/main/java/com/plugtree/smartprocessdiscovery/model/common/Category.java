@@ -1,12 +1,5 @@
-package com.worpdress.salaboy.smartprocessdiscovery.model.common;
+package com.plugtree.smartprocessdiscovery.model.common;
 
-/**
- * Created by IntelliJ IDEA.
- * User: salaboy
- * Date: 2/4/11
- * Time: 1:58 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Category {
     private Long id;
     private String name;

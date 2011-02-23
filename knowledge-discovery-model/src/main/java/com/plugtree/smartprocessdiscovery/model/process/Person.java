@@ -1,12 +1,5 @@
-package com.worpdress.salaboy.smartprocessdiscovery.model.process;
+package com.plugtree.smartprocessdiscovery.model.process;
 
-/**
- * Created by IntelliJ IDEA.
- * User: salaboy
- * Date: 2/4/11
- * Time: 2:40 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Person {
     private Long id;
     private String actorId;

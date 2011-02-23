@@ -4,12 +4,12 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.Date;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.process.Interview;
-import com.worpdress.salaboy.smartprocessdiscovery.model.process.Person;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Answer;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionnaire;
+import com.plugtree.smartprocessdiscovery.model.process.Interview;
+import com.plugtree.smartprocessdiscovery.model.process.Person;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Answer;
+import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 public class InterviewService {
 	

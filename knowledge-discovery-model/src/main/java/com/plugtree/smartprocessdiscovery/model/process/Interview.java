@@ -1,16 +1,9 @@
-package com.worpdress.salaboy.smartprocessdiscovery.model.process;
+package com.plugtree.smartprocessdiscovery.model.process;
 
 import java.util.Date;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
+import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
 
-/**
- * Created by IntelliJ IDEA.
- * User: salaboy
- * Date: 2/4/11
- * Time: 2:40 PM
- * To change this template use File | Settings | File Templates.
- */
 public class Interview {
     private Long id;
     private String description;

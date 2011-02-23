@@ -3,9 +3,9 @@ package com.plugtree.smartprocessdiscovery.services;
 import java.util.Collection;
 import java.util.Collections;
 
-import com.worpdress.salaboy.smartprocessdiscovery.model.common.Category;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Question;
-import com.worpdress.salaboy.smartprocessdiscovery.model.questionaire.Questionnaire;
+import com.plugtree.smartprocessdiscovery.model.common.Category;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 public class QuestionnaireService {
 	
