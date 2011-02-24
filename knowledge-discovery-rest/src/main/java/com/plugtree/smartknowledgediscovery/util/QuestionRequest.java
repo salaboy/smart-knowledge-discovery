@@ -1,4 +1,5 @@
-package com.wordpress.salaboy.smartknowledgediscovery.util;
+package com.plugtree.smartknowledgediscovery.util;
+
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,25 +10,23 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
-@XmlRootElement(name="response")
-public class QuestionResponse extends DSResponse {
+@XmlRootElement(name="request")
+public class QuestionRequest extends DSRequest {
 	// Holds all incoming data
 	@XmlElementWrapper(name="data")
-	@XmlElement(name="record")
+	@XmlElement(name="QuestionDS") 
 	ArrayList<Question> data;
 
-	public QuestionResponse(){
+	public QuestionRequest(){
 		data = new ArrayList<Question>();
 	}
-
+	
 	public Collection<Question> getQuestions() {
 		return data;
 	}
 
 	public void addQuestion(Question question) {
-
+		
 		data.add(question);
 	}
-
-
 }

@@ -1,4 +1,4 @@
-package com.wordpress.salaboy.smartknowledgediscovery.util;
+package com.plugtree.smartknowledgediscovery.util;
 
 import javax.persistence.MappedSuperclass;
 import javax.xml.bind.annotation.XmlType;

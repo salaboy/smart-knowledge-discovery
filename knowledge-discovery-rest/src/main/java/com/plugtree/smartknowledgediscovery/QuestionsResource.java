@@ -1,4 +1,4 @@
-package com.wordpress.salaboy.smartknowledgediscovery;
+package com.plugtree.smartknowledgediscovery;
 
 import java.net.URI;
 import java.util.Iterator;
@@ -8,9 +8,9 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.core.Response;
 
+import com.plugtree.smartknowledgediscovery.util.QuestionRequest;
 import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
-import com.wordpress.salaboy.smartknowledgediscovery.util.QuestionRequest;
 
  
 @Path("question")

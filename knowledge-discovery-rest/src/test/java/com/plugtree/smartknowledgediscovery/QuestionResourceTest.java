@@ -1,4 +1,4 @@
-package com.wordpress.salaboy.smartknowledgediscovery;
+package com.plugtree.smartknowledgediscovery;
 
 import java.io.ByteArrayInputStream;
 

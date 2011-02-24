@@ -1,15 +1,12 @@
-package com.wordpress.salaboy.smartknowledgediscovery;
-
-import java.io.OutputStream;
+package com.plugtree.smartknowledgediscovery;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
-import javax.xml.bind.Unmarshaller;
 
 import org.junit.Test;
 
-import com.wordpress.salaboy.smartknowledgediscovery.util.QuestionRequest;
+import com.plugtree.smartknowledgediscovery.util.QuestionRequest;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionResourceJAXB {

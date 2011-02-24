@@ -1,6 +1,6 @@
 <jboss-web>
    <class-loading> 
       <loader-repository>com.wordpress:archive=knowledge-discovery-rest</loader-repository>
-<!--      <loader-repository-config>java2ParentDelegation=false</loader-repository-config> -->
+      <loader-repository-config>java2ParentDelegation=false</loader-repository-config> 
    </class-loading>
 </jboss-web>
