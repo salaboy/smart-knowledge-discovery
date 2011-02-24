@@ -5,8 +5,8 @@
    http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
    http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd">
 
-   <import resource="classpath:persistence-context.xml"/>
-
-   <import resource="classpath:rest-context.xml"/>
+  <bean id="questionResource" class="com.wordpress.salaboy.smartknowledgediscovery.InterviewResource" >
+    <property name="interviewService" ref="interviewService" />
+  </bean>
 
 </beans>
