@@ -10,5 +10,8 @@
 
   <!-- Specify the paths for translatable code                    -->
   <source path='client'/>
-
+  
+  <servlet path="/dummyHttpServlet" class="com.worpdress.salaboy.smartprocessdiscovery.server.DummyHttpServlet"/>
+  
+  
 </module>

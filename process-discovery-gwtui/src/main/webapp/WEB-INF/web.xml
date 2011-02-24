@@ -6,7 +6,21 @@
 <web-app>
 
   <!-- Servlets -->
+  <servlet>
+    <servlet-name>dummyHttpServlet</servlet-name>
+    <servlet-class>com.worpdress.salaboy.smartprocessdiscovery.server.DummyHttpServlet</servlet-class>
+  </servlet>
 
+  <servlet-mapping>
+    <servlet-name>dummyHttpServlet</servlet-name>
+    <url-pattern>/dummyHttpServlet/*</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>dummyHttpServlet</servlet-name>
+    <url-pattern>/SmartProcessDiscovery/dummyHttpServlet</url-pattern>
+  </servlet-mapping>
+  
   <!-- Default page to serve -->
   <welcome-file-list>
     <welcome-file>SmartProcessDiscovery.html</welcome-file>

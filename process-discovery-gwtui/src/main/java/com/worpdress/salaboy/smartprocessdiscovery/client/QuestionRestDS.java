@@ -54,9 +54,14 @@ public class QuestionRestDS extends RestDataSource {
 		
 		setOperationBindings(fetch, add, update, remove);  
 		
-		setFetchDataURL("knowledge-discovery-rest/rest/question/get");
+		/*setFetchDataURL("knowledge-discovery-rest/rest/question/get");
 		setAddDataURL("knowledge-discovery-rest/rest/question/add");  
 		setUpdateDataURL("knowledge-discovery-rest/rest/question/update");  
-		setRemoveDataURL("knowledge-discovery-rest/rest/question/remove");  
+		setRemoveDataURL("knowledge-discovery-rest/rest/question/remove"); */ 
+		
+		setFetchDataURL("http://localhost:8888/SmartProcessDiscovery/dummyHttpServlet/question/get");
+		setAddDataURL("http://localhost:8888/SmartProcessDiscovery/dummyHttpServlet/question/add");  
+		setUpdateDataURL("http://localhost:8888/SmartProcessDiscovery/dummyHttpServlet/question/update");  
+		setRemoveDataURL("http://localhost:8888/SmartProcessDiscovery/dummyHttpServlet/question/remove");
 	}
 }
