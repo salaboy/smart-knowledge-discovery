@@ -25,34 +25,42 @@ public class DummyHttpServlet extends HttpServlet {
 				" <status>0</status>"+
 				"<startRow>0</startRow>"+
 				"<endRow>0</endRow>"+
-				"<totalRows>0</totalRows>"+
+				"<totalRows>1</totalRows>"+
 				"<data>"+
 				"<record>"+
+				"<id>1</id>"+
+				"<question>"+ "What's your favorite Horror movie?" +"</question>"+
+				"<description>"+ "Horror Movie Question" +"</description>"+
+				"<category>"+ "Movie" +"</category>"+
 				"</record>"+
 				"</data>"+
 		"</response>");
-		
+
 	}
 
 
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp)
 	throws ServletException, IOException {
-
+		
+		System.out.println(req.getContentType());
+		System.out.println(req.getContextPath());
 		resp.setContentType("text/xml");
 		PrintWriter out = resp.getWriter();
 		out.println("<response>"+
 				" <status>0</status>"+
 				"<startRow>0</startRow>"+
 				"<endRow>0</endRow>"+
-				"<totalRows>0</totalRows>"+
+				"<totalRows>1</totalRows>"+
 				"<data>"+
 				"<record>"+
+				"<id>1</id>"+
+				"<question>"+ "What's your favorite Horror movie?" +"</question>"+
+				"<description>"+ "Horror Movie Question" +"</description>"+
+				"<category>"+ "Movie" +"</category>"+
 				"</record>"+
 				"</data>"+
 		"</response>");
-		
-
 
 	}
 }
