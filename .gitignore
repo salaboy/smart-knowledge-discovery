@@ -4,6 +4,7 @@ target
 .settings
 process-discovery-gwtui/src/main/webapp/SmartProcessDiscovery/sc/
 process-discovery-gwtui/src/main/webapp/WEB-INF/classes/
+process-discovery-gwtui/src/main/webapp/SmartProcessDiscovery/SmartProcessDiscovery.nocache.js
 *.iml
 *.ipr
 *.iws
