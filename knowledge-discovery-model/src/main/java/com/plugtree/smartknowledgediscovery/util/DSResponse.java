@@ -2,7 +2,6 @@ package com.plugtree.smartknowledgediscovery.util;
 
 
 
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -23,17 +22,14 @@ public abstract class DSResponse {
     public static int STATUS_TRANSPORT_ERROR = -90;
     public static int STATUS_VALIDATION_ERROR = -4;
 	
-	@XmlElement
 	private int status;
-	
-	@XmlElement
 	private int startRow;
-	
-	@XmlElement
 	private int endRow;
-	
-	@XmlElement
 	private int totalRows;	
+	
+	public void incrementTotalRows() {
+		totalRows += 1;
+	}
 	
 	public int getStartRow() {
 		return startRow;

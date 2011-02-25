@@ -1,22 +1,18 @@
 package com.worpdress.salaboy.smartprocessdiscovery.server;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.CharBuffer;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 
-import com.plugtree.smartknowledgediscovery.util.QuestionRequest;
+import com.plugtree.smartknowledgediscovery.util.QuestionResponse;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
-import com.smartgwt.client.data.DSResponse;
-import com.smartgwt.client.types.ContentsType;
-
 
 public class DummyHttpServlet extends HttpServlet {
 
@@ -58,30 +54,29 @@ public class DummyHttpServlet extends HttpServlet {
 		System.out.println(req.getPathInfo());
 		
 		//The xml received in the request.
-		BufferedReader in = req.getReader();
-		String str;
-		 while ((str = in.readLine()) != null) {
-		        System.out.println(str);
-		    }
+//		BufferedReader in = req.getReader();
+//		String str;
+//		 while ((str = in.readLine()) != null) {
+//		        System.out.println(str);
+//		    }
 
-		 
-		
-		resp.setContentType("text/xml");
-		PrintWriter out = resp.getWriter();
-		out.println("<response>"+
-				" <status>0</status>"+
-				"<startRow>0</startRow>"+
-				"<endRow>0</endRow>"+
-				"<totalRows>1</totalRows>"+
-				"<data>"+
-				"<record>"+
-				"<id>1</id>"+
-				"<question>"+ "What's your favorite Horror movie?" +"</question>"+
-				"<description>"+ "Horror Movie Question" +"</description>"+
-				"<category>IT</category>"+
-				"</record>"+
-				"</data>"+
-		"</response>");
+		 QuestionResponse questionResponse = new QuestionResponse();
 
+		 Question question = new Question();
+		 question.setNotes("Horror Movie Question.");
+		 question.setText("What's your favorite Horror movie?");
+		 questionResponse.addQuestion(question);
+
+		 try {
+			 JAXBContext jaxbContext = JAXBContext.newInstance(QuestionResponse.class);
+			 Marshaller marshaller = jaxbContext.createMarshaller();
+
+			 resp.setContentType("text/xml");
+			 PrintWriter out = resp.getWriter();
+			 marshaller.marshal(questionResponse, out);
+
+		 } catch (JAXBException e) {
+			 e.printStackTrace();
+		 }		
 	}
 }

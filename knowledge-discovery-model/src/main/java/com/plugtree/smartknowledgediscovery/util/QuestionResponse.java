@@ -27,7 +27,6 @@ public class QuestionResponse extends DSResponse {
 	public void addQuestion(Question question) {
 
 		data.add(question);
+		incrementTotalRows();
 	}
-
-
 }
