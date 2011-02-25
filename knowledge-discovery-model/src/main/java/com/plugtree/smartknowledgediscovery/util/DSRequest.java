@@ -1,6 +1,6 @@
 package com.plugtree.smartknowledgediscovery.util;
 
-import javax.persistence.MappedSuperclass;
+
 import javax.xml.bind.annotation.XmlType;
 
 /**
@@ -9,7 +9,7 @@ import javax.xml.bind.annotation.XmlType;
  * @see http://www.smartclient.com/docs/7.0rc2/a/b/c/go.html#class..RestDataSource
  */
 @XmlType
-@MappedSuperclass
+
 public abstract class DSRequest {
 
 	private String dataSource;
