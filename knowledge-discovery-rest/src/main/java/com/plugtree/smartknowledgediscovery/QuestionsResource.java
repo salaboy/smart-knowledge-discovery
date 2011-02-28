@@ -13,15 +13,16 @@ import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
  
-@Path("question")
+@Path("/question")
 public class QuestionsResource {
     
 	private GenericDao<Question> questionService;
 	
 	@POST
     @Consumes("application/xml")    
-    @Path("add")
+    @Path("/add")
     public Response addQuestion(QuestionRequest questionReq){
+			
 		Question question = null;
 		Iterator it =  questionReq.getQuestions().iterator();
 		
@@ -30,13 +31,13 @@ public class QuestionsResource {
 			questionService.save(question);
 			
 		}
-				
+		
 		return Response.created(URI.create("/" + (question.getId() - 1))).build();
     }
 	
 	@POST
     @Consumes("application/xml")    
-    @Path("remove")
+    @Path("/remove")
     public Response removeQuestion(QuestionRequest questionReq){
         
 		Question question = null;
@@ -54,7 +55,7 @@ public class QuestionsResource {
 	
 	@POST
     @Consumes("application/xml")    
-    @Path("update")
+    @Path("/update")
     public Response updateQuestion(QuestionRequest questionReq){
         
 		Question question = null;

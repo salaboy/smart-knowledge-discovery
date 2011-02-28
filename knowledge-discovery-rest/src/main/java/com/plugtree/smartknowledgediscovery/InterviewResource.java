@@ -25,7 +25,7 @@ import com.plugtree.smartprocessdiscovery.model.process.Interview;
 import com.plugtree.smartprocessdiscovery.services.InterviewService;
 import com.plugtree.smartprocessdiscovery.services.ServiceException;
 
-@Path("interview")
+@Path("/interview")
 public class InterviewResource {
 
     private InterviewService interviewService;
@@ -33,10 +33,9 @@ public class InterviewResource {
 
     @POST
     @Consumes("application/xml")
-    @Path("add")
+    @Path("/add")
     public Response addInterview(InputStream interviewData) throws IOException, ParserConfigurationException,
-            SAXException {
-
+            SAXException {    	
         String description = obtainDescription(interviewData);
         long questionnaireId = obtainQuestionnaireId(interviewData);
         long personId = obtainPersonId(interviewData);
@@ -44,9 +43,10 @@ public class InterviewResource {
             Long interviewId = interviewService.create(description, questionnaireId, personId);
             return Response.created(URI.create("/" + (interviewId - 1))).build();
         } catch (ServiceException e) {
-            // TODO: add error message into response
-            e.printStackTrace();
-            return Response.created(URI.create("/error")).status(Status.INTERNAL_SERVER_ERROR).build();
+            // TODO: add error message into response        	
+        	e.printStackTrace();        		
+        	return Response.created(URI.create("/error")).status(Status.INTERNAL_SERVER_ERROR).build();
+        
         }
     }
 
@@ -67,7 +67,7 @@ public class InterviewResource {
 
     @GET
     @Produces("application/xml")
-    @Path("get/{id}")
+    @Path("/get/{id}")
     public StreamingOutput getInterview(@PathParam("id") final String interviewId) {
 
         final Interview interview;
@@ -104,7 +104,7 @@ public class InterviewResource {
 
     @POST
     @Consumes("application/xml")
-    @Path("update")
+    @Path("/update")
     public Response updateInterview(Long id, String description, Date dueDate, Date startDate, Date endDate,
             Long questionnaireId, Long personId) {
         try {
@@ -118,7 +118,7 @@ public class InterviewResource {
 
     @POST
     @Consumes("application/xml")
-    @Path("remove")
+    @Path("/remove")
     public Response remove(Long id) {
         try {
             interviewService.remove(id);
@@ -131,7 +131,7 @@ public class InterviewResource {
 
     @POST
     @Consumes("application/xml")
-    @Path("list")
+    @Path("/list")
     public Response findAll(Long id, Long catId) {
         try {
             Collection<Interview> all = interviewService.findAll();
@@ -145,7 +145,7 @@ public class InterviewResource {
 
     @POST
     @Consumes("application/xml")
-    @Path("answer/add")
+    @Path("/answer/add")
     public Response addAnswer(Long id, Long questionId, String text) {
         try {
             interviewService.addAnswer(id, questionId, text);
@@ -158,7 +158,7 @@ public class InterviewResource {
 
     @POST
     @Consumes("application/xml")
-    @Path("answer/remove")
+    @Path("/answer/remove")
     public Response removeAnswer(Long id, Long questionId) {
         try {
             interviewService.removeAnswer(id, questionId);
