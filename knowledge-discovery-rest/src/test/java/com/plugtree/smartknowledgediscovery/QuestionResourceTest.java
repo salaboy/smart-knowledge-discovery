@@ -1,42 +1,35 @@
 package com.plugtree.smartknowledgediscovery;
 
-import java.io.ByteArrayInputStream;
-
-import org.apache.commons.httpclient.Header;
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.methods.InputStreamRequestEntity;
-import org.apache.commons.httpclient.methods.PostMethod;
-import org.apache.commons.httpclient.methods.RequestEntity;
+import org.apache.http.HttpHost;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
 import org.junit.Test;
+
+import com.plugtree.smartknowledgediscovery.util.OperationType;
+import com.plugtree.smartknowledgediscovery.util.QuestionRequest;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionResourceTest {
 
 	@Test
 	public void add() {
-		String addCustomerXML =
-	        "<question>" +
-	            "<text>Java or Python?</text>" +
-	            "<description>Not relevant.</description>" +
-	        "</question>";
-
-		PostMethod postMethod = new PostMethod("http://127.0.0.1:8080/knowledge-discovery-rest/question/add");
-	    RequestEntity entity = new InputStreamRequestEntity(new ByteArrayInputStream(addCustomerXML.getBytes()), "application/xml");
-	    postMethod.setRequestEntity(entity);
-	    HttpClient client = new HttpClient();
 	    
+	    Question question = new Question();
+	    question.setText("What?");
+	    question.setNotes("A question.");
+
+	    QuestionRequest questionRequest = new QuestionRequest();
+	    questionRequest.setOperationType(OperationType.ADD);
+	    questionRequest.getQuestions().add(question);
+
+	    DefaultHttpClient httpClient = new DefaultHttpClient();
+	    HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
+	    HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/add");
+
 	    try {
-	    	int result = client.executeMethod(postMethod);
-	    	System.out.println("Response status code: " + result);
-	    	System.out.println("Response headers:");
-	    	
-	    	Header[] headers = postMethod.getResponseHeaders();
-	    	for (int i = 0; i < headers.length; i++) {
-	    		System.out.println(headers[i].toString());
-	    	}   	
-	    }catch (Exception e) {
-	    	e.printStackTrace();
-	    } finally {
-	    	postMethod.releaseConnection();
-	    }	
-	}	
+            httpClient.execute(httpHost, httpPost);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+	}
 }
