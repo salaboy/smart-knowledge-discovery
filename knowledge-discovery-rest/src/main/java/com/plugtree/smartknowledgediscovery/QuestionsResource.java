@@ -38,39 +38,35 @@ public class QuestionsResource {
     }
 	
 	@POST
-    @Consumes("application/xml")    
+    @Consumes("application/xml")
+    @Produces("application/xml")
     @Path("/remove")
-    public Response removeQuestion(QuestionRequest questionReq){
-        
-		Question question = null;
-		Iterator it =  questionReq.getQuestions().iterator();
-		
-		while(it.hasNext()){
-			question = (Question) it.next();
-			questionService.remove(question);
-			
+    public QuestionResponse removeQuestion(QuestionRequest questionRequest){
+        							
+		for (Question question : questionRequest.getQuestions()) {
+			questionService.remove(question);;
 		}
 		
+		QuestionResponse questionResponse = new QuestionResponse();
+		questionResponse.setStatus(QuestionResponse.STATUS_SUCCESS);
 		
-		return Response.created(URI.create("/" + (question.getId() - 1))).build();
+		return questionResponse;
     }
 	
 	@POST
-    @Consumes("application/xml")    
+    @Consumes("application/xml")
+    @Produces("application/xml")
     @Path("/update")
-    public Response updateQuestion(QuestionRequest questionReq){
+    public QuestionResponse updateQuestion(QuestionRequest questionRequest){
         
-		Question question = null;
-		Iterator it =  questionReq.getQuestions().iterator();
-		
-		while(it.hasNext()){
-			question = (Question) it.next();
-			questionService.update(question);
-			
+		for (Question question : questionRequest.getQuestions()) {
+			questionService.update(question);	
 		}
 		
-		
-		return Response.created(URI.create("/" + (question.getId() - 1))).build();
+		QuestionResponse questionResponse = new QuestionResponse();
+		questionResponse.setStatus(QuestionResponse.STATUS_SUCCESS);
+				
+		return questionResponse;
     }
 
     public void setQuestionService(GenericDao<Question> questionService) {
