@@ -9,9 +9,14 @@
   <context:component-scan base-package="com.plugtree.smartknowledgediscovery"/>
  
  <bean id="interviewService" class="com.plugtree.smartprocessdiscovery.services.impl.InterviewServiceImpl" />
+ <bean id="questionService" class="com.plugtree.smartprocessdiscovery.dao.impl.QuestionDaoJpa" />
    
   <bean id="interviewResource" class="com.plugtree.smartknowledgediscovery.InterviewResource" >
     <property name="interviewService" ref="interviewService" />
+  </bean>
+
+  <bean id="questionResource" class="com.plugtree.smartknowledgediscovery.QuestionsResource" >
+    <property name="questionService" ref="questionService" />
   </bean>
 
 </beans>
