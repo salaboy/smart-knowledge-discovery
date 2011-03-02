@@ -30,7 +30,7 @@ public class QuestionsResource {
 		for (Question question : questionRequest.getQuestions()) {
 			questionService.save(question);
 		}
-		
+						
 		QuestionResponse questionResponse = new QuestionResponse();
 		questionResponse.setStatus(QuestionResponse.STATUS_SUCCESS);
 

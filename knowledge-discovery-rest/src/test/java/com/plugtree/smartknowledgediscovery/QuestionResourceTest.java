@@ -25,45 +25,136 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 public class QuestionResourceTest {
 
 	@Test
-	public void addGet() {
-	    
-	    Question question = new Question();
-	    question.setText("What?");
-	    question.setNotes("A question.");
+	public void addPost() {
 
-	    QuestionRequest questionRequest = new QuestionRequest();
-	    questionRequest.setOperationType(OperationType.ADD);
-	    questionRequest.getQuestions().add(question);
+		Question question = new Question();
+		question.setText("What?");
+		question.setNotes("A question.");
 
-	    DefaultHttpClient httpClient = new DefaultHttpClient();
-	    HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
-	    HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/add");
-	    httpPost.setHeader("Content-type", "application/xml");
+		QuestionRequest questionRequest = new QuestionRequest();
+		questionRequest.setOperationType(OperationType.ADD);
+		questionRequest.getQuestions().add(question);
 
-	    try {
-            JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
-            Marshaller marshaller = requestContext.createMarshaller();
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
+		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/add");
+		httpPost.setHeader("Content-type", "application/xml");
 
-            StringWriter requestWriter = new StringWriter();
-            marshaller.marshal(questionRequest, requestWriter);
+		try {
+			JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
+			Marshaller marshaller = requestContext.createMarshaller();
 
-            StringEntity requestEntity = new StringEntity(requestWriter.toString());
-            httpPost.setEntity(requestEntity);
+			StringWriter requestWriter = new StringWriter();
+			marshaller.marshal(questionRequest, requestWriter);
 
-            HttpResponse httpResponse = httpClient.execute(httpHost, httpPost);
-            HttpEntity responseEntity = httpResponse.getEntity();
+			StringEntity requestEntity = new StringEntity(requestWriter.toString());
+			httpPost.setEntity(requestEntity);
 
-            InputStream responseStream = responseEntity.getContent();
+			HttpResponse httpResponse = httpClient.execute(httpHost, httpPost);
+			HttpEntity responseEntity = httpResponse.getEntity();
 
-            JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
-            Unmarshaller unmarhaller = responseContext.createUnmarshaller();
+			InputStream responseStream = responseEntity.getContent();
 
-            QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
+			JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
+			Unmarshaller unmarhaller = responseContext.createUnmarshaller();
 
-            Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
+			QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+			Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
+
+	@Test
+	public void updatePost() {
+
+		Question question = new Question();
+		question.setId((long) 1);
+		question.setText("What's your favorite colour?");
+		question.setNotes("A question.UPDATED");
+
+
+		QuestionRequest questionRequest = new QuestionRequest();
+		questionRequest.setOperationType(OperationType.UPDATE);
+		questionRequest.getQuestions().add(question);
+
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
+		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/update");
+		httpPost.setHeader("Content-type", "application/xml");
+
+		try {
+			JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
+			Marshaller marshaller = requestContext.createMarshaller();
+
+			StringWriter requestWriter = new StringWriter();
+			marshaller.marshal(questionRequest, requestWriter);
+
+			StringEntity requestEntity = new StringEntity(requestWriter.toString());
+			httpPost.setEntity(requestEntity);
+
+			HttpResponse httpResponse = httpClient.execute(httpHost, httpPost);
+			HttpEntity responseEntity = httpResponse.getEntity();
+
+			InputStream responseStream = responseEntity.getContent();
+
+			JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
+			Unmarshaller unmarhaller = responseContext.createUnmarshaller();
+
+			QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
+
+			Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+	@Test
+	public void removePost() {
+
+		Question question = new Question();
+		question.setId((long) 1);
+
+		QuestionRequest questionRequest = new QuestionRequest();
+		questionRequest.setOperationType(OperationType.REMOVE);
+		questionRequest.getQuestions().add(question);
+
+		DefaultHttpClient httpClient = new DefaultHttpClient();
+		HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
+		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/remove");
+		httpPost.setHeader("Content-type", "application/xml");
+
+		try {
+			JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
+			Marshaller marshaller = requestContext.createMarshaller();
+
+			StringWriter requestWriter = new StringWriter();
+			marshaller.marshal(questionRequest, requestWriter);
+
+			StringEntity requestEntity = new StringEntity(requestWriter.toString());
+			httpPost.setEntity(requestEntity);
+
+			HttpResponse httpResponse = httpClient.execute(httpHost, httpPost);
+			HttpEntity responseEntity = httpResponse.getEntity();
+
+			InputStream responseStream = responseEntity.getContent();
+
+			JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
+			Unmarshaller unmarhaller = responseContext.createUnmarshaller();
+
+			QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
+
+			Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+
+
+
 }
