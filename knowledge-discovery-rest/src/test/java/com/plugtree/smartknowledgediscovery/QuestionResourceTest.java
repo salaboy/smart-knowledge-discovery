@@ -31,6 +31,7 @@ public class QuestionResourceTest {
 	    DefaultHttpClient httpClient = new DefaultHttpClient();
 	    HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
 	    HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/add");
+	    httpPost.setHeader("Content-type", "application/xml");
 
 	    try {
             JAXBContext jaxbContext = JAXBContext.newInstance(QuestionRequest.class);

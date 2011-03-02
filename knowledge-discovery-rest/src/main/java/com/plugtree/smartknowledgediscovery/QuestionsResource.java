@@ -1,6 +1,7 @@
 package com.plugtree.smartknowledgediscovery;
 
 import java.net.URI;
+import java.util.Collection;
 import java.util.Iterator;
 
 import javax.ws.rs.Consumes;
@@ -21,18 +22,13 @@ public class QuestionsResource {
 	@POST
     @Consumes("application/xml")    
     @Path("/add")
-    public Response addQuestion(QuestionRequest questionReq){
+    public void addQuestion(QuestionRequest questionRequest) {
 			
-		Question question = null;
-		Iterator it =  questionReq.getQuestions().iterator();
-		
-		while(it.hasNext()){
-			question = (Question) it.next();
+		for (Question question : questionRequest.getQuestions()) {
 			questionService.save(question);
-			
 		}
 		
-		return Response.created(URI.create("/" + (question.getId() - 1))).build();
+		System.out.println("Size question list: " + questionService.listAll().size());
     }
 	
 	@POST
