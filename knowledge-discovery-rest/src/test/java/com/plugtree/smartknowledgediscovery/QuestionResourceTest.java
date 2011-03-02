@@ -1,11 +1,17 @@
 package com.plugtree.smartknowledgediscovery;
 
+import java.io.InputStream;
 import java.io.StringWriter;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
+import javax.xml.bind.Unmarshaller;
 
+import junit.framework.Assert;
+
+import org.apache.http.HttpEntity;
 import org.apache.http.HttpHost;
+import org.apache.http.HttpResponse;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.DefaultHttpClient;
@@ -13,6 +19,7 @@ import org.junit.Test;
 
 import com.plugtree.smartknowledgediscovery.util.OperationType;
 import com.plugtree.smartknowledgediscovery.util.QuestionRequest;
+import com.plugtree.smartknowledgediscovery.util.QuestionResponse;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionResourceTest {
@@ -34,16 +41,26 @@ public class QuestionResourceTest {
 	    httpPost.setHeader("Content-type", "application/xml");
 
 	    try {
-            JAXBContext jaxbContext = JAXBContext.newInstance(QuestionRequest.class);
-            Marshaller marshaller = jaxbContext.createMarshaller();
+            JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
+            Marshaller marshaller = requestContext.createMarshaller();
 
-            StringWriter stringWriter = new StringWriter();
-            marshaller.marshal(questionRequest, stringWriter);
+            StringWriter requestWriter = new StringWriter();
+            marshaller.marshal(questionRequest, requestWriter);
 
-            StringEntity entity = new StringEntity(stringWriter.toString());
-            httpPost.setEntity(entity);
+            StringEntity requestEntity = new StringEntity(requestWriter.toString());
+            httpPost.setEntity(requestEntity);
 
-            httpClient.execute(httpHost, httpPost);
+            HttpResponse httpResponse = httpClient.execute(httpHost, httpPost);
+            HttpEntity responseEntity = httpResponse.getEntity();
+
+            InputStream responseStream = responseEntity.getContent();
+
+            JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
+            Unmarshaller unmarhaller = responseContext.createUnmarshaller();
+
+            QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
+
+            Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
 
         } catch (Exception e) {
             e.printStackTrace();
