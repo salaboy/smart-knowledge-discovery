@@ -10,7 +10,8 @@
  
  <bean id="interviewService" class="com.plugtree.smartprocessdiscovery.services.impl.InterviewServiceImpl" />
  <bean id="questionService" class="com.plugtree.smartprocessdiscovery.dao.impl.QuestionDaoJpa" />
-   
+ <bean id="categoryService" class="com.plugtree.smartprocessdiscovery.dao.impl.CategoryDaoJpa" />
+ 
   <bean id="interviewResource" class="com.plugtree.smartknowledgediscovery.InterviewResource" >
     <property name="interviewService" ref="interviewService" />
   </bean>
@@ -18,5 +19,9 @@
   <bean id="questionResource" class="com.plugtree.smartknowledgediscovery.QuestionsResource" >
     <property name="questionService" ref="questionService" />
   </bean>
-
+  
+  <bean id="categoryResource" class="com.plugtree.smartknowledgediscovery.CategoryResource" >
+    <property name="categoryService" ref="categoryService" />
+  </bean>
+  
 </beans>
