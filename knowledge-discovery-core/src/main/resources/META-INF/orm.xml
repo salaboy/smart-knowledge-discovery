@@ -13,6 +13,14 @@
     </attributes>
   </entity>
   
+  <entity class="com.plugtree.smartprocessdiscovery.model.common.Category">
+    <attributes>
+      <id name="id">
+        <generated-value strategy="AUTO"/>
+      </id>
+    </attributes>
+  </entity> 
+  
   <entity class="com.plugtree.smartprocessdiscovery.model.process.Interview">
     <attributes>
       <id name="id">
