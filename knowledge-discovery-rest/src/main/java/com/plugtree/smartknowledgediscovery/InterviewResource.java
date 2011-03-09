@@ -24,6 +24,7 @@ import org.xml.sax.SAXException;
 import com.plugtree.smartknowledgediscovery.util.InterviewRequest;
 import com.plugtree.smartknowledgediscovery.util.InterviewResponse;
 import com.plugtree.smartknowledgediscovery.util.QuestionResponse;
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.process.Interview;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Answer;
 import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
@@ -35,7 +36,7 @@ import com.plugtree.smartprocessdiscovery.services.ServiceException;
 @Path("/interview")
 public class InterviewResource {
 
-	private InterviewService interviewService;
+	private GenericDao<Interview> interviewService;
 
 	@POST
 	@Consumes("application/xml")
@@ -45,7 +46,7 @@ public class InterviewResource {
 
 		InterviewResponse interviewResponse = new InterviewResponse();
 
-		for (Interview interview : interviewService.findAll()) {
+		for (Interview interview : interviewService.listAll()) {
 			interviewResponse.addInterview(interview);
 		}
 
@@ -61,11 +62,11 @@ public class InterviewResource {
 	public InterviewResponse addInterview(InterviewRequest interviewRequest) throws ServiceException{
 
 		for (Interview interview : interviewRequest.getInterviews()) {
-			interviewService.create(interview.getDescription(),interview.getQuestionnaire().getId(),interview.getPerson().getId());
+			interviewService.save(interview);
 		}
-		
-		System.out.println(interviewService.findAll().size());
-		
+
+		System.out.println(interviewService.listAll().size());
+
 		InterviewResponse interviewResponse = new InterviewResponse();
 		interviewResponse.setStatus(InterviewResponse.STATUS_SUCCESS);
 
@@ -79,15 +80,12 @@ public class InterviewResource {
 	public InterviewResponse updateInterview(InterviewRequest interviewRequest) throws ServiceException {
 
 		for (Interview interview : interviewRequest.getInterviews()) {
-			interviewService.update(interview.getId(),
-					interview.getDescription(),
-					interview.getDueDate(),
-					interview.getStartDate(),
-					interview.getEndDate(),
-					interview.getQuestionnaire().getId(),
-					interview.getPerson().getId());
+			interviewService.update(interview);
 		}
+		
+		System.out.println(interviewService.listAll().size());
 
+		
 		InterviewResponse interviewResponse = new InterviewResponse();
 		interviewResponse.setStatus(InterviewResponse.STATUS_SUCCESS);
 
@@ -100,8 +98,10 @@ public class InterviewResource {
 	@Path("/remove")
 	public InterviewResponse remove(InterviewRequest interviewRequest) throws ServiceException {
 		for (Interview interview : interviewRequest.getInterviews()) {
-			interviewService.remove(interview.getId());
+			interviewService.remove(interview);
 		}
+
+		System.out.println(interviewService.listAll().size());
 
 		InterviewResponse interviewResponse = new InterviewResponse();
 		interviewResponse.setStatus(InterviewResponse.STATUS_SUCCESS);
@@ -116,7 +116,7 @@ public class InterviewResource {
 	public  InterviewResponse findAll(InterviewRequest interviewRequest) throws ServiceException {
 		InterviewResponse interviewResponse = new InterviewResponse();
 
-		for (Interview interview : interviewService.findAll()) {
+		for (Interview interview : interviewService.listAll()) {
 			interviewResponse.addInterview(interview);
 		}
 
@@ -137,7 +137,7 @@ public class InterviewResource {
 
 			for(Question question : ansQuest.getQuestionnaire().getQuestions()){
 				Answer ans = ansQuest.getAnswer(question);
-				interviewService.addAnswer(ans.getId(),ans.getQuestion().getId(), ans.getText());
+				//interviewService.addAnswer(ans.getId(),ans.getQuestion().getId(), ans.getText());
 			}
 		}
 		InterviewResponse interviewResponse = new InterviewResponse();
@@ -159,7 +159,7 @@ public class InterviewResource {
 
 			for(Question question : ansQuest.getQuestionnaire().getQuestions()){
 				Answer ans = ansQuest.getAnswer(question);
-				interviewService.removeAnswer(ans.getId(),question.getId());
+				//interviewService.removeAnswer(ans.getId(),question.getId());
 			}
 		}
 		InterviewResponse interviewResponse = new InterviewResponse();
@@ -168,11 +168,11 @@ public class InterviewResource {
 		return interviewResponse;
 	}
 
-	public void setInterviewService(InterviewService interviewService) {
+	public void setInterviewService(GenericDao<Interview> interviewService) {
 		this.interviewService = interviewService;
 	}
 
-	public InterviewService getInterviewService() {
+	public GenericDao<Interview> getInterviewService() {
 		return interviewService;
 	}
 

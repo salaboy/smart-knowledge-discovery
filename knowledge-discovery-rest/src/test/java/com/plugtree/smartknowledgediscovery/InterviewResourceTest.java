@@ -20,7 +20,9 @@ import org.junit.Test;
 import com.plugtree.smartknowledgediscovery.util.InterviewRequest;
 import com.plugtree.smartknowledgediscovery.util.InterviewResponse;
 import com.plugtree.smartknowledgediscovery.util.OperationType;
+import com.plugtree.smartknowledgediscovery.util.QuestionResponse;
 import com.plugtree.smartprocessdiscovery.model.process.Interview;
+import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
@@ -30,11 +32,13 @@ public class InterviewResourceTest {
 
 		//Interview
 		Interview interview = new Interview();
+		//AnsweredQuestionnaire
+		AnsweredQuestionnaire ansQuestionnaire = new AnsweredQuestionnaire();
 		//Questionnaire
 		Questionnaire questionnaire = new Questionnaire();
+		
 		//Question1 of Questionnaire
 		Question question1 = new Question();
-		question1.setId((long)1);
 		question1.setText("What's your name?");
 		question1.setNotes("Name :: Question.");
 		questionnaire.addQuestion(question1);
@@ -45,11 +49,15 @@ public class InterviewResourceTest {
 		question2.setNotes("Weather :: Question.");
 		questionnaire.addQuestion(question2);
 		
+		ansQuestionnaire.setQuestionnaire(questionnaire);
+		
+		interview.setQuestionnaire(ansQuestionnaire);
 
 		InterviewRequest interviewRequest = new InterviewRequest();
 		interviewRequest.setOperationType(OperationType.ADD);
 		interviewRequest.getInterviews().add(interview);
-
+		
+		
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
 		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/interview/add");
@@ -82,30 +90,45 @@ public class InterviewResourceTest {
 		}
 	}
 
-	/*@Test
+	@Test
 	public void updatePost() {
 
-		Question question = new Question();
-		question.setId((long) 1);
-		question.setText("What's your favorite colour?");
-		question.setNotes("A question.UPDATED");
-
-
-		QuestionRequest questionRequest = new QuestionRequest();
-		questionRequest.setOperationType(OperationType.UPDATE);
-		questionRequest.getQuestions().add(question);
+		//Interview
+		Interview interview = new Interview();
+		interview.setId((long)1);
+		//AnsweredQuestionnaire
+		AnsweredQuestionnaire ansQuestionnaire = new AnsweredQuestionnaire();
+		ansQuestionnaire.setId((long)1);
+		//Questionnaire
+		Questionnaire questionnaire = new Questionnaire();
+		questionnaire.setId((long)1);
+		
+		//Question1 of Questionnaire
+		Question question1 = new Question();
+		question1.setId((long)1);
+		question1.setText("What's your name,Sr?");
+		question1.setNotes("Name :: Question - UPDATED");
+		questionnaire.addQuestion(question1);
+		
+		ansQuestionnaire.setQuestionnaire(questionnaire);
+		
+		interview.setQuestionnaire(ansQuestionnaire);
+		
+		InterviewRequest interviewRequest = new InterviewRequest();
+		interviewRequest.setOperationType(OperationType.UPDATE);
+		interviewRequest.addInterview(interview);
 
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
-		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/update");
+		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/interview/update");
 		httpPost.setHeader("Content-type", "application/xml");
 
 		try {
-			JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
+			JAXBContext requestContext = JAXBContext.newInstance(InterviewRequest.class);
 			Marshaller marshaller = requestContext.createMarshaller();
 
 			StringWriter requestWriter = new StringWriter();
-			marshaller.marshal(questionRequest, requestWriter);
+			marshaller.marshal(interviewRequest, requestWriter);
 
 			StringEntity requestEntity = new StringEntity(requestWriter.toString());
 			httpPost.setEntity(requestEntity);
@@ -115,12 +138,12 @@ public class InterviewResourceTest {
 
 			InputStream responseStream = responseEntity.getContent();
 
-			JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
+			JAXBContext responseContext = JAXBContext.newInstance(InterviewResponse.class);
 			Unmarshaller unmarhaller = responseContext.createUnmarshaller();
 
-			QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
+			InterviewResponse interviewResponse = (InterviewResponse)unmarhaller.unmarshal(responseStream);
 
-			Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
+			Assert.assertEquals(interviewResponse.getStatus(), InterviewResponse.STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -131,24 +154,24 @@ public class InterviewResourceTest {
 	@Test
 	public void removePost() {
 
-		Question question = new Question();
-		question.setId((long) 1);
+		Interview interview = new Interview();
+		interview.setId((long) 1);
 
-		QuestionRequest questionRequest = new QuestionRequest();
-		questionRequest.setOperationType(OperationType.REMOVE);
-		questionRequest.getQuestions().add(question);
+		InterviewRequest interviewRequest = new InterviewRequest();
+		interviewRequest.setOperationType(OperationType.REMOVE);
+		interviewRequest.getInterviews().add(interview);
 
 		DefaultHttpClient httpClient = new DefaultHttpClient();
 		HttpHost httpHost = new HttpHost("127.0.0.1", 8080, "http");
-		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/question/remove");
+		HttpPost httpPost = new HttpPost("/knowledge-discovery-rest/interview/remove");
 		httpPost.setHeader("Content-type", "application/xml");
 
 		try {
-			JAXBContext requestContext = JAXBContext.newInstance(QuestionRequest.class);
+			JAXBContext requestContext = JAXBContext.newInstance(InterviewRequest.class);
 			Marshaller marshaller = requestContext.createMarshaller();
 
 			StringWriter requestWriter = new StringWriter();
-			marshaller.marshal(questionRequest, requestWriter);
+			marshaller.marshal(interviewRequest, requestWriter);
 
 			StringEntity requestEntity = new StringEntity(requestWriter.toString());
 			httpPost.setEntity(requestEntity);
@@ -158,19 +181,17 @@ public class InterviewResourceTest {
 
 			InputStream responseStream = responseEntity.getContent();
 
-			JAXBContext responseContext = JAXBContext.newInstance(QuestionResponse.class);
+			JAXBContext responseContext = JAXBContext.newInstance(InterviewResponse.class);
 			Unmarshaller unmarhaller = responseContext.createUnmarshaller();
 
-			QuestionResponse questionResponse = (QuestionResponse)unmarhaller.unmarshal(responseStream);
+			InterviewResponse interviewResponse = (InterviewResponse)unmarhaller.unmarshal(responseStream);
 
-			Assert.assertEquals(questionResponse.getStatus(), QuestionResponse.STATUS_SUCCESS);
+			Assert.assertEquals(interviewResponse.getStatus(), InterviewResponse.STATUS_SUCCESS);
 
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
-*/
-
 
 }
 
