@@ -11,6 +11,7 @@
  <bean id="interviewService" class="com.plugtree.smartprocessdiscovery.dao.impl.InterviewDaoJpa" />
  <bean id="questionService" class="com.plugtree.smartprocessdiscovery.dao.impl.QuestionDaoJpa" />
  <bean id="categoryService" class="com.plugtree.smartprocessdiscovery.dao.impl.CategoryDaoJpa" />
+ <bean id="tagService" class="com.plugtree.smartprocessdiscovery.dao.impl.TagDaoJpa" />
  
   <bean id="interviewResource" class="com.plugtree.smartknowledgediscovery.InterviewResource" >
     <property name="interviewService" ref="interviewService" />
@@ -23,5 +24,8 @@
   <bean id="categoryResource" class="com.plugtree.smartknowledgediscovery.CategoryResource" >
     <property name="categoryService" ref="categoryService" />
   </bean>
-  
+
+  <bean id="tagResource" class="com.plugtree.smartknowledgediscovery.TagResource" >
+    <property name="tagService" ref="tagService" />
+  </bean>  
 </beans>
