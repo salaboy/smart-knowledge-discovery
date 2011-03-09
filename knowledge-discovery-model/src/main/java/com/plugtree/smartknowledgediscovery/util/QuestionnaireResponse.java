@@ -7,27 +7,26 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import com.plugtree.smartprocessdiscovery.model.process.Interview;
-
+import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 @XmlRootElement(name="response")
-public class InterviewResponse extends DSResponse {
+public class QuestionnaireResponse extends DSResponse {
 	// Holds all incoming data
 	@XmlElementWrapper(name="data")
 	@XmlElement(name="record")
-	ArrayList<Interview> data;
+	ArrayList<Questionnaire> data;
 
-	public InterviewResponse(){
-		data = new ArrayList<Interview>();
+	public QuestionnaireResponse(){
+		data = new ArrayList<Questionnaire>();
 	}
 
-	public Collection<Interview> getInterviews() {
+	public Collection<Questionnaire> getQuestionnaire() {
 		return data;
 	}
 
-	public void addInterview(Interview interview) {
+	public void addQuestionnaire(Questionnaire questionnaire) {
 
-		data.add(interview);
+		data.add(questionnaire);
 		incrementTotalRows();
 	}
 }

@@ -13,7 +13,7 @@ import com.plugtree.smartprocessdiscovery.model.process.Interview;
 public class InterviewRequest extends DSRequest {
 	// Holds all incoming data
 	@XmlElementWrapper(name="data")
-	//@XmlElement(name="InterviewDS") 
+	@XmlElement(name="InterviewDS") 
 	ArrayList<Interview> data;
 
 	public InterviewRequest(){

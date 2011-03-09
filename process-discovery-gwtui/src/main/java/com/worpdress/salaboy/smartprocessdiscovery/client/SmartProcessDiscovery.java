@@ -18,9 +18,9 @@ public class SmartProcessDiscovery implements EntryPoint {
 		
 		northLayout.setHeight("150px");
 		northLayout.setMembers(new HeaderArea(),  new Menu(southLayout));
-	
+			
 		southLayout.addMember(new CrudQuestions());
-		
+				
 		mainLayout.setMembers(northLayout, southLayout);
 		
 		RootLayoutPanel.get().add(mainLayout);
