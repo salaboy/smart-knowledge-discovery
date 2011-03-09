@@ -18,7 +18,6 @@ import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import com.plugtree.smartknowledgediscovery.util.DSRequest;
 import com.plugtree.smartknowledgediscovery.util.InterviewRequest;
 import com.plugtree.smartknowledgediscovery.util.InterviewResponse;
 import com.plugtree.smartknowledgediscovery.util.OperationType;
@@ -29,8 +28,6 @@ import com.plugtree.smartknowledgediscovery.util.QuestionnaireResponse;
 import com.plugtree.smartprocessdiscovery.model.process.Interview;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
-import com.smartgwt.client.types.DSOperationType;
-import com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire.AnsweredQuestionnaireRestDS;
 import com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire.QuestionnaireRestDS;
 
 public class DummyHttpServlet extends HttpServlet {
@@ -217,10 +214,7 @@ public class DummyHttpServlet extends HttpServlet {
 
 		if(interviewRequest.getOperationType()== OperationType.FETCH){
 			InterviewResponse interviewResponse = new InterviewResponse();
-			
-			QuestionnaireRestDS questionnaire = QuestionnaireRestDS.getInstance();
-		
-			
+									
 			Interview interview1 = new Interview();
 			interview1.setId((long)1);
 			interview1.setDescription("Job Interview");
