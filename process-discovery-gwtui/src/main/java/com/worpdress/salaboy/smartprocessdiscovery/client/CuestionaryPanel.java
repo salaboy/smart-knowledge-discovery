@@ -5,6 +5,7 @@ import com.smartgwt.client.widgets.IButton;
 import com.smartgwt.client.widgets.grid.ListGrid;
 import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
+import com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire.QuestionnaireRestDS;
 
 public class CuestionaryPanel extends HLayout {
 	
@@ -20,7 +21,7 @@ public class CuestionaryPanel extends HLayout {
 		questionList.setHeight(200);
 		questionList.setShowAllRecords(true);
 		questionList.setSelectionAppearance(SelectionAppearance.CHECKBOX);
-		questionList.setDataSource(QuestionRestDS.getInstance());
+		questionList.setDataSource(QuestionnaireRestDS.getInstance());
 		questionList.setAutoFetchData(true);
   
 		vLayout.addMember(questionList);

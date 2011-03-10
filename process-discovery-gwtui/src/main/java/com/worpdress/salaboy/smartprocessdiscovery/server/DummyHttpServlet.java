@@ -79,14 +79,14 @@ public class DummyHttpServlet extends HttpServlet {
 		//Shows the URL of the service Required
 		System.out.println(req.getPathInfo());
 	
-		if(req.getPathInfo().contains("question"))createQuestionResponse(req,resp);
+		if(req.getPathInfo().contains("question") && !req.getPathInfo().contains("questionnaire") )createQuestionResponse(req,resp);
 		if(req.getPathInfo().contains("interview"))createInterviewResponse(req,resp);
 		if(req.getPathInfo().contains("questionnaire"))createQuestionnaireResponse(req,resp);
 	}
 	
 	private void createQuestionResponse(HttpServletRequest req,HttpServletResponse resp) throws IOException, JAXBException{
 		//The xml received in the request.
-		BufferedReader in = req.getReader();
+		BufferedReader in = new BufferedReader(req.getReader());
 
 		JAXBContext jaxbReqContext = JAXBContext.newInstance(QuestionRequest.class);
 		Unmarshaller reqUnmarshaller = jaxbReqContext.createUnmarshaller();
@@ -115,7 +115,8 @@ public class DummyHttpServlet extends HttpServlet {
 				resp.setContentType("text/xml");
 				PrintWriter out = resp.getWriter();
 				marshaller.marshal(questionResponse, out);
-
+				
+				
 			} catch (JAXBException e) {
 				e.printStackTrace();
 			}	 
@@ -303,26 +304,27 @@ public class DummyHttpServlet extends HttpServlet {
 	}
 	private void createQuestionnaireResponse(HttpServletRequest req,HttpServletResponse resp) throws IOException, JAXBException{
 		//The xml received in the request.
-		BufferedReader in = req.getReader();
+		BufferedReader in = new BufferedReader(req.getReader());
 
 		JAXBContext jaxbReqContext = JAXBContext.newInstance(QuestionnaireRequest.class);
 		Unmarshaller reqUnmarshaller = jaxbReqContext.createUnmarshaller();
-
+		
 		QuestionnaireRequest questionnaireRequest =(QuestionnaireRequest)reqUnmarshaller.unmarshal(in);
-
+	
 		if(questionnaireRequest.getOperationType()== OperationType.FETCH){
 			QuestionnaireResponse questionnaireResponse = new QuestionnaireResponse();
 
 			Questionnaire questionnaire = new Questionnaire();
 			questionnaire.setId((long)1);
+			questionnaire.setName("New Questionnaire");
 			
 			Question question = new Question();
-			question.setId((long)1);
+			question.setId((long)4);
 			question.setNotes("Horror Movie Question.");
 			question.setText("What's your favorite Horror movie?");
 			
 			Question question2 = new Question();
-			question2.setId((long)2);
+			question2.setId((long)234);
 			question2.setNotes("History Question.");
 			question2.setText("What happend on November the 5th?");
 			
@@ -332,12 +334,16 @@ public class DummyHttpServlet extends HttpServlet {
 			
 
 			try {
-				JAXBContext jaxbContext = JAXBContext.newInstance(QuestionResponse.class);
+				JAXBContext jaxbContext = JAXBContext.newInstance(QuestionnaireResponse.class);
 				Marshaller marshaller = jaxbContext.createMarshaller();
 
 				resp.setContentType("text/xml");
 				PrintWriter out = resp.getWriter();
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+
+				marshaller.marshal(questionnaireResponse, System.out);
 				marshaller.marshal(questionnaireResponse, out);
+				
 
 			} catch (JAXBException e) {
 				e.printStackTrace();
