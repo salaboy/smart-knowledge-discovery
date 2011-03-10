@@ -29,7 +29,7 @@ public class QuestionnaireRestDS extends RestDataSource {
 		pkField.setPrimaryKey(true);
 		pkField.setCanEdit(false);
 
-		DataSourceTextField questionField = new DataSourceTextField("questions", "Questions", 2000, true);
+		DataSourceTextField questionField = new DataSourceTextField("questions/question/text", "Questions", 2000, true);
 		setFields(pkField,questionField);
 		OperationBinding fetch = new OperationBinding();  
 		fetch.setOperationType(DSOperationType.FETCH);  
