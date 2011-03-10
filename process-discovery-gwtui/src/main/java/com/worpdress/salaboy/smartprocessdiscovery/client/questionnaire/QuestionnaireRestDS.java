@@ -1,6 +1,7 @@
 package com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire;
 
 
+import com.smartgwt.client.data.DataSourceField;
 import com.smartgwt.client.data.OperationBinding;
 import com.smartgwt.client.data.RestDataSource;
 import com.smartgwt.client.data.fields.DataSourceIntegerField;
@@ -23,14 +24,22 @@ public class QuestionnaireRestDS extends RestDataSource {
 	private QuestionnaireRestDS() {
 
 		setID("QuestionnaireRestDS");
-
-		DataSourceIntegerField pkField = new DataSourceIntegerField("id");  
+		DataSourceIntegerField pkField = new DataSourceIntegerField("id","Id Questionnaire");  
 		pkField.setHidden(false);  
 		pkField.setPrimaryKey(true);
 		pkField.setCanEdit(false);
 
-		DataSourceTextField questionField = new DataSourceTextField("questions/question/text", "Questions", 2000, true);
-		setFields(pkField,questionField);
+		DataSourceIntegerField questionIdField = new DataSourceIntegerField("questionId","Id Question");  		
+		questionIdField.setPrimaryKey(true);
+		questionIdField.setValueXPath("questions/id");
+		
+		DataSourceTextField questionField = new DataSourceTextField("questions", "Questions", 2000, true);		
+		questionField.setValueXPath("questions/text");
+		
+		DataSourceTextField nameField = new DataSourceTextField("questionnaireName", "Name", 2000, true);
+		nameField.setValueXPath("/response/data/record/name");
+		
+		setFields(pkField,nameField,questionIdField,questionField);
 		OperationBinding fetch = new OperationBinding();  
 		fetch.setOperationType(DSOperationType.FETCH);  
 		fetch.setDataProtocol(DSProtocol.POSTMESSAGE);  

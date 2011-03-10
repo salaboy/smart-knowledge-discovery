@@ -20,7 +20,7 @@ public class QuestionnaireResponse extends DSResponse {
 		data = new ArrayList<Questionnaire>();
 	}
 
-	public Collection<Questionnaire> getQuestionnaire() {
+	public Collection<Questionnaire> getQuestionnaires() {
 		return data;
 	}
 
