@@ -14,6 +14,7 @@ public class Menu extends HLayout {
 	private IButton createQuestionaryButton = new IButton("Create Questionary");
 	private IButton createInterviewButton = new IButton("Create Interview");
 	private IButton addResultButton = new IButton("Add Result");
+	private IButton crudCategoriesButton = new IButton("Crud Categories");
 	private Layout southLayout;
 
 	public Menu(Layout layout) {
@@ -27,10 +28,20 @@ public class Menu extends HLayout {
 		addMember(createQuestionaryButton);
 		addMember(addResultButton);
 		addMember(createInterviewButton);
+		addMember(crudCategoriesButton);
 
+		crudCategoriesButton.addClickHandler( new ClickHandler() {
+            
+            @Override
+            public void onClick(ClickEvent event) {
+                changeMainPanel(new CrudCategories());
+            }
+        });
+		
 		crudQuestionsButton.addClickHandler( new ClickHandler() {
 
-			public void onClick(ClickEvent event) {
+			@Override
+            public void onClick(ClickEvent event) {
 				changeMainPanel(new CrudQuestions());
 
 			}
@@ -38,21 +49,24 @@ public class Menu extends HLayout {
 
 		createQuestionaryButton.addClickHandler(new ClickHandler() {
 
-			public void onClick(ClickEvent event) {
+			@Override
+            public void onClick(ClickEvent event) {
 				changeMainPanel(new CuestionaryPanel());
 			}
 		});
 
 		addResultButton.addClickHandler(new ClickHandler() {
 
-			public void onClick(ClickEvent event) {
+			@Override
+            public void onClick(ClickEvent event) {
 				changeMainPanel(new ResultPanel());
 			}
 		});
 
 		createInterviewButton.addClickHandler( new ClickHandler() {
 
-			public void onClick(ClickEvent event) {
+			@Override
+            public void onClick(ClickEvent event) {
 				changeMainPanel(new InterviewPanel());
 
 			}
