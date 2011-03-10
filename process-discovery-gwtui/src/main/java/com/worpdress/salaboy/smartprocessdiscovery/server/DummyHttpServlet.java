@@ -26,6 +26,7 @@ import com.plugtree.smartknowledgediscovery.util.QuestionResponse;
 import com.plugtree.smartknowledgediscovery.util.QuestionnaireRequest;
 import com.plugtree.smartknowledgediscovery.util.QuestionnaireResponse;
 import com.plugtree.smartprocessdiscovery.model.process.Interview;
+import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 import com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire.QuestionnaireRestDS;
@@ -214,18 +215,62 @@ public class DummyHttpServlet extends HttpServlet {
 
 		if(interviewRequest.getOperationType()== OperationType.FETCH){
 			InterviewResponse interviewResponse = new InterviewResponse();
-									
+					
+			
 			Interview interview1 = new Interview();
-			interview1.setId((long)1);
 			interview1.setDescription("Job Interview");
 			
 			
 			Interview interview2 = new Interview();
-			interview2.setId((long)2);
 			interview2.setDescription("Passport Interview");		
+			
+			Questionnaire questionnaire1 = new Questionnaire(); 
+			questionnaire1.setId((long)1);
+			Questionnaire questionnaire2 = new Questionnaire(); 
+			questionnaire1.setId((long)2);
+			
+			
+			Question question = new Question();
+			question.setId((long)1);
+			question.setNotes("Horror Movie Question.");
+			question.setText("What's your favorite Horror movie?");
+
+			Question question2 = new Question();
+			question2.setId((long)2);
+			question2.setNotes("History Question.");
+			question2.setText("What happend on November the 5th?");
+			
+			questionnaire1.addQuestion(question);
+			questionnaire1.addQuestion(question2);
+						
+			Question question3 = new Question();
+			question.setId((long)3);
+			question.setNotes("SCI-FI Movie Question.");
+			question.setText("What's your favorite SCI-FI movie?");
+
+			Question question4 =  new Question();
+			question2.setId((long)4);
+			question2.setNotes("History Question.");
+			question2.setText("What happend on October the 12th?");
+
+			questionnaire1.addQuestion(question3);
+			questionnaire1.addQuestion(question4);
+			
+			AnsweredQuestionnaire ansQuest1 = new AnsweredQuestionnaire();
+			ansQuest1.setId((long)1);
+			ansQuest1.setQuestionnaire(questionnaire1);
+			
+			AnsweredQuestionnaire ansQuest2 = new AnsweredQuestionnaire();
+			ansQuest2.setId((long)2);
+			ansQuest2.setQuestionnaire(questionnaire2);
+			
+			interview1.setQuestionnaire(ansQuest1);
+			interview2.setQuestionnaire(ansQuest2);
 			
 			interviewResponse.addInterview(interview1);		
 			interviewResponse.addInterview(interview2);
+			
+			
 			
 			try {
 				JAXBContext jaxbContext = JAXBContext.newInstance(InterviewResponse.class);

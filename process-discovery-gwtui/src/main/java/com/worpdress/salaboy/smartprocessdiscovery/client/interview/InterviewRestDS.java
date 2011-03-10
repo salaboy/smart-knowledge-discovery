@@ -12,8 +12,6 @@ public class InterviewRestDS extends RestDataSource {
 
 	private static InterviewRestDS instance;
 
-	private AnsweredQuestionnaireRestDS ansQuestionnaireDS = AnsweredQuestionnaireRestDS.getInstance();
-	
 	public static InterviewRestDS getInstance() {
 		
 		if (instance == null) {
@@ -33,9 +31,8 @@ public class InterviewRestDS extends RestDataSource {
 		pkField.setCanEdit(false);
 		
 		DataSourceTextField descriptionField = new DataSourceTextField("description", "Description", 2000, true);
-		DataSourceIntegerField questionnaireField = new DataSourceIntegerField("questionnaire","Questionnaire");	
-		questionnaireField.setValueMap(ansQuestionnaireDS.getAttributeAsMap("id"));
-		setFields(pkField,descriptionField);
+		DataSourceIntegerField questionnaireField = new DataSourceIntegerField("/response/data/questionnaire/id","Questionnaire");
+		setFields(pkField,descriptionField,questionnaireField);
 		OperationBinding fetch = new OperationBinding();  
 		fetch.setOperationType(DSOperationType.FETCH);  
 		fetch.setDataProtocol(DSProtocol.POSTMESSAGE);  
