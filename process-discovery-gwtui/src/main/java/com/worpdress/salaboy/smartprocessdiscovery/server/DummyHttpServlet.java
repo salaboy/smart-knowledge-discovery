@@ -330,7 +330,27 @@ public class DummyHttpServlet extends HttpServlet {
 			
 			questionnaire.addQuestion(question);
 			questionnaire.addQuestion(question2);
+			
+			Questionnaire questionnaire1 = new Questionnaire();
+			questionnaire1.setId((long)2);
+			questionnaire1.setName("New Questionnaire 2");
+			
+			Question question3 = new Question();
+			question3.setId((long)5);
+			question3.setNotes("Horror Movie Question.");
+			question3.setText("What's your favorite Horror movie?");
+			
+			Question question4 = new Question();
+			question4.setId((long)235);
+			question4.setNotes("History Question.");
+			question4.setText("What happend on November the 5th?");
+			
+			questionnaire1.addQuestion(question3);
+			questionnaire1.addQuestion(question4);
+			
 			questionnaireResponse.addQuestionnaire(questionnaire);
+			questionnaireResponse.addQuestionnaire(questionnaire1);
+			questionnaireResponse.setTotalRows(questionnaire.getQuestions().size()+questionnaire.getQuestions().size());
 			
 
 			try {

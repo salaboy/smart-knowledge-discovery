@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlElementWrapper;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 @XmlRootElement(name="response")
@@ -25,8 +26,8 @@ public class QuestionnaireResponse extends DSResponse {
 	}
 
 	public void addQuestionnaire(Questionnaire questionnaire) {
-
 		data.add(questionnaire);
-		incrementTotalRows();
+		incrementTotalRows();	
 	}
+
 }

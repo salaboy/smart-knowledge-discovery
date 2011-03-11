@@ -7,14 +7,14 @@ import com.smartgwt.client.widgets.layout.HLayout;
 import com.smartgwt.client.widgets.layout.VLayout;
 import com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire.QuestionnaireRestDS;
 
-public class CuestionaryPanel extends HLayout {
+public class QuestionnairePanel extends HLayout {
 	
 	private VLayout vLayout = new VLayout();
 	private ListGrid questionList = new ListGrid();
 	private CategoryList categoryList = new CategoryList(questionList);
-	private IButton createQuestionaryButton = new IButton("Create Questionary");
+	private IButton createQuestionaryButton = new IButton("Create Questionnaire");
 	
-	public CuestionaryPanel() {
+	public QuestionnairePanel() {
 	
 		createQuestionaryButton.setWidth(150);
 		questionList.setWidth(500);

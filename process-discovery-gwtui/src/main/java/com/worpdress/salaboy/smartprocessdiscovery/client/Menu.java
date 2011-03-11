@@ -11,7 +11,7 @@ import com.worpdress.salaboy.smartprocessdiscovery.client.interview.InterviewPan
 public class Menu extends HLayout {
 
 	private StretchImgButton crudQuestionsButton = new IButton("Crud Questions");
-	private IButton createQuestionaryButton = new IButton("Create Questionary");
+	private IButton createQuestionnaireButton = new IButton("Create Questionnaire");
 	private IButton createInterviewButton = new IButton("Create Interview");
 	private IButton addResultButton = new IButton("Add Result");
 	private IButton crudCategoriesButton = new IButton("Crud Categories");
@@ -22,10 +22,10 @@ public class Menu extends HLayout {
 		southLayout = layout;
 
 		setMembersMargin(10);
-		createQuestionaryButton.setWidth(150);
+		createQuestionnaireButton.setWidth(150);
 
 		addMember(crudQuestionsButton);
-		addMember(createQuestionaryButton);
+		addMember(createQuestionnaireButton);
 		addMember(addResultButton);
 		addMember(createInterviewButton);
 		addMember(crudCategoriesButton);
@@ -47,11 +47,11 @@ public class Menu extends HLayout {
 			}
 		});
 
-		createQuestionaryButton.addClickHandler(new ClickHandler() {
+		createQuestionnaireButton.addClickHandler(new ClickHandler() {
 
 			@Override
             public void onClick(ClickEvent event) {
-				changeMainPanel(new CuestionaryPanel());
+				changeMainPanel(new QuestionnairePanel());
 			}
 		});
 

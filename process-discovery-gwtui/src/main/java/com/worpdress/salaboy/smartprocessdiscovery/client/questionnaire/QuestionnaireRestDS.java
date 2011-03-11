@@ -6,6 +6,7 @@ import com.smartgwt.client.data.OperationBinding;
 import com.smartgwt.client.data.RestDataSource;
 import com.smartgwt.client.data.fields.DataSourceIntegerField;
 import com.smartgwt.client.data.fields.DataSourceTextField;
+import com.smartgwt.client.types.DSDataFormat;
 import com.smartgwt.client.types.DSOperationType;
 import com.smartgwt.client.types.DSProtocol;
 
@@ -24,22 +25,26 @@ public class QuestionnaireRestDS extends RestDataSource {
 	private QuestionnaireRestDS() {
 
 		setID("QuestionnaireRestDS");
+		setDataFormat(DSDataFormat.XML);
+		setRecordXPath("//questions");		
 		DataSourceIntegerField pkField = new DataSourceIntegerField("id","Id Questionnaire");  
 		pkField.setHidden(false);  
-		pkField.setPrimaryKey(true);
+		pkField.setPrimaryKey(false);
 		pkField.setCanEdit(false);
-
-		DataSourceIntegerField questionIdField = new DataSourceIntegerField("questionId","Id Question");  		
-		questionIdField.setPrimaryKey(true);
-		questionIdField.setValueXPath("questions/id");
+		pkField.setValueXPath("../id");
 		
-		DataSourceTextField questionField = new DataSourceTextField("questions", "Questions", 2000, true);		
-		questionField.setValueXPath("questions/text");
+		DataSourceIntegerField questionIdField = new DataSourceIntegerField("questionId","Id Question");		
+		questionIdField.setPrimaryKey(false);
+		questionIdField.setValueXPath("id");
 		
-		DataSourceTextField nameField = new DataSourceTextField("questionnaireName", "Name", 2000, true);
-		nameField.setValueXPath("/response/data/record/name");
+		DataSourceTextField questionField = new DataSourceTextField("questions", "Questions");		
+		questionField.setValueXPath("text");
+		
+		DataSourceTextField nameField = new DataSourceTextField("name", "Name");
+		nameField.setValueXPath("../name");
 		
 		setFields(pkField,nameField,questionIdField,questionField);
+		
 		OperationBinding fetch = new OperationBinding();  
 		fetch.setOperationType(DSOperationType.FETCH);  
 		fetch.setDataProtocol(DSProtocol.POSTMESSAGE);  
