@@ -26,22 +26,27 @@ public class QuestionnaireRestDS extends RestDataSource {
 
 		setID("QuestionnaireRestDS");
 		setDataFormat(DSDataFormat.XML);
-		setRecordXPath("//questions");		
+		//setRecordXPath("//questions");
+		setRecordXPath("//record");
 		DataSourceIntegerField pkField = new DataSourceIntegerField("id","Id Questionnaire");  
 		pkField.setHidden(false);  
 		pkField.setPrimaryKey(false);
 		pkField.setCanEdit(false);
-		pkField.setValueXPath("../id");
+		//pkField.setValueXPath("../id");
 		
 		DataSourceIntegerField questionIdField = new DataSourceIntegerField("questionId","Id Question");		
 		questionIdField.setPrimaryKey(false);
-		questionIdField.setValueXPath("id");
+		//questionIdField.setValueXPath("id");
+		questionIdField.setValueXPath("questions/id");
+		questionIdField.setMultiple(true);
 		
 		DataSourceTextField questionField = new DataSourceTextField("questions", "Questions");		
-		questionField.setValueXPath("text");
+		//questionField.setValueXPath("text");
+		questionField.setValueXPath("questions/text");
+		questionField.setMultiple(true);
 		
 		DataSourceTextField nameField = new DataSourceTextField("name", "Name");
-		nameField.setValueXPath("../name");
+		//nameField.setValueXPath("../name");
 		
 		setFields(pkField,nameField,questionIdField,questionField);
 		

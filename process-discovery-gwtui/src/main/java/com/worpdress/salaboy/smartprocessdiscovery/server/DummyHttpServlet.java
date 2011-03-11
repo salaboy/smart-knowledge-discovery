@@ -350,7 +350,7 @@ public class DummyHttpServlet extends HttpServlet {
 			
 			questionnaireResponse.addQuestionnaire(questionnaire);
 			questionnaireResponse.addQuestionnaire(questionnaire1);
-			questionnaireResponse.setTotalRows(questionnaire.getQuestions().size()+questionnaire.getQuestions().size());
+			//questionnaireResponse.setTotalRows(questionnaire.getQuestions().size()+questionnaire.getQuestions().size());
 			
 
 			try {
