@@ -10,6 +10,7 @@ import com.smartgwt.client.widgets.events.ClickEvent;
 import com.smartgwt.client.widgets.events.ClickHandler;
 import com.smartgwt.client.widgets.form.DynamicForm;
 import com.smartgwt.client.widgets.grid.ListGrid;
+import com.worpdress.salaboy.smartprocessdiscovery.client.questionnaire.QuestionnaireRestDS;
 
 public class AddEditDialog extends Dialog {
 
@@ -34,8 +35,8 @@ public class AddEditDialog extends Dialog {
 			setTitle("Add");
 			okButton.setTitle("Add");
 		}	
-
-		addItem(form);
+		
+			addItem(form);
 		
 		okButton.addClickHandler(new ClickHandler() {
 

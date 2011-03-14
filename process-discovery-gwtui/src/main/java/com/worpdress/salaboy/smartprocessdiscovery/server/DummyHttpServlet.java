@@ -105,15 +105,19 @@ public class DummyHttpServlet extends HttpServlet {
 			question2.setId((long)2);
 			question2.setNotes("History Question.");
 			question2.setText("What happend on November the 5th?");
-			questionResponse.addQuestion(question2);
 			questionResponse.addQuestion(question);
-
+			questionResponse.addQuestion(question2);
+			
 			try {
 				JAXBContext jaxbContext = JAXBContext.newInstance(QuestionResponse.class);
 				Marshaller marshaller = jaxbContext.createMarshaller();
 
 				resp.setContentType("text/xml");
 				PrintWriter out = resp.getWriter();
+				
+				marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+				marshaller.marshal(questionResponse, System.out);
+
 				marshaller.marshal(questionResponse, out);
 				
 				
