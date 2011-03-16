@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
+import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 
@@ -22,11 +23,10 @@ public class QuestionDataSource implements DataSource<Question> {
 		header.add("Notes");
 		
 		fetch();
-		
 		//ServiceDefTarget serviceDef = (ServiceDefTarget) service;
 		//serviceDef.setServiceEntryPoint(GWT.getModuleBaseURL() + "userService");
 		//MyUserCallback myUserCallback = new MyUserCallback(table);
-		//service.getUserList(myUserCallback);
+		
 
 	}
 
@@ -34,16 +34,33 @@ public class QuestionDataSource implements DataSource<Question> {
 		// TODO Auto-generated method stub
 		return this.questions;
 	}
-
+	
+	private void setList(List<Question> questions) {
+		this.questions = questions;
+	}
+	
 	public List<String> getTableHeader() {
 		// TODO Auto-generated method stub
 		return this.header;
 	}
 
 	public boolean fetch() {
-		// TODO Auto-generated method stub		
+		// TODO Auto-generated method stub
+		service.fetch(new AsyncCallback<List<Question>>() {
+			
+			public void onSuccess(List<Question> arg0) {
+				// TODO Auto-generated method stub
+				setList(arg0); 				
+			}
+			
+			public void onFailure(Throwable arg0) {
+				// TODO Auto-generated method stub
+				getList().add(new Question("BLEH"));
+			}
+		});
 		return false; 
 	}
+
 
 	public boolean add(Question element) {
 		// TODO Auto-generated method stub
@@ -59,5 +76,6 @@ public class QuestionDataSource implements DataSource<Question> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+		
 
 }
