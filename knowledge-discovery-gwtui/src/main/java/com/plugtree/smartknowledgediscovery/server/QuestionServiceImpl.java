@@ -23,7 +23,6 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 	    return list;
 	}
 
-    @Override
     public List<Question> add(Question question) {
 
         LinkedList<Question> list = new LinkedList<Question>();
@@ -33,7 +32,6 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
         return list;
     }
 
-    @Override
     public List<Question> remove(Long questionId) {
 
         LinkedList<Question> list = new LinkedList<Question>();
@@ -44,7 +42,6 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
         return list;
     }
 
-    @Override
     public List<Question> update(Question question) {
 
         LinkedList<Question> list = new LinkedList<Question>();
