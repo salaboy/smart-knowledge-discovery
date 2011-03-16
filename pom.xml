@@ -13,6 +13,7 @@
     <module>knowledge-discovery-core</module>
     <module>process-discovery-gwtui</module>
     <module>knowledge-discovery-rest</module>
+    <module>knowledge-discovery-gwtui</module>
   </modules>
 
   <repositories>

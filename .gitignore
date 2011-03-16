@@ -5,6 +5,9 @@ target
 process-discovery-gwtui/src/main/webapp/SmartProcessDiscovery/sc/
 process-discovery-gwtui/src/main/webapp/WEB-INF/classes/
 process-discovery-gwtui/src/main/webapp/SmartProcessDiscovery/SmartProcessDiscovery.nocache.js
+knowledge-discovery-gwtui/src/main/webapp/WEB-INF/classes/
+knowledge-discovery-gwtui/src/main/webapp/SmartProcessDiscovery/sc/
+knowledge-discovery-gwtui/src/main/webapp/SmartKnowledgeDiscovery/SmartKnowledgeDiscovery.nocache.js
 *.iml
 *.ipr
 *.iws
