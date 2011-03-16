@@ -8,13 +8,13 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionTable extends FlexTable {
 
-    public QuestionTable(DataSource<Question> dataSource) {
+    public QuestionTable(QuestionDataSource dataSource) {
           
-        setUp(dataSource);
-        refresh(dataSource);
+//        setUp(dataSource);
+//        refresh(dataSource);
     }
     
-    public void refresh(DataSource<Question> dataSource) {
+    public void refresh(QuestionDataSource dataSource) {
         
         for (int i = 2; i < getRowCount(); i ++) {
             removeRow(i);
@@ -32,7 +32,7 @@ public class QuestionTable extends FlexTable {
         }
     }
     
-    private void setUp(DataSource<Question> dataSource) {
+    private void setUp(QuestionDataSource dataSource) {
         
         setWidget(0, 0, new Label("Questions"));
        
