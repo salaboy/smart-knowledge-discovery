@@ -13,11 +13,11 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
     
     public void onModuleLoad() {
         
-        QuestionDataSource dataSource = new QuestionDataSource();
-        
-        QuestionTable questionTable = new QuestionTable(dataSource);
-        
-        RootLayoutPanel.get().add(questionTable);
+//        QuestionDataSource dataSource = new QuestionDataSource();
+//        
+//        QuestionTable questionTable = new QuestionTable(dataSource);
+//        
+//        RootLayoutPanel.get().add(questionTable);
         RootLayoutPanel.get().add(addButton);
     }
 }
