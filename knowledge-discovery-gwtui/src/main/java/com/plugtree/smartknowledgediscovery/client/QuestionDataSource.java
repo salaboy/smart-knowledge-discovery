@@ -27,7 +27,8 @@ public class QuestionDataSource implements DataSource<Question> {
 
 	
 	private QuestionDataSource() {
-		service = GWT.create(QuestionService.class);
+
+	    service = GWT.create(QuestionService.class);
 		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "questionService");
 
 		fetch();
@@ -55,27 +56,7 @@ public class QuestionDataSource implements DataSource<Question> {
 	@Override
     public boolean fetch() {
 
-	    service.fetch(new AsyncCallback<List<Question>>() {
-
-			@Override
-            public void onSuccess(List<Question> list) {
-				setList(list);
-
-				for (QuestionTable questionTable : questionTableList) {
-				    questionTable.refresh(list);
-				}
-			}
-
-			@Override
-            public void onFailure(Throwable arg0) {
-
-			    Question wrong = new Question("BLEH");
-			    wrong.setId(new Long(999));
-			    wrong.setNotes("PROBLEM");
-
-				getList().add(wrong);
-			}
-		});
+	    service.fetch(new QuestionAsyncCallback(questionTableList));
 
 		return false; 
 	}
@@ -83,39 +64,24 @@ public class QuestionDataSource implements DataSource<Question> {
 	@Override
     public boolean add(Question question) {
 
-	    service.add(question, new AsyncCallback<List<Question>>() {
-
-            @Override
-            public void onSuccess(List<Question> list) {
-
-                for (QuestionTable questionTable : questionTableList) {
-                    questionTable.refresh(list);
-                }
-            }
-
-            @Override
-            public void onFailure(Throwable caught) {
-
-                Question wrong = new Question("BLEH");
-                wrong.setId(new Long(999));
-                wrong.setNotes("PROBLEM");
-
-                getList().add(wrong);
-            }
-        });
+	    service.add(question, new QuestionAsyncCallback(questionTableList));
 
 		return false;
 	}
 
 	@Override
     public boolean remove(long id) {
-		// TODO Auto-generated method stub
+
+	    service.remove(id, new QuestionAsyncCallback(questionTableList));
+
 		return false;
 	}
 
 	@Override
-    public boolean update(Question element) {
-		// TODO Auto-generated method stub
+    public boolean update(Question question) {
+
+	    service.update(question, new QuestionAsyncCallback(questionTableList));
+
 		return false;
 	}
 
