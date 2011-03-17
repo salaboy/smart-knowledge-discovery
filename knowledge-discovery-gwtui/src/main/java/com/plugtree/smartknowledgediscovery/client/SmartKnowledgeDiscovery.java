@@ -16,7 +16,7 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
 	@Override
     public void onModuleLoad() {
 
-		QuestionDataSource dataSource = new QuestionDataSource();
+		QuestionDataSource dataSource = QuestionDataSource.getInstance();
 
 		QuestionTable questionTable = new QuestionTable(dataSource);
 

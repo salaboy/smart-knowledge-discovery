@@ -16,7 +16,16 @@ public class QuestionDataSource implements DataSource<Question> {
 	private List<QuestionTable> questionTableList = new LinkedList<QuestionTable>();
 	private List<String> header;
 	private QuestionServiceAsync service;
+    private static QuestionDataSource instance = null;	
+	
+    public static QuestionDataSource getInstance() {
+        if(instance == null) {
+           instance = new QuestionDataSource();
+        }
+        return instance;
+     }
 
+	
 	public QuestionDataSource(){
 		service = GWT.create(QuestionService.class);
 		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "questionService");
