@@ -9,15 +9,15 @@ import com.google.gwt.user.client.ui.RootLayoutPanel;
  */
 public class SmartKnowledgeDiscovery implements EntryPoint {
 
-    private Button addButton = new Button("Add");
-    
-    public void onModuleLoad() {
-        
-//        QuestionDataSource dataSource = new QuestionDataSource();
-//        
-//        QuestionTable questionTable = new QuestionTable(dataSource);
-//        
-//        RootLayoutPanel.get().add(questionTable);
-        RootLayoutPanel.get().add(addButton);
-    }
+	private Button addButton = new Button("Add");
+
+	public void onModuleLoad() {
+
+		QuestionDataSource dataSource = new QuestionDataSource();
+
+		QuestionTable questionTable = new QuestionTable(dataSource);
+
+		RootLayoutPanel.get().add(questionTable);
+		RootLayoutPanel.get().add(addButton);
+	}
 }

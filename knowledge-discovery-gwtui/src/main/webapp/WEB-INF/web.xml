@@ -8,12 +8,12 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>greetServlet</servlet-name>
-    <servlet-class>com.plugtree.smartknowledgediscovery.server.GreetingServiceImpl</servlet-class>
+    <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>
     <servlet-name>greetServlet</servlet-name>
-    <url-pattern>/SmartKnowledgeDiscovery/greet</url-pattern>
+    <url-pattern>/SmartKnowledgeDiscovery/questionService</url-pattern>
   </servlet-mapping>
 
   <!-- Default page to serve -->

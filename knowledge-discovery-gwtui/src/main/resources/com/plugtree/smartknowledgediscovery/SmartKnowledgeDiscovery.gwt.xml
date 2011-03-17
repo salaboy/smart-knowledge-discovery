@@ -11,6 +11,7 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
+  <inherits name='com.plugtree.smartprocessdiscovery.Model'/>
 
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.plugtree.smartknowledgediscovery.client.SmartKnowledgeDiscovery'/>
