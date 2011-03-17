@@ -10,8 +10,8 @@ public class QuestionTable extends FlexTable {
 
     public QuestionTable(QuestionDataSource dataSource) {
           
-//        setUp(dataSource);
-//        refresh(dataSource);
+        setUp(dataSource);
+        refresh(dataSource);
     }
     
     public void refresh(QuestionDataSource dataSource) {
