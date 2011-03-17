@@ -68,17 +68,42 @@ public class QuestionDataSource implements DataSource<Question> {
 
 			@Override
             public void onFailure(Throwable arg0) {
-				getList().add(new Question("BLEH"));
+
+			    Question wrong = new Question("BLEH");
+			    wrong.setId(new Long(999));
+			    wrong.setNotes("PROBLEM");
+
+				getList().add(wrong);
 			}
 		});
 
 		return false; 
 	}
 
-
 	@Override
-    public boolean add(Question element) {
-		// TODO Auto-generated method stub
+    public boolean add(Question question) {
+
+	    service.add(question, new AsyncCallback<List<Question>>() {
+
+            @Override
+            public void onSuccess(List<Question> list) {
+
+                for (QuestionTable questionTable : questionTableList) {
+                    questionTable.refresh(list);
+                }
+            }
+
+            @Override
+            public void onFailure(Throwable caught) {
+
+                Question wrong = new Question("BLEH");
+                wrong.setId(new Long(999));
+                wrong.setNotes("PROBLEM");
+
+                getList().add(wrong);
+            }
+        });
+
 		return false;
 	}
 

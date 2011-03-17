@@ -6,6 +6,7 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionDialog extends PopupPanel {
 
@@ -13,12 +14,23 @@ public class QuestionDialog extends PopupPanel {
 
     private HorizontalPanel buttonPanel = new HorizontalPanel();
     private Button addButton = new Button("Add");
-    private Button cancelButton = new Button("Cancel");    
+    private Button cancelButton = new Button("Cancel");
 
-    public QuestionDialog(QuestionDataSource questionDataSource) {
+    public QuestionDialog(final QuestionDataSource questionDataSource) {
+
+        final QuestionForm questionForm = new QuestionForm(questionDataSource);
 
         buttonPanel.add(addButton);
         buttonPanel.add(cancelButton);
+
+        addButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                Question question = questionForm.getQuestion();
+                questionDataSource.add(question);
+            }
+        });
 
         cancelButton.addClickHandler(new ClickHandler() {
 
@@ -28,6 +40,7 @@ public class QuestionDialog extends PopupPanel {
             }
         });
 
+        popupContent.add(questionForm);
         popupContent.add(buttonPanel);
 
         setWidget(popupContent);
