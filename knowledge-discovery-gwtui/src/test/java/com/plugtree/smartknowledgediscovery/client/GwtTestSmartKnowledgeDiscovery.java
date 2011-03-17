@@ -12,7 +12,8 @@ public class GwtTestSmartKnowledgeDiscovery extends GWTTestCase {
   /**
    * Must refer to a valid module that sources this class.
    */
+  @Override
   public String getModuleName() {
-    return "com.plugtree.smartknowledgediscovery.SmartKnowledgeDiscoveryJUnit";
+      return "com.plugtree.smartknowledgediscovery.SmartKnowledgeDiscoveryJUnit";
   }
 }

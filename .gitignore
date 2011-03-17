@@ -11,4 +11,4 @@ knowledge-discovery-gwtui/src/main/webapp/SmartKnowledgeDiscovery/SmartKnowledge
 *.iml
 *.ipr
 *.iws
-
+*.gwt.rpc

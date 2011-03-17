@@ -22,7 +22,13 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
 
 		panel.add(questionTable);
 		panel.add(addButton);
-		
+
 		RootLayoutPanel.get().add(panel);
+
+		addStyle();
+	}
+
+	private void addStyle() {
+	    addButton.addStyleName("button");
 	}
 }

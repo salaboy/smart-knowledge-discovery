@@ -8,6 +8,8 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionTable extends FlexTable {
 
+    private Label label = new Label("Questions");
+
     public QuestionTable(QuestionDataSource dataSource) {
           
         setUp(dataSource);
@@ -33,7 +35,7 @@ public class QuestionTable extends FlexTable {
     
     private void setUp(QuestionDataSource dataSource) {
         
-        setWidget(0, 0, new Label("Questions"));
+        setWidget(0, 0, label);
        
         List<String> tableHeaders = dataSource.getTableHeader();
         
@@ -50,6 +52,10 @@ public class QuestionTable extends FlexTable {
     }
     
     private void addStyle() {
-        //TODO:
+
+        getRowFormatter().addStyleName(0, "listHeader");
+        getRowFormatter().addStyleName(1, "listHeader");
+        addStyleName("list");
+        label.addStyleName("label");
     }
 }
