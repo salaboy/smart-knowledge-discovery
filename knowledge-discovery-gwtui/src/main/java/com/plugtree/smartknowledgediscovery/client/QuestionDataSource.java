@@ -5,14 +5,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 
 public class QuestionDataSource implements DataSource<Question> {
 
-	private List<Question> questions = new LinkedList<Question>();
 	private List<QuestionTable> questionTableList = new LinkedList<QuestionTable>();
 	private List<String> header;
 	private QuestionServiceAsync service;
@@ -37,15 +35,6 @@ public class QuestionDataSource implements DataSource<Question> {
 		header.add("Id");
 		header.add("Text");
 		header.add("Notes");
-	}
-
-	@Override
-    public List<Question> getList() {
-		return this.questions;
-	}
-
-	private void setList(List<Question> questions) {
-		this.questions = questions;
 	}
 
 	@Override
