@@ -11,20 +11,19 @@ public class QuestionTable extends FlexTable {
     public QuestionTable(QuestionDataSource dataSource) {
           
         setUp(dataSource);
-        refresh(dataSource);
+        dataSource.addTable(this);
     }
     
-    public void refresh(QuestionDataSource dataSource) {
+    public void refresh(List<Question> questionList) {
         
         for (int i = 2; i < getRowCount(); i ++) {
             removeRow(i);
         }
-        
-        List<Question> questionList = dataSource.getList();
-        
+
         int row = 2;
-        
+
         for (Question question : questionList) {
+
             setText(row, 0, Long.toString(question.getId()));
             setText(row, 1, question.getText());
             setText(row, 2, question.getNotes());
@@ -46,6 +45,8 @@ public class QuestionTable extends FlexTable {
             setText(1, columNumber, header);
             columNumber++;
         }
+
+        addStyle();
     }
     
     private void addStyle() {

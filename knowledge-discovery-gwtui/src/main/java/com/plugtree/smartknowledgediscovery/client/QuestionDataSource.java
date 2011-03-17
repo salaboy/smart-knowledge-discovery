@@ -13,28 +13,24 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 public class QuestionDataSource implements DataSource<Question> {
 
 	private List<Question> questions = new LinkedList<Question>();
+	private List<QuestionTable> questionTableList = new LinkedList<QuestionTable>();
 	private List<String> header;
-	private ServiceDefTarget serviceDef;	
+	private QuestionServiceAsync service;
 
 	public QuestionDataSource(){
-		QuestionServiceAsync service = (QuestionServiceAsync) GWT.create(QuestionService.class);
-		this.serviceDef = (ServiceDefTarget) service;
-		serviceDef.setServiceEntryPoint(GWT.getModuleBaseURL() + "questionService");
+		service = GWT.create(QuestionService.class);
+		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "questionService");
 
+		fetch();
 		
 		header = new ArrayList<String>();
 		header.add("Id");
 		header.add("Text");
 		header.add("Notes");
-
-		fetch();
-		
-
 	}
 
 	@Override
     public List<Question> getList() {
-		// TODO Auto-generated method stub
 		return this.questions;
 	}
 
@@ -44,27 +40,29 @@ public class QuestionDataSource implements DataSource<Question> {
 
 	@Override
     public List<String> getTableHeader() {
-		// TODO Auto-generated method stub
 		return this.header;
 	}
 
 	@Override
     public boolean fetch() {
-		// TODO Auto-generated method stub
-		((QuestionServiceAsync) serviceDef).fetch(new AsyncCallback<List<Question>>() {
+
+	    service.fetch(new AsyncCallback<List<Question>>() {
 
 			@Override
-            public void onSuccess(List<Question> arg0) {
-				// TODO Auto-generated method stub
-				setList(arg0); 				
+            public void onSuccess(List<Question> list) {
+				setList(list);
+
+				for (QuestionTable questionTable : questionTableList) {
+				    questionTable.refresh(list);
+				}
 			}
 
 			@Override
             public void onFailure(Throwable arg0) {
-				// TODO Auto-generated method stub
 				getList().add(new Question("BLEH"));
 			}
 		});
+
 		return false; 
 	}
 
@@ -86,4 +84,8 @@ public class QuestionDataSource implements DataSource<Question> {
 		// TODO Auto-generated method stub
 		return false;
 	}
+
+    public void addTable(QuestionTable questionTable) {
+        questionTableList.add(questionTable);
+    }
 }
