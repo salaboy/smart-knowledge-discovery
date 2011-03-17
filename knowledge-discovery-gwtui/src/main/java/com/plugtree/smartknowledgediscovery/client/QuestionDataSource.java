@@ -26,7 +26,7 @@ public class QuestionDataSource implements DataSource<Question> {
      }
 
 	
-	public QuestionDataSource(){
+	private QuestionDataSource() {
 		service = GWT.create(QuestionService.class);
 		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "questionService");
 
