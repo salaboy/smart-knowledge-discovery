@@ -7,6 +7,7 @@ import java.util.List;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.plugtree.smartknowledgediscovery.client.QuestionService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
+import com.plugtree.smartprocessdiscovery.dao.impl.GenericDaoJpa;
 
 @SuppressWarnings("serial")
 public class QuestionServiceImpl extends RemoteServiceServlet implements QuestionService {
