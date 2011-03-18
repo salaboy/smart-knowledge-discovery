@@ -16,6 +16,7 @@ public class IntegerValidator extends Validator {
         try {
             Integer.parseInt(data);
         } catch (NumberFormatException e) {
+            setValidationError("Valid number expected.");
             return false;
         }
 

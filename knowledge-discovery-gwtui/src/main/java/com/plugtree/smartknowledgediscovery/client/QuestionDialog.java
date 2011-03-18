@@ -27,9 +27,17 @@ public class QuestionDialog extends PopupPanel {
 
             @Override
             public void onClick(ClickEvent event) {
-                Question question = questionForm.getQuestion();
-                questionDataSource.add(question);
-                hide();
+                
+                if (questionForm.isDataValid()) {
+                    Question question = questionForm.getQuestion();
+                    questionDataSource.add(question);
+                    hide();
+                } else {
+                    //TODO: Highlight wrong fields with css and add a error dialog.
+                    for( String error : questionForm.getValidationErrors()) {
+                        System.out.println(error);
+                    }
+                }
             }
         });
 

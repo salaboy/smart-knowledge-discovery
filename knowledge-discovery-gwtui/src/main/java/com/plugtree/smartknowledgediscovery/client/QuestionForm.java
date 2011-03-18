@@ -1,6 +1,7 @@
 package com.plugtree.smartknowledgediscovery.client;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Label;
@@ -11,6 +12,8 @@ public class QuestionForm extends Grid {
 
     HashMap<Field, TextBox> dataValidation = new HashMap<Field, TextBox>();
     HashMap<String, TextBox> data = new HashMap<String, TextBox>();
+    
+    LinkedList<String> errors = new LinkedList<String>(); 
 
     public QuestionForm(QuestionDataSource questionDataSource) {
 
@@ -34,12 +37,6 @@ public class QuestionForm extends Grid {
 
     public Question getQuestion() {
 
-        for (Field field : dataValidation.keySet()) {
-            if (!field.isValid(dataValidation.get(field).getText())) {
-                System.out.println("No valid question!");
-            }            
-        }
-
         Question question = new Question();
 
         question.setId(Long.parseLong(data.get("Id").getText()));
@@ -47,5 +44,27 @@ public class QuestionForm extends Grid {
         question.setNotes(data.get("Notes").getText());
 
         return question;
+    }
+
+    public boolean isDataValid() {
+        
+        boolean valid = true;
+        errors.clear();
+        
+        for (Field field : dataValidation.keySet()) {
+        
+            String data = dataValidation.get(field).getText();
+            
+            if (!field.isValid(data)) {
+                errors.add(field.getName() + ": " + field.getValidationError());
+                valid = false;
+            }         
+        }
+        
+        return valid;
+    }
+
+    public LinkedList<String> getValidationErrors() {
+        return errors;
     }
 }

@@ -27,4 +27,8 @@ public class Field {
 
         return true;
     }
+
+    public String getValidationError() {
+        return validator.getValidationError();
+    }
 }
