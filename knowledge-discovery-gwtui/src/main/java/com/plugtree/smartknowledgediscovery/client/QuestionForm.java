@@ -9,28 +9,36 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionForm extends Grid {
 
+    HashMap<Field, TextBox> dataValidation = new HashMap<Field, TextBox>();
     HashMap<String, TextBox> data = new HashMap<String, TextBox>();
 
     public QuestionForm(QuestionDataSource questionDataSource) {
 
-        resize(questionDataSource.getTableHeader().size(), 2);
+        resize(questionDataSource.getFields().size(), 2);
 
         int row = 0;
 
-        for (String header : questionDataSource.getTableHeader()) {
+        for (Field field : questionDataSource.getFields()) {
 
             TextBox textBox = new TextBox();
 
-            setWidget(row, 0, new Label(header));
+            setWidget(row, 0, new Label(field.getName()));
             setWidget(row, 1, textBox);
 
-            data.put(header, textBox);
+            dataValidation.put(field, textBox);
+            data.put(field.getName(), textBox);
 
             row++;
         }
     }
 
     public Question getQuestion() {
+
+        for (Field field : dataValidation.keySet()) {
+            if (!field.isValid(dataValidation.get(field).getText())) {
+                System.out.println("No valid question!");
+            }            
+        }
 
         Question question = new Question();
 

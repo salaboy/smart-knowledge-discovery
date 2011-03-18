@@ -29,6 +29,7 @@ public class QuestionDialog extends PopupPanel {
             public void onClick(ClickEvent event) {
                 Question question = questionForm.getQuestion();
                 questionDataSource.add(question);
+                hide();
             }
         });
 

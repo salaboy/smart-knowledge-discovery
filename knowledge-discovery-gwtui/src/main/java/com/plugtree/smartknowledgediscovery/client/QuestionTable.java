@@ -37,14 +37,14 @@ public class QuestionTable extends FlexTable {
         
         setWidget(0, 0, label);
        
-        List<String> tableHeaders = dataSource.getTableHeader();
+        List<Field> fields = dataSource.getFields();
         
-        getFlexCellFormatter().setColSpan(0, 0, tableHeaders.size());
+        getFlexCellFormatter().setColSpan(0, 0, fields.size());
         
         int columNumber = 0;
         
-        for (String header : tableHeaders) {
-            setText(1, columNumber, header);
+        for (Field field : fields) {
+            setText(1, columNumber, field.getName());
             columNumber++;
         }
 

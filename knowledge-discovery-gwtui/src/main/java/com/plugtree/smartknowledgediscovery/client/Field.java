@@ -1,7 +1,7 @@
 package com.plugtree.smartknowledgediscovery.client;
 
 
-public abstract class Field {
+public class Field {
   
     private String name;
     private Validator validator;

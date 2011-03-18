@@ -14,7 +14,7 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
 
 	private Button addButton = new Button("Add");
 	private VerticalPanel panel = new VerticalPanel();
-	
+
 	@Override
     public void onModuleLoad() {
 

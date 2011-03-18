@@ -1,6 +1,5 @@
 package com.plugtree.smartknowledgediscovery.client;
 
-import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -12,7 +11,7 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 public class QuestionDataSource implements DataSource<Question> {
 
 	private List<QuestionTable> questionTableList = new LinkedList<QuestionTable>();
-	private List<String> header;
+	private List<Field> fieldList = new LinkedList<Field>();
 	private QuestionServiceAsync service;
     private static QuestionDataSource instance = null;	
 	
@@ -31,15 +30,18 @@ public class QuestionDataSource implements DataSource<Question> {
 
 		fetch();
 		
-		header = new ArrayList<String>();
-		header.add("Id");
-		header.add("Text");
-		header.add("Notes");
+		Field textField = new Field("Text", new StringValidator(true, 200));
+		Field notesField = new Field("Notes", new StringValidator(true, 200));
+		Field idField = new Field("Id", new IntegerValidator(true, 50));
+
+	    fieldList.add(idField);
+		fieldList.add(textField);
+		fieldList.add(notesField);
 	}
 
 	@Override
-    public List<String> getTableHeader() {
-		return this.header;
+    public List<Field> getFields() {
+		return fieldList;
 	}
 
 	@Override
