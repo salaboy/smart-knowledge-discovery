@@ -4,18 +4,31 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.plugtree.smartknowledgediscovery.client.QuestionService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
-import com.plugtree.smartprocessdiscovery.dao.impl.GenericDaoJpa;
+import com.plugtree.smartprocessdiscovery.services.impl.InterviewServiceImpl;
+
+import com.plugtree.smartprocessdiscovery.dao.impl.QuestionDaoJpa;
 
 @SuppressWarnings("serial")
 public class QuestionServiceImpl extends RemoteServiceServlet implements QuestionService {
 
     private LinkedList<Question> questionList = new LinkedList<Question>();
-
-    public QuestionServiceImpl() {
-
+    private InterviewServiceImpl interviewService;
+    
+  
+	public QuestionServiceImpl() {
+    	
+    	ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:persistence-context.xml");
+    	System.out.println(applicationContext.toString());
+    	System.out.println(applicationContext.containsBean("interviewService"));
+    	interviewService = (InterviewServiceImpl) applicationContext.getBean("interviewService");
+     
+    	System.out.println(interviewService.toString());
+    	
         Question question1 = new Question("what?");
         question1.setId(new Long(1));
         question1.setNotes("Amazing");
@@ -26,12 +39,15 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 
         questionList.add(question1);
         questionList.add(question2);
+        //questionDao.save(question1);
+        //questionDao.save(question2);
     }
 
 	@Override
     public List<Question> fetch() {
-
+				
 	    return questionList;
+		//return questionDao.listAll();
 	}
 
     @Override
