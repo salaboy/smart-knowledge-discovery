@@ -17,6 +17,7 @@ body {
 }
 
 .listHeader {
+  text-align: center;
   background-color: #2062B8;
   color: white;
   font-style: italic;
@@ -37,4 +38,8 @@ body {
 
 .invalidEntry {
   border-color: red;
+}
+
+.removeColumn {
+  text-align: center;
 }

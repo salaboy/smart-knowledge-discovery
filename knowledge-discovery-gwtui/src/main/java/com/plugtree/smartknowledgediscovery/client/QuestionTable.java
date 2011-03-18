@@ -2,6 +2,9 @@ package com.plugtree.smartknowledgediscovery.client;
 
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
+import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
@@ -9,9 +12,11 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 public class QuestionTable extends FlexTable {
 
     private Label label = new Label("Questions");
-
+    private QuestionDataSource dataSource;
+    
     public QuestionTable(QuestionDataSource dataSource) {
-          
+
+        this.dataSource = dataSource;
         setUp(dataSource);
         dataSource.addTable(this);
     }
@@ -24,38 +29,62 @@ public class QuestionTable extends FlexTable {
 
         int row = 2;
 
-        for (Question question : questionList) {
+        for (final Question question : questionList) {
 
+            Button removeButton = createRemoveButton(question.getId());
+            
             setText(row, 0, Long.toString(question.getId()));
             setText(row, 1, question.getText());
             setText(row, 2, question.getNotes());
+            setWidget(row, 3, removeButton);
+            
+            getCellFormatter().addStyleName(row, 3, "removeColumn");
+            
             row++;
         }
     }
     
+
     private void setUp(QuestionDataSource dataSource) {
-        
+
         setWidget(0, 0, label);
-       
+
         List<Field> fields = dataSource.getFields();
-        
-        getFlexCellFormatter().setColSpan(0, 0, fields.size());
-        
+
+        getFlexCellFormatter().setColSpan(0, 0, fields.size() + 1);
+
         int columNumber = 0;
-        
+
         for (Field field : fields) {
             setText(1, columNumber, field.getName());
             columNumber++;
         }
 
+        setText(1, columNumber, "Remove");
+
         addStyle();
     }
-    
+
     private void addStyle() {
 
         getRowFormatter().addStyleName(0, "listHeader");
         getRowFormatter().addStyleName(1, "listHeader");
         addStyleName("list");
         label.addStyleName("label");
+    }
+
+    private Button createRemoveButton(final Long id) {
+
+        Button removeButton = new Button("x");
+
+        removeButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                dataSource.remove(id);
+            }
+        });
+
+        return removeButton;
     }
 }
