@@ -58,7 +58,10 @@ public class QuestionForm extends Grid {
             if (!field.isValid(data)) {
                 errors.add(field.getName() + ": " + field.getValidationError());
                 valid = false;
-            }         
+                dataValidation.get(field).addStyleName("invalidEntry");
+            } else {
+                dataValidation.get(field).removeStyleName("invalidEntry");
+            }
         }
         
         return valid;

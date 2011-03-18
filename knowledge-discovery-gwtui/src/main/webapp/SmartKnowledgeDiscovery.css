@@ -34,3 +34,7 @@ body {
   color: white;
   font-style: italic;
 }
+
+.invalidEntry {
+  border-color: red;
+}
