@@ -17,8 +17,9 @@ public class QuestionAsyncCallback implements AsyncCallback<List<Question>> {
     
     @Override
     public void onFailure(Throwable caught) {
-        DialogBox dialogBox = new DialogBox();
+        DialogBox dialogBox = new DialogBox(true);
         dialogBox.add(new Label("Warning, problem connecting to the server."));
+        dialogBox.center();
         dialogBox.show();
     }
 

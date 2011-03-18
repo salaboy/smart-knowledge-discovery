@@ -32,18 +32,20 @@ public class QuestionTable extends FlexTable {
         for (final Question question : questionList) {
 
             Button removeButton = createRemoveButton(question.getId());
+            Button editButton = createEditButton(question.getId());
             
             setText(row, 0, Long.toString(question.getId()));
             setText(row, 1, question.getText());
             setText(row, 2, question.getNotes());
             setWidget(row, 3, removeButton);
+            setWidget(row, 4, editButton);
             
-            getCellFormatter().addStyleName(row, 3, "removeColumn");
+            getCellFormatter().addStyleName(row, 3, "buttonColumn");
+            getCellFormatter().addStyleName(row, 4, "buttonColumn");
             
             row++;
         }
     }
-    
 
     private void setUp(QuestionDataSource dataSource) {
 
@@ -61,6 +63,7 @@ public class QuestionTable extends FlexTable {
         }
 
         setText(1, columNumber, "Remove");
+        setText(1, columNumber + 1, "Edit");
 
         addStyle();
     }
@@ -86,5 +89,21 @@ public class QuestionTable extends FlexTable {
         });
 
         return removeButton;
+    }
+
+    private Button createEditButton(final Long id) {
+
+        Button editButton = new Button("edit");
+
+        editButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                //TODO: Show edit dialog.
+                System.out.println("Editing!");
+            }
+        });
+
+        return editButton;
     }
 }
