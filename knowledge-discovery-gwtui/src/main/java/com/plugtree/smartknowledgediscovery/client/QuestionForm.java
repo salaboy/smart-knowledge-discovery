@@ -5,13 +5,11 @@ import java.util.LinkedList;
 
 import com.google.gwt.user.client.ui.Grid;
 import com.google.gwt.user.client.ui.Label;
-import com.google.gwt.user.client.ui.TextBox;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionForm extends Grid {
 
-    HashMap<Field, TextBox> dataValidation = new HashMap<Field, TextBox>();
-    HashMap<String, TextBox> data = new HashMap<String, TextBox>();
+    HashMap<String, SmartTextBox> data = new HashMap<String, SmartTextBox>();
     boolean isEditQuestionForm = true;
 
     LinkedList<String> errors = new LinkedList<String>(); 
@@ -28,20 +26,15 @@ public class QuestionForm extends Grid {
 
         for (Field field : questionDataSource.getFields()) {
 
-            TextBox textBox = new TextBox();
-
-            if (field.isKey()) {
-                if (isEditQuestionForm) {
-                    textBox.setEnabled(false);
-                } else {
-                    continue;
-                }
+            if (field.isKey() &&  !isEditQuestionForm) {
+                continue;
             }
+
+            SmartTextBox textBox = new SmartTextBox(field);
 
             setWidget(row, 0, new Label(field.getName()));
             setWidget(row, 1, textBox);
 
-            dataValidation.put(field, textBox);
             data.put(field.getName(), textBox);
 
             row++;
@@ -69,23 +62,20 @@ public class QuestionForm extends Grid {
     }
 
     public boolean isDataValid() {
-        
+
         boolean valid = true;
         errors.clear();
-        
-        for (Field field : dataValidation.keySet()) {
-        
-            String data = dataValidation.get(field).getText();
-            
-            if (!field.isValid(data)) {
-                errors.add(field.getName() + ": " + field.getValidationError());
+
+        for (String fieldName : data.keySet()) {
+
+            SmartTextBox textBox = data.get(fieldName);
+
+            if (!textBox.isContentValid()) {
+                errors.add(textBox.getValidationError());
                 valid = false;
-                dataValidation.get(field).addStyleName("invalidEntry");
-            } else {
-                dataValidation.get(field).removeStyleName("invalidEntry");
             }
         }
-        
+
         return valid;
     }
 

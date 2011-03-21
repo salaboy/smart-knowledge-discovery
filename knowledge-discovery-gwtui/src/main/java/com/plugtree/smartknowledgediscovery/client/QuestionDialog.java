@@ -45,7 +45,7 @@ public class QuestionDialog extends PopupPanel {
 
                     hide();
                 } else {
-                    //TODO: Highlight wrong fields with css and add a error dialog.
+                    //Add an error dialog.
                     for( String error : questionForm.getValidationErrors()) {
                         System.out.println(error);
                     }
