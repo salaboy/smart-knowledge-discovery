@@ -13,24 +13,36 @@ public class QuestionDialog extends PopupPanel {
     private VerticalPanel popupContent = new VerticalPanel();
 
     private HorizontalPanel buttonPanel = new HorizontalPanel();
-    private Button addButton = new Button("Add");
+    private Button addEditButton = new Button();
     private Button cancelButton = new Button("Cancel");
 
-    public QuestionDialog(final QuestionDataSource questionDataSource) {
+    public QuestionDialog(final QuestionDataSource questionDataSource, Question question) {
 
-        final QuestionForm questionForm = new QuestionForm(questionDataSource);
+        final QuestionForm questionForm = new QuestionForm(questionDataSource, question);
 
-        buttonPanel.add(addButton);
+        if (question == null) {
+            addEditButton.setText("Add");
+        } else {
+            addEditButton.setText("Edit");
+        }
+
+        buttonPanel.add(addEditButton);
         buttonPanel.add(cancelButton);
 
-        addButton.addClickHandler(new ClickHandler() {
+        addEditButton.addClickHandler(new ClickHandler() {
 
             @Override
             public void onClick(ClickEvent event) {
-                
+
                 if (questionForm.isDataValid()) {
                     Question question = questionForm.getQuestion();
-                    questionDataSource.add(question);
+
+                    if (question == null) {
+                        questionDataSource.add(question);
+                    } else {
+                        questionDataSource.update(question);
+                    }
+
                     hide();
                 } else {
                     //TODO: Highlight wrong fields with css and add a error dialog.
@@ -58,7 +70,7 @@ public class QuestionDialog extends PopupPanel {
     }
 
     private void addStyle() {
-        addButton.addStyleName("button");
+        addEditButton.addStyleName("button");
         cancelButton.addStyleName("button");
 
         center();

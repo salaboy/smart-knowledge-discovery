@@ -29,7 +29,7 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
 
             @Override
             public void onClick(ClickEvent event) {
-                QuestionDialog questionDialog = new QuestionDialog(dataSource);
+                QuestionDialog questionDialog = new QuestionDialog(dataSource, null);
                 questionDialog.show();
             }
         });

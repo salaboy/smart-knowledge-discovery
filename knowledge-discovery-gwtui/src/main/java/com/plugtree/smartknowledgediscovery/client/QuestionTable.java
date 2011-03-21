@@ -32,7 +32,7 @@ public class QuestionTable extends FlexTable {
         for (final Question question : questionList) {
 
             Button removeButton = createRemoveButton(question.getId());
-            Button editButton = createEditButton(question.getId());
+            Button editButton = createEditButton(question);
             
             setText(row, 0, Long.toString(question.getId()));
             setText(row, 1, question.getText());
@@ -53,7 +53,7 @@ public class QuestionTable extends FlexTable {
 
         List<Field> fields = dataSource.getFields();
 
-        getFlexCellFormatter().setColSpan(0, 0, fields.size() + 1);
+        getFlexCellFormatter().setColSpan(0, 0, fields.size() + 2);
 
         int columNumber = 0;
 
@@ -91,7 +91,7 @@ public class QuestionTable extends FlexTable {
         return removeButton;
     }
 
-    private Button createEditButton(final Long id) {
+    private Button createEditButton(final Question question) {
 
         Button editButton = new Button("edit");
 
@@ -99,8 +99,7 @@ public class QuestionTable extends FlexTable {
 
             @Override
             public void onClick(ClickEvent event) {
-                //TODO: Show edit dialog.
-                System.out.println("Editing!");
+                new QuestionDialog(dataSource, question).show();
             }
         });
 
