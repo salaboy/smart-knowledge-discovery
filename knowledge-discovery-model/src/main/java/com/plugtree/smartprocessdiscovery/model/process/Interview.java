@@ -2,9 +2,10 @@ package com.plugtree.smartprocessdiscovery.model.process;
 
 import java.util.Date;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
 
-public class Interview {
+public class Interview implements IsSerializable {
     private Long id;
     private String description;
     private AnsweredQuestionnaire questionnaire;

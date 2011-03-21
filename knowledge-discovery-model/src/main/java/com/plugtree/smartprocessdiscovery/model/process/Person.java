@@ -1,6 +1,8 @@
 package com.plugtree.smartprocessdiscovery.model.process;
 
-public class Person {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class Person implements IsSerializable {
     private Long id;
     private String actorId;
     private String email;
