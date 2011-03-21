@@ -12,10 +12,10 @@ public class QuestionForm extends Grid {
 
     HashMap<Field, TextBox> dataValidation = new HashMap<Field, TextBox>();
     HashMap<String, TextBox> data = new HashMap<String, TextBox>();
-    
+
     LinkedList<String> errors = new LinkedList<String>(); 
 
-    public QuestionForm(QuestionDataSource questionDataSource) {
+    public QuestionForm(QuestionDataSource questionDataSource, Question question) {
 
         resize(questionDataSource.getFields().size(), 2);
 
@@ -32,6 +32,12 @@ public class QuestionForm extends Grid {
             data.put(field.getName(), textBox);
 
             row++;
+        }
+
+        if (question != null) {
+            data.get("Id").setText(question.getId().toString());
+            data.get("Text").setText(question.getText());
+            data.get("Notes").setText(question.getNotes());
         }
     }
 
