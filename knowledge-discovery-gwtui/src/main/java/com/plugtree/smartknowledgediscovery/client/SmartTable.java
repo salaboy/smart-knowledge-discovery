@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gwt.user.client.ui.FlexTable;
 import com.google.gwt.user.client.ui.Label;
 
-public class SmartTable<T> extends FlexTable {
+abstract public class SmartTable<T> extends FlexTable {
 
     Label tableTitle = new Label();
     
@@ -20,6 +20,12 @@ public class SmartTable<T> extends FlexTable {
         }
     }
     
+    public void refresh(List<T> list) {
+
+        removeRecords();
+        addRows(list);
+    }
+
     public void setUp(QuestionDataSource dataSource) {
 
         setWidget(0, 0, tableTitle);
@@ -48,4 +54,6 @@ public class SmartTable<T> extends FlexTable {
         addStyleName("list");
         tableTitle.addStyleName("label");
     }
+
+    abstract void addRows(List<T> list);
 }

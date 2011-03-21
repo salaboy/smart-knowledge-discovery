@@ -1,17 +1,12 @@
 package com.plugtree.smartknowledgediscovery.client;
 
-import java.util.LinkedList;
-import java.util.List;
-
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 
-public class QuestionDataSource implements DataSource<Question> {
+public class QuestionDataSource extends GenericDataSource<Question> {
 
-	private List<QuestionTable> questionTableList = new LinkedList<QuestionTable>();
-	private List<Field> fieldList = new LinkedList<Field>();
 	private QuestionsServiceAsync service;
     private static QuestionDataSource instance = null;	
 	
@@ -21,7 +16,6 @@ public class QuestionDataSource implements DataSource<Question> {
         }
         return instance;
      }
-
 	
 	private QuestionDataSource() {
 
@@ -34,20 +28,15 @@ public class QuestionDataSource implements DataSource<Question> {
 		Field notesField = new Field("Notes", new StringValidator(true, 200));
 		Field idField = new KeyField("Id");
 
-	    fieldList.add(idField);
-		fieldList.add(textField);
-		fieldList.add(notesField);
-	}
-
-	@Override
-    public List<Field> getFields() {
-		return fieldList;
+	    addField(idField);
+		addField(textField);
+		addField(notesField);
 	}
 
 	@Override
     public boolean fetch() {
 
-	    service.fetch(new QuestionAsyncCallback(questionTableList));
+	    service.fetch(new QuestionAsyncCallback(getTableList()));
 
 		return false; 
 	}
@@ -55,7 +44,7 @@ public class QuestionDataSource implements DataSource<Question> {
 	@Override
     public boolean add(Question question) {
 
-	    service.add(question, new QuestionAsyncCallback(questionTableList));
+	    service.add(question, new QuestionAsyncCallback(getTableList()));
 
 		return false;
 	}
@@ -63,7 +52,7 @@ public class QuestionDataSource implements DataSource<Question> {
 	@Override
     public boolean remove(long id) {
 
-	    service.remove(id, new QuestionAsyncCallback(questionTableList));
+	    service.remove(id, new QuestionAsyncCallback(getTableList()));
 
 		return false;
 	}
@@ -71,12 +60,8 @@ public class QuestionDataSource implements DataSource<Question> {
 	@Override
     public boolean update(Question question) {
 
-	    service.update(question, new QuestionAsyncCallback(questionTableList));
+	    service.update(question, new QuestionAsyncCallback(getTableList()));
 
 		return false;
 	}
-
-    public void addTable(QuestionTable questionTable) {
-        questionTableList.add(questionTable);
-    }
 }

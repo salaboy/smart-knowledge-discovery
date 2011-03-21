@@ -19,10 +19,9 @@ public class QuestionTable extends SmartTable<Question> {
         setUp(dataSource);
         dataSource.addTable(this);
     }
-    
-    public void refresh(List<Question> questionList) {
 
-        removeRecords();
+    @Override
+    public void addRows(List<Question> questionList) {
 
         int row = getRowCount();
 

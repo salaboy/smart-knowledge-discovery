@@ -9,9 +9,9 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionAsyncCallback implements AsyncCallback<List<Question>> {
 
-    private List<QuestionTable> questionTableList;
+    private List<SmartTable<Question>> questionTableList;
 
-    public QuestionAsyncCallback(List<QuestionTable> questionTableList) {
+    public QuestionAsyncCallback(List<SmartTable<Question>> questionTableList) {
         this.questionTableList = questionTableList;
     }
     
@@ -26,7 +26,7 @@ public class QuestionAsyncCallback implements AsyncCallback<List<Question>> {
     @Override
     public void onSuccess(List<Question> resultList) {
         
-        for (QuestionTable questionTable : questionTableList) {
+        for (SmartTable<Question> questionTable : questionTableList) {
             questionTable.refresh(resultList);
         }        
     }
