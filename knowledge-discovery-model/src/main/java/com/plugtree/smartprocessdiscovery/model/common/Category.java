@@ -1,6 +1,8 @@
 package com.plugtree.smartprocessdiscovery.model.common;
 
-public class Category {
+import com.google.gwt.user.client.rpc.IsSerializable;
+
+public class Category implements IsSerializable {
     private Long id;
     private String name;
     private int rank;

@@ -5,11 +5,12 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+import com.google.gwt.user.client.rpc.IsSerializable;
 import com.plugtree.smartprocessdiscovery.model.common.Categorizable;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 import com.plugtree.smartprocessdiscovery.model.common.Taggeable;
 
-public class Questionnaire implements Categorizable, Taggeable {
+public class Questionnaire implements Categorizable, Taggeable, IsSerializable {
 
 	private Long id;
     private String name;
