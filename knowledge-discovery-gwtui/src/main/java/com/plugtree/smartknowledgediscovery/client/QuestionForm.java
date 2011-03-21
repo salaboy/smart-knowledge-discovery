@@ -12,10 +12,15 @@ public class QuestionForm extends Grid {
 
     HashMap<Field, TextBox> dataValidation = new HashMap<Field, TextBox>();
     HashMap<String, TextBox> data = new HashMap<String, TextBox>();
+    boolean isEditQuestionForm = true;
 
     LinkedList<String> errors = new LinkedList<String>(); 
 
     public QuestionForm(QuestionDataSource questionDataSource, Question question) {
+
+        if (question == null) {
+            isEditQuestionForm = false;
+        }
 
         resize(questionDataSource.getFields().size(), 2);
 
@@ -24,6 +29,14 @@ public class QuestionForm extends Grid {
         for (Field field : questionDataSource.getFields()) {
 
             TextBox textBox = new TextBox();
+
+            if (field.getName().equals("Id")) {
+                if (isEditQuestionForm) {
+                    textBox.setEnabled(false);
+                } else {
+                    continue;
+                }
+            }
 
             setWidget(row, 0, new Label(field.getName()));
             setWidget(row, 1, textBox);
@@ -34,7 +47,7 @@ public class QuestionForm extends Grid {
             row++;
         }
 
-        if (question != null) {
+        if (isEditQuestionForm) {
             data.get("Id").setText(question.getId().toString());
             data.get("Text").setText(question.getText());
             data.get("Notes").setText(question.getNotes());
@@ -45,7 +58,10 @@ public class QuestionForm extends Grid {
 
         Question question = new Question();
 
-        question.setId(Long.parseLong(data.get("Id").getText()));
+        if (isEditQuestionForm) {
+            question.setId(Long.parseLong(data.get("Id").getText()));
+        }
+
         question.setText(data.get("Text").getText());
         question.setNotes(data.get("Notes").getText());
 

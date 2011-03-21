@@ -32,7 +32,13 @@ public class QuestionDataSource implements DataSource<Question> {
 		
 		Field textField = new Field("Text", new StringValidator(true, 200));
 		Field notesField = new Field("Notes", new StringValidator(true, 200));
-		Field idField = new Field("Id", new IntegerValidator(true, 50));
+		Field idField = new Field("Id", new Validator(true, 50) {
+
+            @Override
+            public boolean isValid(String data) {
+                return true;
+            }
+        });
 
 	    fieldList.add(idField);
 		fieldList.add(textField);

@@ -16,7 +16,7 @@ public class QuestionDialog extends PopupPanel {
     private Button addEditButton = new Button();
     private Button cancelButton = new Button("Cancel");
 
-    public QuestionDialog(final QuestionDataSource questionDataSource, Question question) {
+    public QuestionDialog(final QuestionDataSource questionDataSource, final Question question) {
 
         final QuestionForm questionForm = new QuestionForm(questionDataSource, question);
 
@@ -35,12 +35,12 @@ public class QuestionDialog extends PopupPanel {
             public void onClick(ClickEvent event) {
 
                 if (questionForm.isDataValid()) {
-                    Question question = questionForm.getQuestion();
+                    Question newQuestion = questionForm.getQuestion();
 
                     if (question == null) {
-                        questionDataSource.add(question);
+                        questionDataSource.add(newQuestion);
                     } else {
-                        questionDataSource.update(question);
+                        questionDataSource.update(newQuestion);
                     }
 
                     hide();
