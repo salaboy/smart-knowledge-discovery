@@ -7,7 +7,7 @@
     <attributes>
       <id name="id">
         <generated-value strategy="AUTO"/>
-      </id>
+      </id>      
       <transient name="categories"/>
       <transient name="tags"/>
     </attributes>

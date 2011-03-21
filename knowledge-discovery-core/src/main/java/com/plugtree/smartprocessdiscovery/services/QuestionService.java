@@ -10,9 +10,9 @@ public interface QuestionService {
 
 	public Long create(String text, String notes);
 
-	public boolean remove(Long id);
+	public boolean remove(Long id) throws ServiceException;
 
-	public boolean update(Long id, String text, String notes);
+	public boolean update(Long id, String text, String notes) throws ServiceException;
 
 	public Question get(Long id);
 

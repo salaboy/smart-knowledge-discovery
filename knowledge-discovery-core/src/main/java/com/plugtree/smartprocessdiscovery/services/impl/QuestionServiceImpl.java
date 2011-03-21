@@ -3,22 +3,24 @@ package com.plugtree.smartprocessdiscovery.services.impl;
 import java.util.Collection;
 import java.util.Collections;
 
+import com.plugtree.smartprocessdiscovery.dao.QuestionDao;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
+import com.plugtree.smartprocessdiscovery.model.process.Interview;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.services.QuestionService;
+import com.plugtree.smartprocessdiscovery.services.ServiceException;
 
 public class QuestionServiceImpl implements QuestionService {
+	
+	private QuestionDao questionDao;
 	
 	/* (non-Javadoc)
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#findAll()
 	 */
 	@Override
 	public Collection<Question> findAll() {
-		// TODO buscar todos los cuestionarios
 		
-		Collection<Question> questions = Collections.emptyList();
-		
-		return questions;
+		return questionDao.listAll();
 	}
 	
 	/* (non-Javadoc)
@@ -26,21 +28,30 @@ public class QuestionServiceImpl implements QuestionService {
 	 */
 	@Override
 	public Long create(String text, String notes) {
-		Question q = new Question();
-		q.setText(text);
-		q.setNotes(notes);
+		Question question = new Question();
+		question.setText(text);
+		question.setNotes(notes);
 		
-		// TODO persistir
+		questionDao.save(question);
 		
-		return q.getId();
+				
+		return question.getId();
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#remove(java.lang.Long)
 	 */
 	@Override
-	public boolean remove(Long id) {
+	public boolean remove(Long id) throws ServiceException {
 		// TODO pedirle a la capa de persistencia que lo borre
+		
+		Question question = questionDao.findById(id);
+		if(question==null) {
+			throw new ServiceException("Question doesn't exist");
+		}
+		
+		questionDao.remove(question);
+				
 		return true;
 	}
 	
@@ -48,12 +59,17 @@ public class QuestionServiceImpl implements QuestionService {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#update(java.lang.Long, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean update(Long id, String text, String notes) {
-		// TODO buscarlo
-		Question q = new Question();
-		q.setText(text);
-		q.setNotes(notes);
-		// TODO persistir
+	public boolean update(Long id, String text, String notes) throws ServiceException {
+		
+		Question question = questionDao.findById(id);
+		if(question==null) {
+			throw new ServiceException("Question doesn't exist");
+		}
+		question.setText(text);
+		question.setNotes(notes);
+		
+		questionDao.update(question);
+		
 		return true;
 	}
 	
@@ -62,8 +78,7 @@ public class QuestionServiceImpl implements QuestionService {
 	 */
 	@Override
 	public Question get(Long id) {
-		// TODO buscarlo
-		return new Question();
+		return questionDao.findById(id);
 	}
 	
 	/* (non-Javadoc)
@@ -132,6 +147,14 @@ public class QuestionServiceImpl implements QuestionService {
 		
 		// TODO persistir
 		return true;
+	}
+
+	public void setQuestionDao(QuestionDao questionDao) {
+		this.questionDao = questionDao;
+	}
+
+	public QuestionDao getQuestionDao() {
+		return questionDao;
 	}
 
 }

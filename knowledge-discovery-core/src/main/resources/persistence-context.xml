@@ -23,6 +23,10 @@
     <property name="answeredQuestionnaireDao" ref="answeredQuestionnaireDao"/>
     <property name="answerDao" ref="answerDao"/>
   </bean>
+  
+  <bean id="questionService" class="com.plugtree.smartprocessdiscovery.services.impl.QuestionServiceImpl">
+     <property name="questionDao" ref="questionDao"/>
+  </bean>
 
   <!-- bean post-processor for JPA annotations -->
   <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>

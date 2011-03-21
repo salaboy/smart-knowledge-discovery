@@ -12,7 +12,7 @@ public class QuestionDataSource implements DataSource<Question> {
 
 	private List<QuestionTable> questionTableList = new LinkedList<QuestionTable>();
 	private List<Field> fieldList = new LinkedList<Field>();
-	private QuestionServiceAsync service;
+	private QuestionsServiceAsync service;
     private static QuestionDataSource instance = null;	
 	
     public static QuestionDataSource getInstance() {
@@ -25,8 +25,8 @@ public class QuestionDataSource implements DataSource<Question> {
 	
 	private QuestionDataSource() {
 
-	    service = GWT.create(QuestionService.class);
-		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "questionService");
+	    service = GWT.create(QuestionsService.class);
+		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "question");
 
 		fetch();
 		
