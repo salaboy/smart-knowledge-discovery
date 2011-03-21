@@ -9,8 +9,12 @@ abstract public class SmartTable<T> extends FlexTable {
 
     Label tableTitle = new Label();
     
-    public SmartTable(String title) {
+    public SmartTable(String title, GenericDataSource<T> dataSource) {
+
         tableTitle.setText(title);
+
+        setUp(dataSource);
+        dataSource.addTable(this);
     }
     
     public void removeRecords() {
@@ -26,7 +30,7 @@ abstract public class SmartTable<T> extends FlexTable {
         addRows(list);
     }
 
-    public void setUp(QuestionDataSource dataSource) {
+    public void setUp(GenericDataSource<T> dataSource) {
 
         setWidget(0, 0, tableTitle);
 

@@ -18,9 +18,7 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
 	@Override
     public void onModuleLoad() {
 
-		final QuestionDataSource dataSource = QuestionDataSource.getInstance();
-
-		QuestionTable questionTable = new QuestionTable(dataSource);
+		QuestionTable questionTable = new QuestionTable();
 
 		panel.add(questionTable);
 		panel.add(addButton);
@@ -29,7 +27,7 @@ public class SmartKnowledgeDiscovery implements EntryPoint {
 
             @Override
             public void onClick(ClickEvent event) {
-                QuestionDialog questionDialog = new QuestionDialog(dataSource, null);
+                QuestionDialog questionDialog = new QuestionDialog(null);
                 questionDialog.show();
             }
         });

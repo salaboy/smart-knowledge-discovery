@@ -9,21 +9,15 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionTable extends SmartTable<Question> {
 
-    private QuestionDataSource dataSource;
+    public QuestionTable() {
 
-    public QuestionTable(QuestionDataSource dataSource) {
-
-        super("Questions");
-
-        this.dataSource = dataSource;
-        setUp(dataSource);
-        dataSource.addTable(this);
+        super("Questions", QuestionDataSource.getInstance());
     }
 
     @Override
     public void addRows(List<Question> questionList) {
 
-        int row = getRowCount();
+        int row = 2;
 
         for (final Question question : questionList) {
 
@@ -51,7 +45,7 @@ public class QuestionTable extends SmartTable<Question> {
 
             @Override
             public void onClick(ClickEvent event) {
-                dataSource.remove(id);
+                QuestionDataSource.getInstance().remove(id);
             }
         });
 
@@ -66,7 +60,7 @@ public class QuestionTable extends SmartTable<Question> {
 
             @Override
             public void onClick(ClickEvent event) {
-                new QuestionDialog(dataSource, question).show();
+                new QuestionDialog(question).show();
             }
         });
 
