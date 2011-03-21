@@ -20,6 +20,17 @@ public class QuestionForm extends Grid {
             isEditQuestionForm = false;
         }
 
+        setUp(questionDataSource);
+
+        if (isEditQuestionForm) {
+            data.get("Id").setText(question.getId().toString());
+            data.get("Text").setText(question.getText());
+            data.get("Notes").setText(question.getNotes());
+        }
+    }
+
+    private void setUp(QuestionDataSource questionDataSource) {
+
         resize(questionDataSource.getFields().size(), 2);
 
         int row = 0;
@@ -38,12 +49,6 @@ public class QuestionForm extends Grid {
             data.put(field.getName(), textBox);
 
             row++;
-        }
-
-        if (isEditQuestionForm) {
-            data.get("Id").setText(question.getId().toString());
-            data.get("Text").setText(question.getText());
-            data.get("Notes").setText(question.getNotes());
         }
     }
 
