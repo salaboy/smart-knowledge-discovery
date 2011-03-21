@@ -5,16 +5,15 @@ import java.util.List;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
-import com.google.gwt.user.client.ui.FlexTable;
-import com.google.gwt.user.client.ui.Label;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
-public class QuestionTable extends FlexTable {
+public class QuestionTable extends SmartTable<Question> {
 
-    private Label label = new Label("Questions");
     private QuestionDataSource dataSource;
-    
+
     public QuestionTable(QuestionDataSource dataSource) {
+
+        super("Questions");
 
         this.dataSource = dataSource;
         setUp(dataSource);
@@ -22,58 +21,27 @@ public class QuestionTable extends FlexTable {
     }
     
     public void refresh(List<Question> questionList) {
-        
-        for (int i = 2; i < getRowCount(); i ++) {
-            removeRow(i);
-        }
 
-        int row = 2;
+        removeRecords();
+
+        int row = getRowCount();
 
         for (final Question question : questionList) {
 
             Button removeButton = createRemoveButton(question.getId());
             Button editButton = createEditButton(question);
-            
+
             setText(row, 0, Long.toString(question.getId()));
             setText(row, 1, question.getText());
             setText(row, 2, question.getNotes());
             setWidget(row, 3, removeButton);
             setWidget(row, 4, editButton);
-            
+
             getCellFormatter().addStyleName(row, 3, "buttonColumn");
             getCellFormatter().addStyleName(row, 4, "buttonColumn");
-            
+
             row++;
         }
-    }
-
-    private void setUp(QuestionDataSource dataSource) {
-
-        setWidget(0, 0, label);
-
-        List<Field> fields = dataSource.getFields();
-
-        getFlexCellFormatter().setColSpan(0, 0, fields.size() + 2);
-
-        int columNumber = 0;
-
-        for (Field field : fields) {
-            setText(1, columNumber, field.getName());
-            columNumber++;
-        }
-
-        setText(1, columNumber, "Remove");
-        setText(1, columNumber + 1, "Edit");
-
-        addStyle();
-    }
-
-    private void addStyle() {
-
-        getRowFormatter().addStyleName(0, "listHeader");
-        getRowFormatter().addStyleName(1, "listHeader");
-        addStyleName("list");
-        label.addStyleName("label");
     }
 
     private Button createRemoveButton(final Long id) {
