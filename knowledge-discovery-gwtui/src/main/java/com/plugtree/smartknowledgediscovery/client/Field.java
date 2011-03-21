@@ -31,4 +31,8 @@ public class Field {
     public String getValidationError() {
         return validator.getValidationError();
     }
+
+    public boolean isKey() {
+        return false;
+    }
 }

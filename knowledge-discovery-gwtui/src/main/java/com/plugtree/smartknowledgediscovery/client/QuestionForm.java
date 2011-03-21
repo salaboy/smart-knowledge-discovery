@@ -30,7 +30,7 @@ public class QuestionForm extends Grid {
 
             TextBox textBox = new TextBox();
 
-            if (field.getName().equals("Id")) {
+            if (field.isKey()) {
                 if (isEditQuestionForm) {
                     textBox.setEnabled(false);
                 } else {
