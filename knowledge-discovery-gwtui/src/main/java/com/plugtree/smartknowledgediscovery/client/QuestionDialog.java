@@ -19,7 +19,7 @@ public class QuestionDialog extends PopupPanel {
     public QuestionDialog(final Question question) {
 
         final QuestionDataSource questionDataSource = QuestionDataSource.getInstance();
-        final QuestionForm questionForm = new QuestionForm(questionDataSource, question);
+        final QuestionForm questionForm = new QuestionForm(question);
 
         if (question == null) {
             addEditButton.setText("Add");
