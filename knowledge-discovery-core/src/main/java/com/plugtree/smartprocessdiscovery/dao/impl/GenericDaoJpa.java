@@ -49,7 +49,7 @@ public abstract class GenericDaoJpa<T> implements GenericDao<T> {
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
         CriteriaQuery<T> query = cb.createQuery(getPersistedClass());
         Root<T> entity = query.from(getPersistedClass());
-        query.where(cb.equal(entity.get("text"), filter));
+        query.where(cb.like(entity.get("text").as(String.class), "%" + filter+ "%"));
 
         return entityManager.createQuery(query.select(entity)).getResultList();
     }
