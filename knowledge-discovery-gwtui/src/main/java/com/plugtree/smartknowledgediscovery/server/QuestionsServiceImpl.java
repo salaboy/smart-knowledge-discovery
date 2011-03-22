@@ -1,7 +1,5 @@
 package com.plugtree.smartknowledgediscovery.server;
 
-import java.util.Iterator;
-import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -15,19 +13,17 @@ import com.plugtree.smartprocessdiscovery.services.impl.QuestionServiceImpl;
 @SuppressWarnings("serial")
 public class QuestionsServiceImpl extends RemoteServiceServlet implements QuestionsService {
 
-    private LinkedList<Question> questionList = new LinkedList<Question>();
-    private QuestionServiceImpl questionService;
-    
+    private QuestionServiceImpl questionService;  
   
 	public QuestionsServiceImpl() throws ServiceException {
-    	
+
     	ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:persistence-context.xml");
     	System.out.println(applicationContext.toString());
     	System.out.println(applicationContext.containsBean("questionService"));
     	questionService = (QuestionServiceImpl) applicationContext.getBean("questionService");
-     
+
     	System.out.println(questionService.toString());
-    	    	
+
         Question question1 = new Question("what?");
         question1.setId(new Long(1));
         question1.setNotes("Amazing");
@@ -36,19 +32,21 @@ public class QuestionsServiceImpl extends RemoteServiceServlet implements Questi
         question2.setId(new Long(2));
         question2.setNotes("Impressive");
 
-        //questionList.add(question1);
-        //questionList.add(question2);
-       
         questionService.create(question1.getText(),question1.getNotes());
         questionService.create(question2.getText(),question2.getNotes());
-        
     }
 
 	@Override
     public List<Question> fetch() {
-				
+
 	    return (List<Question>) questionService.findAll();
 	}
+
+    @Override
+    public List<Question> fetchWithFilter(String filter) {
+
+        return (List<Question>) questionService.findAllWithFilter(filter);
+    }
 
     @Override
     public List<Question> add(Question question) {

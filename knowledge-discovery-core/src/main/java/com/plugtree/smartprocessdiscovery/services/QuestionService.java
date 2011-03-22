@@ -8,6 +8,8 @@ public interface QuestionService {
 
 	public Collection<Question> findAll();
 
+	public Collection<Question> findAllWithFilter(String filter);
+
 	public Long create(String text, String notes);
 
 	public boolean remove(Long id) throws ServiceException;

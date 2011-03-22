@@ -1,5 +1,6 @@
 package com.plugtree.smartprocessdiscovery.dao.impl;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.plugtree.smartprocessdiscovery.dao.GenericDao;
@@ -28,6 +29,7 @@ public abstract class GenericDaoJpa<T> implements GenericDao<T> {
         return entityManager.find(getPersistedClass(), id);
     }
 
+    @Override
     public void remove(T entity){
         entityManager.remove(entityManager.merge(entity));
     }
@@ -38,6 +40,13 @@ public abstract class GenericDaoJpa<T> implements GenericDao<T> {
         CriteriaQuery<T> c = cb.createQuery(getPersistedClass());
         Root<T> entity = c.from(getPersistedClass());
         return entityManager.createQuery(c.select(entity)).getResultList();
+    }
+
+    @Override
+    public List<T> listWithFilter(String filter) {
+        //TODO:
+        System.out.println("Servidor!");
+        return new LinkedList<T>();
     }
 
     @Override

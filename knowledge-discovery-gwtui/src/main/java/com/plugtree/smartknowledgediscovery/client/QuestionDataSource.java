@@ -41,6 +41,14 @@ public class QuestionDataSource extends GenericDataSource<Question> {
 		return false; 
 	}
 
+    @Override
+    public boolean fetchWithFilter(String filter) {
+
+        service.fetchWithFilter(filter, new QuestionAsyncCallback(getTableList()));
+
+        return false;
+    }
+
 	@Override
     public boolean add(Question question) {
 

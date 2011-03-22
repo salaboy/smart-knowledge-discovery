@@ -1,11 +1,9 @@
 package com.plugtree.smartprocessdiscovery.services.impl;
 
 import java.util.Collection;
-import java.util.Collections;
 
 import com.plugtree.smartprocessdiscovery.dao.QuestionDao;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
-import com.plugtree.smartprocessdiscovery.model.process.Interview;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.services.QuestionService;
 import com.plugtree.smartprocessdiscovery.services.ServiceException;
@@ -22,7 +20,13 @@ public class QuestionServiceImpl implements QuestionService {
 		
 		return questionDao.listAll();
 	}
-	
+
+	@Override
+	public Collection<Question> findAllWithFilter(String filter) {
+
+	    return questionDao.listWithFilter(filter);
+	}
+
 	/* (non-Javadoc)
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#create(java.lang.String, java.lang.String)
 	 */

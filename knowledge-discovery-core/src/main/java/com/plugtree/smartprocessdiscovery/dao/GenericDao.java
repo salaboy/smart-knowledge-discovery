@@ -14,5 +14,7 @@ public interface GenericDao<T> {
 
     List<T> listAll();
 
+    List<T> listWithFilter(String filter);
+
     Class<T> getPersistedClass();
 }

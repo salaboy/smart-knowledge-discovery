@@ -8,7 +8,9 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 public interface QuestionsService extends RemoteService {
 		
     List<Question> fetch();
-		
+
+    List<Question> fetchWithFilter(String filter);
+
     List<Question> add(Question question);
     
     List<Question> remove(Long questionId) ;
