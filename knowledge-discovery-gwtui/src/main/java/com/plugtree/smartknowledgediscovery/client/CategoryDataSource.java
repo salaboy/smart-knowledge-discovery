@@ -37,31 +37,41 @@ public class CategoryDataSource extends GenericDataSource<Category> {
 
     @Override
     public boolean fetch() {
-        // TODO Auto-generated method stub
+
+        service.fetch(new GenericAsyncCallback<Category>(getTableList()));
+
         return false;
     }
 
     @Override
     public boolean fetchWithFilter(String filter) {
-        // TODO Auto-generated method stub
+
+        service.fetchWithFilter(filter, new GenericAsyncCallback<Category>(getTableList()));
+
         return false;
     }
 
     @Override
-    public boolean add(Category element) {
-        // TODO Auto-generated method stub
+    public boolean add(Category category) {
+
+        service.add(category, new GenericAsyncCallback<Category>(getTableList()));
+
         return false;
     }
 
     @Override
     public boolean remove(long id) {
-        // TODO Auto-generated method stub
+
+        service.remove(id, new GenericAsyncCallback<Category>(getTableList()));
+
         return false;
     }
 
     @Override
-    public boolean update(Category element) {
-        // TODO Auto-generated method stub
+    public boolean update(Category category) {
+
+        service.update(category, new GenericAsyncCallback<Category>(getTableList()));
+
         return false;
     }
 }

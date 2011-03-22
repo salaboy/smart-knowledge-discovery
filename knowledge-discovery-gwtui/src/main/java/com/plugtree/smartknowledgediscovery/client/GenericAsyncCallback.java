@@ -5,14 +5,13 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.ui.DialogBox;
 import com.google.gwt.user.client.ui.Label;
-import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
-public class QuestionAsyncCallback implements AsyncCallback<List<Question>> {
+public class GenericAsyncCallback<T> implements AsyncCallback<List<T>> {
 
-    private List<SmartTable<Question>> questionTableList;
+    private List<SmartTable<T>> tableList;
 
-    public QuestionAsyncCallback(List<SmartTable<Question>> questionTableList) {
-        this.questionTableList = questionTableList;
+    public GenericAsyncCallback(List<SmartTable<T>> tableList) {
+        this.tableList = tableList;
     }
     
     @Override
@@ -24,10 +23,10 @@ public class QuestionAsyncCallback implements AsyncCallback<List<Question>> {
     }
 
     @Override
-    public void onSuccess(List<Question> resultList) {
+    public void onSuccess(List<T> resultList) {
         
-        for (SmartTable<Question> questionTable : questionTableList) {
-            questionTable.refresh(resultList);
+        for (SmartTable<T> table : tableList) {
+            table.refresh(resultList);
         }        
     }
 }

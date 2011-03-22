@@ -12,6 +12,11 @@
   </servlet>
 
   <servlet>
+    <servlet-name>categoryServlet</servlet-name>
+    <servlet-class>com.plugtree.smartknowledgediscovery.server.CategoryServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>questionnaireServlet</servlet-name>
     <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionnairesServiceImpl</servlet-class>
   </servlet>
@@ -19,6 +24,11 @@
   <servlet-mapping>
     <servlet-name>questionServlet</servlet-name>
     <url-pattern>/SmartKnowledgeDiscovery/question</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>categoryServlet</servlet-name>
+    <url-pattern>/SmartKnowledgeDiscovery/category</url-pattern>
   </servlet-mapping>
 
   <servlet-mapping>

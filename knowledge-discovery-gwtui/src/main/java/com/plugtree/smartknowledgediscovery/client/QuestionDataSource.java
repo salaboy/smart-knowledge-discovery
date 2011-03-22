@@ -36,7 +36,7 @@ public class QuestionDataSource extends GenericDataSource<Question> {
 	@Override
     public boolean fetch() {
 
-	    service.fetch(new QuestionAsyncCallback(getTableList()));
+	    service.fetch(new GenericAsyncCallback<Question>(getTableList()));
 
 		return false; 
 	}
@@ -44,7 +44,7 @@ public class QuestionDataSource extends GenericDataSource<Question> {
     @Override
     public boolean fetchWithFilter(String filter) {
 
-        service.fetchWithFilter(filter, new QuestionAsyncCallback(getTableList()));
+        service.fetchWithFilter(filter, new GenericAsyncCallback<Question>(getTableList()));
 
         return false;
     }
@@ -52,7 +52,7 @@ public class QuestionDataSource extends GenericDataSource<Question> {
 	@Override
     public boolean add(Question question) {
 
-	    service.add(question, new QuestionAsyncCallback(getTableList()));
+	    service.add(question, new GenericAsyncCallback<Question>(getTableList()));
 
 		return false;
 	}
@@ -60,7 +60,7 @@ public class QuestionDataSource extends GenericDataSource<Question> {
 	@Override
     public boolean remove(long id) {
 
-	    service.remove(id, new QuestionAsyncCallback(getTableList()));
+	    service.remove(id, new GenericAsyncCallback<Question>(getTableList()));
 
 		return false;
 	}
@@ -68,7 +68,7 @@ public class QuestionDataSource extends GenericDataSource<Question> {
 	@Override
     public boolean update(Question question) {
 
-	    service.update(question, new QuestionAsyncCallback(getTableList()));
+	    service.update(question, new GenericAsyncCallback<Question>(getTableList()));
 
 		return false;
 	}
