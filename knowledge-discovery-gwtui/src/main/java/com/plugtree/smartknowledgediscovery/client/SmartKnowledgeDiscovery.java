@@ -1,43 +1,43 @@
 package com.plugtree.smartknowledgediscovery.client;
 
 import com.google.gwt.core.client.EntryPoint;
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.dom.client.Style.Unit;
+
+import com.google.gwt.user.client.ui.DockLayoutPanel;
+import com.google.gwt.user.client.ui.DockPanel;
+import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
-import com.google.gwt.user.client.ui.VerticalPanel;
+import com.google.gwt.user.client.ui.TabLayoutPanel;
+
 
 /**
  * Entry point classes define <code>onModuleLoad()</code>.
  */
 public class SmartKnowledgeDiscovery implements EntryPoint {
 
-	private Button addButton = new Button("Add");
-	private VerticalPanel panel = new VerticalPanel();
-
+	TabLayoutPanel tabPanel = new TabLayoutPanel(1.5, Unit.EM);
+	QuestionPanel questionPanel = new QuestionPanel();
+	DockLayoutPanel mainDockPanel = new DockLayoutPanel(Unit.EM);
 	@Override
-    public void onModuleLoad() {
-
-		QuestionTable questionTable = new QuestionTable();
-
-		panel.add(questionTable);
-		panel.add(addButton);
-
-		addButton.addClickHandler(new ClickHandler() {
-
-            @Override
-            public void onClick(ClickEvent event) {
-                QuestionDialog questionDialog = new QuestionDialog(null);
-                questionDialog.show();
-            }
-        });
-
-		RootPanel.get("mainPanel").add(panel);
-
+	public void onModuleLoad() {
+		tabPanel.add(questionPanel,"Question");
+		tabPanel.add(new HTML("Questionnaire"),"Questionnaire");
+		tabPanel.add(new HTML("Interview"),"Interview");
+		tabPanel.add(new HTML("Categories"),"Categories");
+		tabPanel.setSize("500px", "250px");
+		mainDockPanel.add(tabPanel);
+		mainDockPanel.setSize("500px", "250px");
+						
+		RootPanel.get("mainPanel").add(mainDockPanel);
+	
 		addStyle();
+		
+	}
+	private void addStyle() {
+		mainDockPanel.addStyleName("dockPanel");	
+		mainDockPanel.addStyleName("gwt-TabLayoutPanel");	
 	}
 
-	private void addStyle() {
-	    addButton.addStyleName("button");
-	}
+	
+
 }
