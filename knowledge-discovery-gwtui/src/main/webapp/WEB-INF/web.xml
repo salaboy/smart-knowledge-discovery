@@ -11,10 +11,22 @@
     <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionsServiceImpl</servlet-class>
   </servlet>
 
+  <servlet>
+    <servlet-name>questionnaireServlet</servlet-name>
+    <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionnairesServiceImpl</servlet-class>
+  </servlet>
+
   <servlet-mapping>
     <servlet-name>questionServlet</servlet-name>
     <url-pattern>/SmartKnowledgeDiscovery/question</url-pattern>
   </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>questionnaireServlet</servlet-name>
+    <url-pattern>/SmartKnowledgeDiscovery/questionnaire</url-pattern>
+  </servlet-mapping>
+
+
 
   <!-- Default page to serve -->
   <welcome-file-list>
