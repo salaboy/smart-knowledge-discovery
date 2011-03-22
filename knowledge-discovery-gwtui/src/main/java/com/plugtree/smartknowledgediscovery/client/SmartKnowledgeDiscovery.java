@@ -13,15 +13,17 @@ import com.google.gwt.user.client.ui.TabLayoutPanel;
  */
 public class SmartKnowledgeDiscovery implements EntryPoint {
 
-	TabLayoutPanel tabPanel = new TabLayoutPanel(1.5, Unit.EM);
-	QuestionPanel questionPanel = new QuestionPanel();
-	DockLayoutPanel mainDockPanel = new DockLayoutPanel(Unit.EM);
+	private TabLayoutPanel tabPanel = new TabLayoutPanel(1.5, Unit.EM);
+	private QuestionPanel questionPanel = new QuestionPanel();
+	private CategoryPanel categoryPanel = new CategoryPanel();
+	private DockLayoutPanel mainDockPanel = new DockLayoutPanel(Unit.EM);
+
 	@Override
 	public void onModuleLoad() {
 		tabPanel.add(questionPanel,"Question");
 		tabPanel.add(new HTML("Questionnaire"),"Questionnaire");
 		tabPanel.add(new HTML("Interview"),"Interview");
-		tabPanel.add(new HTML("Categories"),"Categories");
+		tabPanel.add(categoryPanel, "Categories");
 		tabPanel.setSize("500px", "250px");
 		mainDockPanel.add(tabPanel);
 		mainDockPanel.setSize("500px", "250px");
