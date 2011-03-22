@@ -8,8 +8,11 @@ import com.google.gwt.user.client.ui.Label;
 abstract public class SmartTable<T> extends FlexTable {
 
     Label tableTitle = new Label();
+    private GenericDataSource<T> dataSource;
     
     public SmartTable(String title, GenericDataSource<T> dataSource) {
+
+        this.dataSource = dataSource;
 
         tableTitle.setText(title);
 
@@ -19,9 +22,8 @@ abstract public class SmartTable<T> extends FlexTable {
     
     public void removeRecords() {
         
-        for (int i = 2; i < getRowCount(); i++) {
-            removeRow(i);
-        }
+        removeAllRows();
+        setUp(dataSource);
     }
     
     public void refresh(List<T> list) {

@@ -1,15 +1,14 @@
 package com.plugtree.smartprocessdiscovery.dao.impl;
 
-import java.util.LinkedList;
 import java.util.List;
-
-import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 
 /**
  * creation date: 2/23/11
@@ -36,17 +35,23 @@ public abstract class GenericDaoJpa<T> implements GenericDao<T> {
 
     @Override
     public List<T> listAll() {
+
         CriteriaBuilder cb = entityManager.getCriteriaBuilder();
-        CriteriaQuery<T> c = cb.createQuery(getPersistedClass());
-        Root<T> entity = c.from(getPersistedClass());
-        return entityManager.createQuery(c.select(entity)).getResultList();
+        CriteriaQuery<T> query = cb.createQuery(getPersistedClass());
+        Root<T> entity = query.from(getPersistedClass());
+
+        return entityManager.createQuery(query.select(entity)).getResultList();
     }
 
     @Override
     public List<T> listWithFilter(String filter) {
-        //TODO:
-        System.out.println("Servidor!");
-        return new LinkedList<T>();
+
+        CriteriaBuilder cb = entityManager.getCriteriaBuilder();
+        CriteriaQuery<T> query = cb.createQuery(getPersistedClass());
+        Root<T> entity = query.from(getPersistedClass());
+        query.where(cb.equal(entity.get("text"), filter));
+
+        return entityManager.createQuery(query.select(entity)).getResultList();
     }
 
     @Override

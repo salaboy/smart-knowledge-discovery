@@ -18,14 +18,14 @@ public class FilterBox extends HorizontalPanel {
 
         add(textBox);
         add(filterButton);
-        
+
         setSpacing(10);
         
         filterButton.addClickHandler(new ClickHandler() {
-            
+
             @Override
             public void onClick(ClickEvent event) {
-                dataSource.fetchWithFilter(textBox.getText());
+                filter(dataSource);
             }
         });
         
@@ -36,9 +36,18 @@ public class FilterBox extends HorizontalPanel {
             public void onKeyPress(KeyPressEvent event) {
 
                 if (event.getCharCode() == KeyCodes.KEY_ENTER) {
-                    dataSource.fetchWithFilter(textBox.getText());
+                    filter(dataSource);
                 }
             }
         });
+    }
+
+    private void filter(QuestionDataSource dataSource) {
+
+        if (textBox.getText().isEmpty()) {
+            dataSource.fetch();
+        } else {
+            dataSource.fetchWithFilter(textBox.getText());
+        }
     }
 }
