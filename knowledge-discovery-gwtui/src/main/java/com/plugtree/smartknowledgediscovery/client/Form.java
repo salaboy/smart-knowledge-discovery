@@ -11,16 +11,7 @@ public class Form<T> extends Grid {
     protected HashMap<String, SmartTextBox> data = new HashMap<String, SmartTextBox>();
     private LinkedList<String> errors = new LinkedList<String>(); 
 
-    private boolean isEditForm;
-
-    public Form(GenericDataSource<T> dataSource, boolean isEditForm) {
-        
-        setUp(dataSource);
-        
-        this.isEditForm = isEditForm;
-    }
-
-    private void setUp(GenericDataSource<T> dataSource) {
+    public void setUp(GenericDataSource<T> dataSource, boolean isEditForm) {
 
         resize(dataSource.getFields().size(), 2);
 
@@ -63,9 +54,5 @@ public class Form<T> extends Grid {
 
     public LinkedList<String> getValidationErrors() {
         return errors;
-    }
-    
-    public boolean isEditForm() {
-        return isEditForm;
     }
 }
