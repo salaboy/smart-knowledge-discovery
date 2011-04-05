@@ -16,11 +16,11 @@ public class CategoryPanel extends VerticalPanel {
         add(addButton);
 
         addButton.addClickHandler(new ClickHandler() {
+
             @Override
-            public void onClick(ClickEvent event) {
-                //TODO: 
-                QuestionDialog questionDialog = new QuestionDialog(null);
-                questionDialog.show();
+            public void onClick(ClickEvent event) { 
+                CategoryDialog categoryDialog = new CategoryDialog(null);
+                categoryDialog.show();
             }
         });
 
