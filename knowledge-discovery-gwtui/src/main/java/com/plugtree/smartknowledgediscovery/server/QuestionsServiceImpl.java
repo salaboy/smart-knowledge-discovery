@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.plugtree.smartknowledgediscovery.client.QuestionsService;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.services.ServiceException;
 import com.plugtree.smartprocessdiscovery.services.impl.QuestionServiceImpl;

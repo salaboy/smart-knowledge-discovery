@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.plugtree.smartknowledgediscovery.client.CategoryService;
+import com.plugtree.smartknowledgediscovery.client.services.CategoryService;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 
 @SuppressWarnings("serial")

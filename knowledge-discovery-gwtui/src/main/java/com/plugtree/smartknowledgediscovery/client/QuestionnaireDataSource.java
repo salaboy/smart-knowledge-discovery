@@ -2,6 +2,8 @@ package com.plugtree.smartknowledgediscovery.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionsServiceAsync;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 

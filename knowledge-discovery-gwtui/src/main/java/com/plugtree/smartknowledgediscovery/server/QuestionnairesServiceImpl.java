@@ -3,7 +3,7 @@ package com.plugtree.smartknowledgediscovery.server;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.plugtree.smartknowledgediscovery.client.QuestionsService;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionnairesServiceImpl extends RemoteServiceServlet implements QuestionsService{

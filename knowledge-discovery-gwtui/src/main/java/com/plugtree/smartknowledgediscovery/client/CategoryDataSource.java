@@ -2,6 +2,8 @@ package com.plugtree.smartknowledgediscovery.client;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
+import com.plugtree.smartknowledgediscovery.client.services.CategoryServiceAsync;
+import com.plugtree.smartknowledgediscovery.client.services.CategoryService;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 
 public class CategoryDataSource extends GenericDataSource<Category> {

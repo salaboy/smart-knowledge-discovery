@@ -1,4 +1,4 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.services;
 
 import java.util.List;
 
