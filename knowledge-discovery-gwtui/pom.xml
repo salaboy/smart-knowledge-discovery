@@ -66,9 +66,6 @@
         <version>2.1.0-1</version>
         <executions>
           <execution>
-            <configuration>
-              <servicePattern>src/main/java/com/plugtree/smartknowledgediscovery/client/services/*Service.java</servicePattern>
-            </configuration>
             <goals>
               <goal>compile</goal>
               <goal>test</goal>
@@ -83,6 +80,8 @@
           <runTarget>SmartKnowledgeDiscovery.html</runTarget>
           <hostedWebapp>${webappDirectory}</hostedWebapp>
           <i18nMessagesBundle>com.plugtree.smartknowledgediscovery.client.Messages</i18nMessagesBundle>
+          <servicePattern>**/client/services/*Service.java</servicePattern>
+          <inplace>true</inplace>
         </configuration>
       </plugin>
 
