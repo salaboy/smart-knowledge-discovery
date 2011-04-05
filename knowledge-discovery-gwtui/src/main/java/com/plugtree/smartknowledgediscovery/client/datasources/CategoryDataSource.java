@@ -1,9 +1,14 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.datasources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
 import com.plugtree.smartknowledgediscovery.client.services.CategoryServiceAsync;
 import com.plugtree.smartknowledgediscovery.client.services.CategoryService;
+import com.plugtree.smartknowledgediscovery.client.utils.Field;
+import com.plugtree.smartknowledgediscovery.client.utils.GenericAsyncCallback;
+import com.plugtree.smartknowledgediscovery.client.utils.IntegerValidator;
+import com.plugtree.smartknowledgediscovery.client.utils.KeyField;
+import com.plugtree.smartknowledgediscovery.client.utils.StringValidator;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 
 public class CategoryDataSource extends GenericDataSource<Category> {

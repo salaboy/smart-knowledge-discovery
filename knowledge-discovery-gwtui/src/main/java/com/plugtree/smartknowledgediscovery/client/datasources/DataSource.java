@@ -1,4 +1,4 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.datasources;
 
 
 public interface DataSource<T> {

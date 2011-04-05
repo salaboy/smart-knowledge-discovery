@@ -1,10 +1,11 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.widgets;
 
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
+import com.plugtree.smartknowledgediscovery.client.datasources.QuestionDataSource;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionTable extends SmartTable<Question> {
@@ -14,7 +15,6 @@ public class QuestionTable extends SmartTable<Question> {
         super("Questions", QuestionDataSource.getInstance());
     }
 
-    @Override
     public void addRows(List<Question> questionList) {
 
         int row = 2;

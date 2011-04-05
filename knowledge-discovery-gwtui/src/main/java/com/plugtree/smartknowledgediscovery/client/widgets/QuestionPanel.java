@@ -1,10 +1,12 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.plugtree.smartknowledgediscovery.client.datasources.QuestionDataSource;
+import com.plugtree.smartknowledgediscovery.client.utils.FilterBox;
 
 public class QuestionPanel extends HorizontalPanel {
 

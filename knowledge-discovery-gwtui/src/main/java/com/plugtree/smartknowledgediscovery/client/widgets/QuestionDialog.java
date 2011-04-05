@@ -1,4 +1,4 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.widgets;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
@@ -6,9 +6,10 @@ import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HorizontalPanel;
 import com.google.gwt.user.client.ui.PopupPanel;
 import com.google.gwt.user.client.ui.VerticalPanel;
-import com.plugtree.smartprocessdiscovery.model.common.Category;
+import com.plugtree.smartknowledgediscovery.client.datasources.QuestionDataSource;
+import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
-public class CategoryDialog extends PopupPanel {
+public class QuestionDialog extends PopupPanel {
 
     private VerticalPanel popupContent = new VerticalPanel();
 
@@ -16,12 +17,12 @@ public class CategoryDialog extends PopupPanel {
     private Button addEditButton = new Button();
     private Button cancelButton = new Button("Cancel");
 
-    public CategoryDialog(final Category category) {
+    public QuestionDialog(final Question question) {
 
-        final CategoryDataSource categoryDataSource = CategoryDataSource.getInstance();
-        final CategoryForm categoryForm = new CategoryForm(category);
+        final QuestionDataSource questionDataSource = QuestionDataSource.getInstance();
+        final QuestionForm questionForm = new QuestionForm(question);
 
-        if (category == null) {
+        if (question == null) {
             addEditButton.setText("Add");
         } else {
             addEditButton.setText("Edit");
@@ -35,19 +36,19 @@ public class CategoryDialog extends PopupPanel {
             @Override
             public void onClick(ClickEvent event) {
 
-                if (categoryForm.isDataValid()) {
-                    Category newCategory = categoryForm.getCategory();
+                if (questionForm.isDataValid()) {
+                    Question newQuestion = questionForm.getQuestion();
 
-                    if (category == null) {
-                        categoryDataSource.add(newCategory);
+                    if (question == null) {
+                        questionDataSource.add(newQuestion);
                     } else {
-                        categoryDataSource.update(newCategory);
+                        questionDataSource.update(newQuestion);
                     }
 
                     hide();
                 } else {
                     //Add an error dialog.
-                    for( String error : categoryForm.getValidationErrors()) {
+                    for( String error : questionForm.getValidationErrors()) {
                         System.out.println(error);
                     }
                 }
@@ -62,7 +63,7 @@ public class CategoryDialog extends PopupPanel {
             }
         });
 
-        popupContent.add(categoryForm);
+        popupContent.add(questionForm);
         popupContent.add(buttonPanel);
 
         setWidget(popupContent);

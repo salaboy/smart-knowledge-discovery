@@ -1,5 +1,6 @@
-package com.plugtree.smartknowledgediscovery.client;
+package com.plugtree.smartknowledgediscovery.client.widgets;
 
+import com.plugtree.smartknowledgediscovery.client.datasources.CategoryDataSource;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 
 

@@ -6,6 +6,9 @@ import com.google.gwt.user.client.ui.DockLayoutPanel;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
+import com.plugtree.smartknowledgediscovery.client.widgets.CategoryPanel;
+import com.plugtree.smartknowledgediscovery.client.widgets.QuestionPanel;
+import com.plugtree.smartknowledgediscovery.client.widgets.QuestionnairePanel;
 
 
 /**
