@@ -27,17 +27,15 @@ public class QuestionPanel extends HorizontalPanel {
 		addButton.addClickHandler(new ClickHandler() {
 			@Override
 			public void onClick(ClickEvent arg0) {
-				QuestionDialog questionDialog = new QuestionDialog(null);
+				QuestionDialog questionDialog = QuestionDialog.createAddDialog();
 				questionDialog.show();
 			}
 		});
 
 		addStyle();
 	}
+
 	private void addStyle() {
 		addButton.addStyleName("button");
-
 	}
-	
-	
 }

@@ -60,7 +60,7 @@ public class QuestionTable extends SmartTable<Question> {
 
             @Override
             public void onClick(ClickEvent event) {
-                new QuestionDialog(question).show();
+                QuestionDialog.createEditDialog(question).show();
             }
         });
 

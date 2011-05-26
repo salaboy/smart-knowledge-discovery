@@ -17,7 +17,15 @@ public class QuestionDialog extends PopupPanel {
     private Button addEditButton = new Button();
     private Button cancelButton = new Button("Cancel");
 
-    public QuestionDialog(final Question question) {
+    public static QuestionDialog createEditDialog(Question question) {
+    	return new QuestionDialog(question);
+    }
+    
+    public static QuestionDialog createAddDialog() {
+    	return new QuestionDialog(null);
+    }
+    
+    private QuestionDialog(final Question question) {
 
         final QuestionDataSource questionDataSource = QuestionDataSource.getInstance();
         final QuestionForm questionForm = new QuestionForm(question);
@@ -30,6 +38,7 @@ public class QuestionDialog extends PopupPanel {
 
         buttonPanel.add(addEditButton);
         buttonPanel.add(cancelButton);
+        buttonPanel.setSpacing(5);
 
         addEditButton.addClickHandler(new ClickHandler() {
 
