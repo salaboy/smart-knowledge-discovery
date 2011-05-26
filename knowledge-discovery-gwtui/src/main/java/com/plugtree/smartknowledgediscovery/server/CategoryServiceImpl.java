@@ -1,38 +1,48 @@
 package com.plugtree.smartknowledgediscovery.server;
 
-import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.plugtree.smartknowledgediscovery.client.services.CategoryService;
+import com.plugtree.smartprocessdiscovery.dao.impl.CategoryDaoJpa;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 
 @SuppressWarnings("serial")
 public class CategoryServiceImpl extends RemoteServiceServlet implements CategoryService {
 
-    @Override
+	private CategoryDaoJpa categoryDaoJpa = new CategoryDaoJpa();  
+	
+	@Override
     public List<Category> fetch() {
-        return new LinkedList<Category>();
+		return categoryDaoJpa.listAll();
     }
 
     @Override
     public List<Category> fetchWithFilter(String filter) {
-        return new LinkedList<Category>();
+        return categoryDaoJpa.listWithFilter(filter);
     }
 
     @Override
     public List<Category> add(Category category) {
-        return new LinkedList<Category>();
+        categoryDaoJpa.save(category);
+        
+        return categoryDaoJpa.listAll();
     }
 
     @Override
     public List<Category> remove(Long categoryId) {
-        return new LinkedList<Category>();
+    	
+    	Category category = categoryDaoJpa.findById(categoryId);
+        categoryDaoJpa.remove(category);
+        
+        return categoryDaoJpa.listAll();
     }
 
     @Override
     public List<Category> update(Category category) {
-        return new LinkedList<Category>();
+        categoryDaoJpa.update(category);
+        
+        return categoryDaoJpa.listAll();    
     }
 }
     
