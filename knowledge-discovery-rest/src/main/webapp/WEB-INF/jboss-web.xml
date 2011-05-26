@@ -1,6 +1,0 @@
-<jboss-web>
-   <class-loading> 
-      <loader-repository>com.plugtree.smartknowledgediscovery:archive=knowledge-discovery-rest</loader-repository>
-      <loader-repository-config>java2ParentDelegation=false</loader-repository-config> 
-   </class-loading>
-</jboss-web>

@@ -12,3 +12,4 @@ knowledge-discovery-gwtui/src/main/webapp/SmartKnowledgeDiscovery/SmartKnowledge
 *.ipr
 *.iws
 *.gwt.rpc
+*.cache.*
