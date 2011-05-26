@@ -1,20 +1,8 @@
 package com.plugtree.smartprocessdiscovery.services;
 
-import java.util.Collection;
-
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
-public interface QuestionnaireRepository {
-
-	public Collection<Questionnaire> findAll();
-
-	public Long create(String name);
-
-	public boolean remove(Long id);
-
-	public boolean update(Long id, String name);
-
-	public Questionnaire get(Long id);
+public interface QuestionnaireRepository extends Repository<Questionnaire> {
 
 	public boolean addCategory(Long id, Long catId);
 

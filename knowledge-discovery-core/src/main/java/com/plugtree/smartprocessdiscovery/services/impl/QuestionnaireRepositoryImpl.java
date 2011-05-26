@@ -1,12 +1,13 @@
 package com.plugtree.smartprocessdiscovery.services.impl;
 
-import java.util.Collection;
-import java.util.Collections;
+import java.util.LinkedList;
+import java.util.List;
 
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 import com.plugtree.smartprocessdiscovery.services.QuestionnaireRepository;
+import com.plugtree.smartprocessdiscovery.services.RepositoryException;
 
 public class QuestionnaireRepositoryImpl implements QuestionnaireRepository {
 	
@@ -14,22 +15,25 @@ public class QuestionnaireRepositoryImpl implements QuestionnaireRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionnaireService#findAll()
 	 */
 	@Override
-	public Collection<Questionnaire> findAll() {
-		// TODO buscar todos los cuestionarios
-		
-		Collection<Questionnaire> questionnaires = Collections.emptyList();
+	public List<Questionnaire> findAll() {
+
+		List<Questionnaire> questionnaires = new LinkedList<Questionnaire>();
 		
 		return questionnaires;
+	}
+	
+	@Override
+	public List<Questionnaire> findAllWithFilter(String filter) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 	/* (non-Javadoc)
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionnaireService#create(java.lang.String)
 	 */
 	@Override
-	public Long create(String name) {
-		Questionnaire questionnaire = new Questionnaire(name);
-		
-		// TODO persistir
+	public Long add(Questionnaire questionnaire) {
+		//TODO: Persistir!
 		
 		return questionnaire.getId();
 	}
@@ -38,8 +42,13 @@ public class QuestionnaireRepositoryImpl implements QuestionnaireRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionnaireService#remove(java.lang.Long)
 	 */
 	@Override
-	public boolean remove(Long id) {
-		// TODO pedirle a la capa de persistencia que lo borre
+	public boolean remove(Long id) throws RepositoryException {
+		
+		//TODO: improve...
+		if(id == null) {
+			throw new RepositoryException("Questionnaire doesn't exist");
+		}
+
 		return true;
 	}
 	
@@ -47,11 +56,12 @@ public class QuestionnaireRepositoryImpl implements QuestionnaireRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionnaireService#update(java.lang.Long, java.lang.String)
 	 */
 	@Override
-	public boolean update(Long id, String name) {
-		// TODO buscarlo
-		Questionnaire questionnaire = new Questionnaire();
-		questionnaire.setName(name);
-		// TODO persistir
+	public boolean update(Questionnaire questionnaire) throws RepositoryException {
+
+		if(questionnaire == null) {
+			throw new RepositoryException("Questionnaire doesn't exist");
+		}
+		
 		return true;
 	}
 	
@@ -171,5 +181,4 @@ public class QuestionnaireRepositoryImpl implements QuestionnaireRepository {
 		
 		return true;
 	}
-
 }

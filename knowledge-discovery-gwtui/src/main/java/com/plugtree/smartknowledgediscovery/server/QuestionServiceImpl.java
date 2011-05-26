@@ -38,7 +38,7 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 
 		questionRepository.add(question);
 
-		return (List<Question>) questionRepository.findAll();
+		return questionRepository.findAll();
 	}
 
 	@Override
@@ -50,7 +50,7 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 			e.printStackTrace();
 		}
 
-		return (List<Question>) questionRepository.findAll();
+		return questionRepository.findAll();
 	}
 
 	@Override
@@ -62,6 +62,6 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 			e.printStackTrace();
 		}
 
-		return (List<Question>) questionRepository.findAll();
+		return questionRepository.findAll();
 	}
 }
