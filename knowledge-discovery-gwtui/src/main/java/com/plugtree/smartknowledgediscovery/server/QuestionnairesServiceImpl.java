@@ -6,6 +6,7 @@ import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
+@SuppressWarnings("serial")
 public class QuestionnairesServiceImpl extends RemoteServiceServlet implements QuestionsService{
 
 	public QuestionnairesServiceImpl(){

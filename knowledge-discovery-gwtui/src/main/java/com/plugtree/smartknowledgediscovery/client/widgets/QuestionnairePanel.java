@@ -1,7 +1,5 @@
 package com.plugtree.smartknowledgediscovery.client.widgets;
 
-import com.google.gwt.event.dom.client.ClickEvent;
-import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.HorizontalPanel;
@@ -13,7 +11,8 @@ public class QuestionnairePanel extends HorizontalPanel {
     private VerticalPanel vPanel = new VerticalPanel();
 
 	public QuestionnairePanel() {
-		add(new HTML("###Questionnaire CRUD under Construction###"));
+		vPanel.add(new HTML("###Questionnaire CRUD under Construction###"));
+		add(vPanel);
 		
 		/*
 	    QuestionTable questionTable = new QuestionTable();
@@ -32,13 +31,11 @@ public class QuestionnairePanel extends HorizontalPanel {
 				questionDialog.show();
 			}
 		});
+		 */
 		addStyle();
-		*/
 	}
+
 	private void addStyle() {
 		addButton.addStyleName("button");
-
 	}
-	
-	
 }

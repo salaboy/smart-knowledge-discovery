@@ -7,7 +7,6 @@ import com.plugtree.smartknowledgediscovery.client.services.QuestionsServiceAsyn
 import com.plugtree.smartknowledgediscovery.client.utils.Field;
 import com.plugtree.smartknowledgediscovery.client.utils.KeyField;
 import com.plugtree.smartknowledgediscovery.client.utils.StringValidator;
-import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 public class QuestionnaireDataSource extends GenericDataSource<Questionnaire> {
