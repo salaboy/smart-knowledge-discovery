@@ -10,10 +10,10 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Answer;
 import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnaire;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
-import com.plugtree.smartprocessdiscovery.services.InterviewService;
+import com.plugtree.smartprocessdiscovery.services.InterviewRepository;
 import com.plugtree.smartprocessdiscovery.services.ServiceException;
 
-public class InterviewServiceImpl implements InterviewService {
+public class InterviewRepositoryImpl implements InterviewRepository {
 	
 	private GenericDao<Interview> interviewDao;
 	
@@ -27,7 +27,7 @@ public class InterviewServiceImpl implements InterviewService {
 	
 	private GenericDao<Answer> answerDao;
 	
-	public InterviewServiceImpl() {
+	public InterviewRepositoryImpl() {
 
 	}
 	

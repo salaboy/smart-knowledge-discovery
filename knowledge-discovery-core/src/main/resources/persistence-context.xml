@@ -15,7 +15,7 @@
   <bean id="answerDao" class="com.plugtree.smartprocessdiscovery.dao.impl.AnswerDaoJpa"/>
   <bean id="answeredQuestionnaireDao" class="com.plugtree.smartprocessdiscovery.dao.impl.AnsweredQuestionnaireDaoJpa"/>
   
-  <bean id="interviewService" class="com.plugtree.smartprocessdiscovery.services.impl.InterviewServiceImpl">
+  <bean id="interviewService" class="com.plugtree.smartprocessdiscovery.services.impl.InterviewRepositoryImpl">
     <property name="interviewDao" ref="interviewDao"/>
     <property name="questionnaireDao" ref="questionnaireDao"/>
     <property name="questionDao" ref="questionDao"/>
@@ -24,7 +24,7 @@
     <property name="answerDao" ref="answerDao"/>
   </bean>
   
-  <bean id="questionService" class="com.plugtree.smartprocessdiscovery.services.impl.QuestionServiceImpl">
+  <bean id="questionService" class="com.plugtree.smartprocessdiscovery.services.impl.QuestionRepositoryImpl">
      <property name="questionDao" ref="questionDao"/>
   </bean>
 

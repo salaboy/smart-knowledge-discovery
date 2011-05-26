@@ -5,10 +5,10 @@ import java.util.Collection;
 import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
-import com.plugtree.smartprocessdiscovery.services.QuestionService;
+import com.plugtree.smartprocessdiscovery.services.QuestionRepository;
 import com.plugtree.smartprocessdiscovery.services.ServiceException;
 
-public class QuestionServiceImpl implements QuestionService {
+public class QuestionRepositoryImpl implements QuestionRepository {
 	
 	private GenericDao<Question> questionDao;
 	

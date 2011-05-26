@@ -4,7 +4,7 @@ import java.util.Collection;
 
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
-public interface QuestionService {
+public interface QuestionRepository {
 
 	public Collection<Question> findAll();
 

@@ -5,7 +5,7 @@ import java.util.Date;
 
 import com.plugtree.smartprocessdiscovery.model.process.Interview;
 
-public interface InterviewService {
+public interface InterviewRepository {
 
 	public Collection<Interview> findAll() throws ServiceException;
 

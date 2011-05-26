@@ -6,9 +6,9 @@ import java.util.Collections;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
-import com.plugtree.smartprocessdiscovery.services.QuestionnaireService;
+import com.plugtree.smartprocessdiscovery.services.QuestionnaireRepository;
 
-public class QuestionnaireServiceImpl implements QuestionnaireService {
+public class QuestionnaireRepositoryImpl implements QuestionnaireRepository {
 	
 	/* (non-Javadoc)
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionnaireService#findAll()
