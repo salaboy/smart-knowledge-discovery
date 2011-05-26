@@ -1,9 +1,5 @@
 package com.plugtree.smartprocessdiscovery;
 
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import com.plugtree.smartprocessdiscovery.model.common.Category;
@@ -12,26 +8,7 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
 public class QuestionnaireTest {
 
-    public QuestionnaireTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() throws Exception {
-    }
-
-    @AfterClass
-    public static void tearDownClass() throws Exception {
-    }
-
-    @Before
-    public void setUp() {
-    }
-
-    @After
-    public void tearDown() {
-    }
-
-   
+    //TODO: Improve!
     @Test
     public void simpleQuestionnaire() {
         Question question = new Question("This is a simple question?");
@@ -46,11 +23,5 @@ public class QuestionnaireTest {
         questionnaire.addTag("Employee oriented tag");
         //@TODO: override toString to iterate all the questions inside the questionnaire
         System.out.println("Questionnaire -> "+ questionnaire.toString());
-
-
-        
     }
-    
-   
-
 }
