@@ -2,7 +2,7 @@ package com.plugtree.smartprocessdiscovery.services.impl;
 
 import java.util.Collection;
 
-import com.plugtree.smartprocessdiscovery.dao.QuestionDao;
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.services.QuestionService;
@@ -10,7 +10,7 @@ import com.plugtree.smartprocessdiscovery.services.ServiceException;
 
 public class QuestionServiceImpl implements QuestionService {
 	
-	private QuestionDao questionDao;
+	private GenericDao<Question> questionDao;
 	
 	/* (non-Javadoc)
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#findAll()
@@ -153,11 +153,11 @@ public class QuestionServiceImpl implements QuestionService {
 		return true;
 	}
 
-	public void setQuestionDao(QuestionDao questionDao) {
+	public void setQuestionDao(GenericDao<Question> questionDao) {
 		this.questionDao = questionDao;
 	}
 
-	public QuestionDao getQuestionDao() {
+	public GenericDao<Question> getQuestionDao() {
 		return questionDao;
 	}
 

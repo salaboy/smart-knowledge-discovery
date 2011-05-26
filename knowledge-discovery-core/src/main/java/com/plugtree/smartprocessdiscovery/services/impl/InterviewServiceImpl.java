@@ -3,12 +3,7 @@ package com.plugtree.smartprocessdiscovery.services.impl;
 import java.util.Collection;
 import java.util.Date;
 
-import com.plugtree.smartprocessdiscovery.dao.AnswerDao;
-import com.plugtree.smartprocessdiscovery.dao.AnsweredQuestionnaireDao;
-import com.plugtree.smartprocessdiscovery.dao.InterviewDao;
-import com.plugtree.smartprocessdiscovery.dao.PersonDao;
-import com.plugtree.smartprocessdiscovery.dao.QuestionDao;
-import com.plugtree.smartprocessdiscovery.dao.QuestionnaireDao;
+import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.process.Interview;
 import com.plugtree.smartprocessdiscovery.model.process.Person;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Answer;
@@ -20,44 +15,43 @@ import com.plugtree.smartprocessdiscovery.services.ServiceException;
 
 public class InterviewServiceImpl implements InterviewService {
 	
-	private InterviewDao interviewDao;
+	private GenericDao<Interview> interviewDao;
 	
-	private QuestionnaireDao questionnaireDao;
+	private GenericDao<Questionnaire> questionnaireDao;
 	
-	private QuestionDao questionDao;
+	private GenericDao<Question> questionDao;
 	
-	private AnsweredQuestionnaireDao answeredQuestionnaireDao;
+	private GenericDao<AnsweredQuestionnaire> answeredQuestionnaireDao;
 	
-	private PersonDao personDao;
+	private GenericDao<Person> personDao;
 	
-	private AnswerDao answerDao;
+	private GenericDao<Answer> answerDao;
 	
 	public InterviewServiceImpl() {
 
 	}
 	
-	public void setInterviewDao(InterviewDao interviewDao) {
+	public void setInterviewDao(GenericDao<Interview> interviewDao) {
 		this.interviewDao = interviewDao;
 	}
 
-	public void setQuestionnaireDao(QuestionnaireDao questionnaireDao) {
+	public void setQuestionnaireDao(GenericDao<Questionnaire> questionnaireDao) {
 		this.questionnaireDao = questionnaireDao;
 	}
 
-	public void setQuestionDao(QuestionDao questionDao) {
+	public void setQuestionDao(GenericDao<Question> questionDao) {
 		this.questionDao = questionDao;
 	}
 
-	public void setAnsweredQuestionnaireDao(
-			AnsweredQuestionnaireDao answeredQuestionnaireDao) {
+	public void setAnsweredQuestionnaireDao(GenericDao<AnsweredQuestionnaire> answeredQuestionnaireDao) {
 		this.answeredQuestionnaireDao = answeredQuestionnaireDao;
 	}
 
-	public void setPersonDao(PersonDao personDao) {
+	public void setPersonDao(GenericDao<Person> personDao) {
 		this.personDao = personDao;
 	}
 
-	public void setAnswerDao(AnswerDao answerDao) {
+	public void setAnswerDao(GenericDao<Answer> answerDao) {
 		this.answerDao = answerDao;
 	}
 
