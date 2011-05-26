@@ -5,7 +5,7 @@ import java.util.List;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 
-public interface QuestionnairesService extends RemoteService {
+public interface QuestionnaireService extends RemoteService {
 		
     List<Questionnaire> fetch();
 

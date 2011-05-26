@@ -2,8 +2,8 @@ package com.plugtree.smartknowledgediscovery.client.datasources;
 
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.ServiceDefTarget;
-import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
-import com.plugtree.smartknowledgediscovery.client.services.QuestionsServiceAsync;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionService;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionServiceAsync;
 import com.plugtree.smartknowledgediscovery.client.utils.Field;
 import com.plugtree.smartknowledgediscovery.client.utils.GenericAsyncCallback;
 import com.plugtree.smartknowledgediscovery.client.utils.KeyField;
@@ -13,7 +13,7 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionDataSource extends GenericDataSource<Question> {
 
-	private QuestionsServiceAsync service;
+	private QuestionServiceAsync service;
     private static QuestionDataSource instance = null;	
 	
     public static QuestionDataSource getInstance() {
@@ -25,7 +25,7 @@ public class QuestionDataSource extends GenericDataSource<Question> {
 	
 	private QuestionDataSource() {
 
-	    service = GWT.create(QuestionsService.class);
+	    service = GWT.create(QuestionService.class);
 		((ServiceDefTarget)service).setServiceEntryPoint(GWT.getModuleBaseURL() + "question");
 
 		fetch();

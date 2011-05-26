@@ -8,7 +8,7 @@
   <!-- Servlets -->
   <servlet>
     <servlet-name>questionServlet</servlet-name>
-    <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionsServiceImpl</servlet-class>
+    <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionServiceImpl</servlet-class>
   </servlet>
 
   <servlet>
@@ -18,7 +18,7 @@
 
   <servlet>
     <servlet-name>questionnaireServlet</servlet-name>
-    <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionnairesServiceImpl</servlet-class>
+    <servlet-class>com.plugtree.smartknowledgediscovery.server.QuestionnaireServiceImpl</servlet-class>
   </servlet>
 
   <servlet-mapping>

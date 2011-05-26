@@ -3,13 +3,13 @@ package com.plugtree.smartknowledgediscovery.server;
 import java.util.List;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 @SuppressWarnings("serial")
-public class QuestionnairesServiceImpl extends RemoteServiceServlet implements QuestionsService{
+public class QuestionnaireServiceImpl extends RemoteServiceServlet implements QuestionService{
 
-	public QuestionnairesServiceImpl(){
+	public QuestionnaireServiceImpl(){
 		System.out.println("Questionnaire Service UP");		
 	}
 	

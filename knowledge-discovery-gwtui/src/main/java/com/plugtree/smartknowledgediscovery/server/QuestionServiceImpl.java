@@ -5,17 +5,17 @@ import java.util.List;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.plugtree.smartknowledgediscovery.client.services.QuestionsService;
+import com.plugtree.smartknowledgediscovery.client.services.QuestionService;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.services.ServiceException;
 import com.plugtree.smartprocessdiscovery.services.impl.QuestionRepositoryImpl;
 
 @SuppressWarnings("serial")
-public class QuestionsServiceImpl extends RemoteServiceServlet implements QuestionsService {
+public class QuestionServiceImpl extends RemoteServiceServlet implements QuestionService {
 
     private QuestionRepositoryImpl questionRepository;  
   
-	public QuestionsServiceImpl() throws ServiceException {
+	public QuestionServiceImpl() throws ServiceException {
 
     	ClassPathXmlApplicationContext applicationContext = new ClassPathXmlApplicationContext("classpath:persistence-context.xml");
     	System.out.println(applicationContext.toString());
