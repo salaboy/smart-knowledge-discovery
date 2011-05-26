@@ -12,9 +12,9 @@ public interface QuestionRepository {
 
 	public Long create(String text, String notes);
 
-	public boolean remove(Long id) throws ServiceException;
+	public boolean remove(Long id) throws RepositoryException;
 
-	public boolean update(Long id, String text, String notes) throws ServiceException;
+	public boolean update(Long id, String text, String notes) throws RepositoryException;
 
 	public Question get(Long id);
 

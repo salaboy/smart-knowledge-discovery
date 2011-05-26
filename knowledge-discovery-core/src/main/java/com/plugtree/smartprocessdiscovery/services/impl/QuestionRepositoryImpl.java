@@ -6,7 +6,7 @@ import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.services.QuestionRepository;
-import com.plugtree.smartprocessdiscovery.services.ServiceException;
+import com.plugtree.smartprocessdiscovery.services.RepositoryException;
 
 public class QuestionRepositoryImpl implements QuestionRepository {
 	
@@ -46,12 +46,12 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#remove(java.lang.Long)
 	 */
 	@Override
-	public boolean remove(Long id) throws ServiceException {
+	public boolean remove(Long id) throws RepositoryException {
 		// TODO pedirle a la capa de persistencia que lo borre
 		
 		Question question = questionDao.findById(id);
 		if(question==null) {
-			throw new ServiceException("Question doesn't exist");
+			throw new RepositoryException("Question doesn't exist");
 		}
 		
 		questionDao.remove(question);
@@ -63,11 +63,11 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#update(java.lang.Long, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean update(Long id, String text, String notes) throws ServiceException {
+	public boolean update(Long id, String text, String notes) throws RepositoryException {
 		
 		Question question = questionDao.findById(id);
 		if(question==null) {
-			throw new ServiceException("Question doesn't exist");
+			throw new RepositoryException("Question doesn't exist");
 		}
 		question.setText(text);
 		question.setNotes(notes);

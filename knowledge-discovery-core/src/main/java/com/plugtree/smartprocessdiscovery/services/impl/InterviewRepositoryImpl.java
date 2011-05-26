@@ -11,7 +11,7 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.AnsweredQuestionnai
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 import com.plugtree.smartprocessdiscovery.model.questionaire.Questionnaire;
 import com.plugtree.smartprocessdiscovery.services.InterviewRepository;
-import com.plugtree.smartprocessdiscovery.services.ServiceException;
+import com.plugtree.smartprocessdiscovery.services.RepositoryException;
 
 public class InterviewRepositoryImpl implements InterviewRepository {
 	
@@ -67,13 +67,13 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.InterviewService#create(java.lang.String, java.lang.Long, java.lang.Long)
 	 */
 	@Override
-	public Long create(String description, Long questionnaireId, Long personId) throws ServiceException {
+	public Long create(String description, Long questionnaireId, Long personId) throws RepositoryException {
 		Interview interview = new Interview();
 		interview.setDescription(description);
 		
 		Questionnaire questionnaire = questionnaireDao.findById(questionnaireId);
 		if(questionnaire==null) {
-			throw new ServiceException("Questionnaire doesn't exist");
+			throw new RepositoryException("Questionnaire doesn't exist");
 		}
 		
 		AnsweredQuestionnaire answeredQuestionnaire = new AnsweredQuestionnaire(questionnaire);
@@ -81,7 +81,7 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 		
 		Person person = personDao.findById(personId);
 		if(person==null) {
-			throw new ServiceException("Person doesn't exist");
+			throw new RepositoryException("Person doesn't exist");
 		}
 		interview.setPerson(person);
 		
@@ -95,10 +95,10 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.InterviewService#remove(java.lang.Long)
 	 */
 	@Override
-	public boolean remove(Long id) throws ServiceException {
+	public boolean remove(Long id) throws RepositoryException {
 		Interview interview = interviewDao.findById(id);
 		if(interview==null) {
-			throw new ServiceException("Interview doesn't exist");
+			throw new RepositoryException("Interview doesn't exist");
 		}
 		
 		interviewDao.remove(interview);
@@ -110,13 +110,13 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.InterviewService#update(java.lang.Long, java.lang.String, java.util.Date, java.util.Date, java.util.Date, java.lang.Long, java.lang.Long)
 	 */
 	@Override
-	public boolean update(Long id, String description, Date dueDate, Date startDate, Date endDate, Long questionnaireId, Long personId) throws ServiceException {
+	public boolean update(Long id, String description, Date dueDate, Date startDate, Date endDate, Long questionnaireId, Long personId) throws RepositoryException {
 		AnsweredQuestionnaire newQuestionnaire = null;
 		AnsweredQuestionnaire oldQuestionnaire = null;
 		
 		Interview interview = interviewDao.findById(id);
 		if(interview==null) {
-			throw new ServiceException("Interview doesn't exist");
+			throw new RepositoryException("Interview doesn't exist");
 		}
 		interview.setDescription(description);
 		interview.setDueDate(dueDate);
@@ -125,13 +125,13 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 		
 		Person person = personDao.findById(personId);
 		if(person==null) {
-			throw new ServiceException("Person doesn't exist");
+			throw new RepositoryException("Person doesn't exist");
 		}
 		interview.setPerson(person);
 		
 		Questionnaire questionnaire = questionnaireDao.findById(questionnaireId);
 		if(questionnaire==null) {
-			throw new ServiceException("Questionnaire doesn't exist");
+			throw new RepositoryException("Questionnaire doesn't exist");
 		}
 		
 		if(!questionnaire.equals(interview.getQuestionnaire())) {
@@ -160,15 +160,15 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.InterviewService#addAnswer(java.lang.Long, java.lang.Long, java.lang.String)
 	 */
 	@Override
-	public boolean addAnswer(Long id, Long questionId, String text) throws ServiceException {
+	public boolean addAnswer(Long id, Long questionId, String text) throws RepositoryException {
 		Interview interview = interviewDao.findById(id);
 		if(interview==null) {
-			throw new ServiceException("Interview doesn't exist");
+			throw new RepositoryException("Interview doesn't exist");
 		}
 		
 		Question question = questionDao.findById(questionId);
 		if(question==null) {
-			throw new ServiceException("Question doesn't exist");
+			throw new RepositoryException("Question doesn't exist");
 		}
 		
 		Answer answer = new Answer();
@@ -188,20 +188,20 @@ public class InterviewRepositoryImpl implements InterviewRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.InterviewService#removeAnswer(java.lang.Long, java.lang.Long)
 	 */
 	@Override
-	public boolean removeAnswer(Long id, Long questionId) throws ServiceException {
+	public boolean removeAnswer(Long id, Long questionId) throws RepositoryException {
 		Interview interview = interviewDao.findById(id);
 		if(interview==null) {
-			throw new ServiceException("Interview doesn't exist");
+			throw new RepositoryException("Interview doesn't exist");
 		}
 		
 		Question question = questionDao.findById(questionId);
 		if(question==null) {
-			throw new ServiceException("Question doesn't exist");
+			throw new RepositoryException("Question doesn't exist");
 		}
 		
 		Answer answer = interview.getQuestionnaire().getAnswer(question);
 		if(answer==null) {
-			throw new ServiceException("The question doesn't have an answer");
+			throw new RepositoryException("The question doesn't have an answer");
 		}
 		
 		interview.getQuestionnaire().removeAnswer(question);

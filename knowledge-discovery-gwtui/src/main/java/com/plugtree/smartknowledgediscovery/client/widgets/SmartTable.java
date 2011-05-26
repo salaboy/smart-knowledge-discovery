@@ -9,7 +9,7 @@ import com.plugtree.smartknowledgediscovery.client.utils.Field;
 
 abstract public class SmartTable<T> extends FlexTable {
 
-    Label tableTitle = new Label();
+    private Label tableTitle = new Label();
     private GenericDataSource<T> dataSource;
     
     public SmartTable(String title, GenericDataSource<T> dataSource) {

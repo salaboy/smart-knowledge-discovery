@@ -1,14 +1,14 @@
 package com.plugtree.smartprocessdiscovery.services;
 
-public class ServiceException extends Exception {
+public class RepositoryException extends Exception {
 
 	private static final long serialVersionUID = 3801504970286404263L;
 	
-	public ServiceException(String message) {
+	public RepositoryException(String message) {
 		super(message);
 	}
 	
-	public ServiceException(String message, Throwable ex) {
+	public RepositoryException(String message, Throwable ex) {
 		super(message, ex);
 	}
 

@@ -7,20 +7,20 @@ import com.plugtree.smartprocessdiscovery.model.process.Interview;
 
 public interface InterviewRepository {
 
-	public Collection<Interview> findAll() throws ServiceException;
+	public Collection<Interview> findAll() throws RepositoryException;
 
 	public Long create(String description, Long questionnaireId,
-			Long personId)  throws ServiceException;
+			Long personId)  throws RepositoryException;
 
-	public boolean remove(Long id)  throws ServiceException;
+	public boolean remove(Long id)  throws RepositoryException;
 
 	public boolean update(Long id, String description, Date dueDate,
-			Date startDate, Date endDate, Long questionnaireId, Long personId)  throws ServiceException;
+			Date startDate, Date endDate, Long questionnaireId, Long personId)  throws RepositoryException;
 
-	public Interview get(Long id)  throws ServiceException;
+	public Interview get(Long id)  throws RepositoryException;
 
-	public boolean addAnswer(Long id, Long questionId, String text)  throws ServiceException;
+	public boolean addAnswer(Long id, Long questionId, String text)  throws RepositoryException;
 
-	public boolean removeAnswer(Long id, Long questionId)  throws ServiceException;
+	public boolean removeAnswer(Long id, Long questionId)  throws RepositoryException;
 
 }
