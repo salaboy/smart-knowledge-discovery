@@ -1,29 +1,14 @@
 package com.plugtree.smartprocessdiscovery.services;
 
-import java.util.Collection;
-
 import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
-public interface QuestionRepository {
+public interface QuestionRepository extends Repository<Question>{
 
-	public Collection<Question> findAll();
+	public boolean addCategory(Long questionId, Long categoryId);
 
-	public Collection<Question> findAllWithFilter(String filter);
+	public boolean removeCategory(Long questionId, Long categoryId);
 
-	public Long create(String text, String notes);
+	public boolean addTag(String tagName);
 
-	public boolean remove(Long id) throws RepositoryException;
-
-	public boolean update(Long id, String text, String notes) throws RepositoryException;
-
-	public Question get(Long id);
-
-	public boolean addCategory(Long qId, Long catId);
-
-	public boolean removeCategory(Long qId, Long catId);
-
-	public boolean addTag(Long id, String tag);
-
-	public boolean removeTag(Long id, String tag);
-
+	public boolean removeTag(Long tagId);
 }

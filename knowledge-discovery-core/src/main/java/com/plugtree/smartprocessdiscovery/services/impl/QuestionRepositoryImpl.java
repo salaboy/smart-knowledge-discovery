@@ -1,6 +1,6 @@
 package com.plugtree.smartprocessdiscovery.services.impl;
 
-import java.util.Collection;
+import java.util.List;
 
 import com.plugtree.smartprocessdiscovery.dao.GenericDao;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
@@ -16,13 +16,13 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#findAll()
 	 */
 	@Override
-	public Collection<Question> findAll() {
+	public List<Question> findAll() {
 		
 		return questionDao.listAll();
 	}
 
 	@Override
-	public Collection<Question> findAllWithFilter(String filter) {
+	public List<Question> findAllWithFilter(String filter) {
 
 	    return questionDao.listWithFilter(filter);
 	}
@@ -31,14 +31,10 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#create(java.lang.String, java.lang.String)
 	 */
 	@Override
-	public Long create(String text, String notes) {
-		Question question = new Question();
-		question.setText(text);
-		question.setNotes(notes);
+	public Long add(Question question) {
 		
 		questionDao.save(question);
 		
-				
 		return question.getId();
 	}
 	
@@ -47,15 +43,15 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 */
 	@Override
 	public boolean remove(Long id) throws RepositoryException {
-		// TODO pedirle a la capa de persistencia que lo borre
-		
+
 		Question question = questionDao.findById(id);
-		if(question==null) {
+		
+		if(question == null) {
 			throw new RepositoryException("Question doesn't exist");
 		}
 		
 		questionDao.remove(question);
-				
+
 		return true;
 	}
 	
@@ -63,15 +59,8 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#update(java.lang.Long, java.lang.String, java.lang.String)
 	 */
 	@Override
-	public boolean update(Long id, String text, String notes) throws RepositoryException {
-		
-		Question question = questionDao.findById(id);
-		if(question==null) {
-			throw new RepositoryException("Question doesn't exist");
-		}
-		question.setText(text);
-		question.setNotes(notes);
-		
+	public boolean update(Question question) throws RepositoryException {
+
 		questionDao.update(question);
 		
 		return true;
@@ -125,7 +114,7 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#addTag(java.lang.Long, java.lang.String)
 	 */
 	@Override
-	public boolean addTag(Long id, String tag) {
+	public boolean addTag(String tag) {
 		// TODO buscar pregunta
 		Question question = new Question();
 		
@@ -143,11 +132,11 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	 * @see com.plugtree.smartprocessdiscovery.services.impl.QuestionInterface#removeTag(java.lang.Long, java.lang.String)
 	 */
 	@Override
-	public boolean removeTag(Long id, String tag) {
-		// TODO buscar pregunta
+	public boolean removeTag(Long id) {
+		// TODO buscar pregunta y tag
 		Question question = new Question();
 		
-		question.removeTag(tag);
+		question.removeTag("tag");
 		
 		// TODO persistir
 		return true;
@@ -160,5 +149,4 @@ public class QuestionRepositoryImpl implements QuestionRepository {
 	public GenericDao<Question> getQuestionDao() {
 		return questionDao;
 	}
-
 }

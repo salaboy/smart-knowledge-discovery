@@ -24,19 +24,19 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 	@Override
 	public List<Question> fetch() {
 
-		return (List<Question>) questionRepository.findAll();
+		return questionRepository.findAll();
 	}
 
 	@Override
 	public List<Question> fetchWithFilter(String filter) {
 
-		return (List<Question>) questionRepository.findAllWithFilter(filter);
+		return questionRepository.findAllWithFilter(filter);
 	}
 
 	@Override
 	public List<Question> add(Question question) {
 
-		questionRepository.create(question.getText(), question.getNotes());
+		questionRepository.add(question);
 
 		return (List<Question>) questionRepository.findAll();
 	}
@@ -57,7 +57,7 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 	public List<Question> update(Question question){
 
 		try {
-			questionRepository.update(question.getId(), question.getText(), question.getNotes());
+			questionRepository.update(question);
 		} catch (RepositoryException e) {
 			e.printStackTrace();
 		}
