@@ -5,9 +5,9 @@ import com.google.gwt.dom.client.Style.Unit;
 import com.google.gwt.user.client.ui.HTML;
 import com.google.gwt.user.client.ui.RootPanel;
 import com.google.gwt.user.client.ui.TabLayoutPanel;
-import com.plugtree.smartknowledgediscovery.client.widgets.CategoryPanel;
-import com.plugtree.smartknowledgediscovery.client.widgets.QuestionPanel;
-import com.plugtree.smartknowledgediscovery.client.widgets.QuestionnairePanel;
+import com.plugtree.smartknowledgediscovery.client.mainviews.CategoryPanel;
+import com.plugtree.smartknowledgediscovery.client.mainviews.QuestionPanel;
+import com.plugtree.smartknowledgediscovery.client.mainviews.QuestionnairePanel;
 
 public class SmartKnowledgeDiscovery implements EntryPoint {
 

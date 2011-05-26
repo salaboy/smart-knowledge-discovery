@@ -1,9 +1,11 @@
-package com.plugtree.smartknowledgediscovery.client.widgets;
+package com.plugtree.smartknowledgediscovery.client.mainviews;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.VerticalPanel;
+import com.plugtree.smartknowledgediscovery.client.widgets.CategoryDialog;
+import com.plugtree.smartknowledgediscovery.client.widgets.CategoryTable;
 
 public class CategoryPanel extends VerticalPanel {
 
