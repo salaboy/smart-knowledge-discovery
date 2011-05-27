@@ -64,4 +64,9 @@ public class QuestionServiceImpl extends RemoteServiceServlet implements Questio
 
 		return questionRepository.findAll();
 	}
+
+	@Override
+	public Question get(Long questionId) {
+		return questionRepository.get(questionId);
+	}
 }

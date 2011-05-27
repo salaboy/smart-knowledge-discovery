@@ -42,15 +42,14 @@ abstract public class SmartTable<T> extends FlexTable {
 
         getFlexCellFormatter().setColSpan(0, 0, fields.size() + 2);
 
-        int columNumber = 0;
+        setText(1, 0, "Select");
+        
+        int columNumber = 1;
 
         for (Field field : fields) {
             setText(1, columNumber, field.getName());
             columNumber++;
         }
-
-        setText(1, columNumber, "Remove");
-        setText(1, columNumber + 1, "Edit");
 
         addStyle();
     }

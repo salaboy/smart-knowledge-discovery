@@ -69,4 +69,10 @@ h1 {
 	background-color: white;
 }
 
+TR.selected TD
+{
+   background-color: blue;
+   color: black;
+}
+
 

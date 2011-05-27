@@ -16,4 +16,6 @@ public interface QuestionService extends RemoteService {
     List<Question> remove(Long questionId) ;
     
     List<Question> update(Question question) ;
+    
+    Question get(Long questionId);
 }
