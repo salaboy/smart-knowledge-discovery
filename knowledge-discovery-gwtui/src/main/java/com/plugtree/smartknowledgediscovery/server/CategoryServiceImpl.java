@@ -61,5 +61,10 @@ public class CategoryServiceImpl extends RemoteServiceServlet implements Categor
         
         return categoryRepository.findAll();    
     }
+
+	@Override
+	public Category get(Long categoryId) {
+		return categoryRepository.get(categoryId);
+	}
 }
     

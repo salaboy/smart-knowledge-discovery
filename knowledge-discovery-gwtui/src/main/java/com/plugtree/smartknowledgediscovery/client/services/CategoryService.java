@@ -13,7 +13,9 @@ public interface CategoryService extends RemoteService {
 
     List<Category> add(Category category);
     
-    List<Category> remove(Long categoryId) ;
+    List<Category> remove(Long categoryId);
     
-    List<Category> update(Category category) ;    
+    List<Category> update(Category category);
+    
+    Category get(Long categoryId);    
 }

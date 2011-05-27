@@ -1,69 +1,72 @@
 package com.plugtree.smartknowledgediscovery.client.widgets;
 
+import java.util.LinkedList;
 import java.util.List;
 
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.event.dom.client.ClickHandler;
-import com.google.gwt.user.client.ui.Button;
+import com.google.gwt.user.client.ui.CheckBox;
 import com.plugtree.smartknowledgediscovery.client.datasources.CategoryDataSource;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
 
 public class CategoryTable extends SmartTable<Category> {
 
-    public CategoryTable() {
-        super("Categories", CategoryDataSource.getInstance());
-    }
+	private LinkedList<CheckBox> checkBoxList = new LinkedList<CheckBox>();
 
-    @Override
-    void addRows(List<Category> categoryList) {
-        
-        int row = 2;
+	public CategoryTable() {
+		super("Categories", CategoryDataSource.getInstance());
+	}
 
-        for (final Category category : categoryList) {
+	@Override
+	void addRows(List<Category> categoryList) {
 
-            Button removeButton = createRemoveButton(category.getId());
-            Button editButton = createEditButton(category);
+		checkBoxList.clear();
+		
+		int row = 2;
 
-            setText(row, 0, Long.toString(category.getId()));
-            setText(row, 1, category.getName());
-            setText(row, 2, String.valueOf(category.getRank()));
-            setWidget(row, 3, removeButton);
-            setWidget(row, 4, editButton);
+		for (final Category category : categoryList) {
 
-            getCellFormatter().addStyleName(row, 3, "buttonColumn");
-            getCellFormatter().addStyleName(row, 4, "buttonColumn");
+			CheckBox checkbox = new CheckBox();
+			checkBoxList.add(checkbox);
 
-            row++;
-        }
-    }
+			final int rowSelected = row; 
 
-    private Button createEditButton(final Category category) {
-        
-    	Button editButton = new Button("edit");
+			checkbox.addClickHandler(new ClickHandler() {
 
-        editButton.addClickHandler(new ClickHandler() {
+				@Override
+				public void onClick(ClickEvent event) {
+					CheckBox checkbox = (CheckBox)event.getSource();
+					if (checkbox.getValue()) {
+						getRowFormatter().addStyleName(rowSelected, "selected");
+					} else {
+						getRowFormatter().removeStyleName(rowSelected, "selected");
+					}
+				}
+			});
 
-            @Override
-            public void onClick(ClickEvent event) {
-                CategoryDialog.createEditDialog(category).show();
-            }
-        });
+			setWidget(row, 0, checkbox);
+			setText(row, 1, Long.toString(category.getId()));
+			setText(row, 2, category.getName());
+			setText(row, 3, String.valueOf(category.getRank()));
 
-        return editButton;
-    }
+			row++;
+		}
+	}
 
-    private Button createRemoveButton(final Long id) {
-        
-        Button removeButton = new Button("x");
+	public List<Long> getSelectedIds() {
 
-        removeButton.addClickHandler(new ClickHandler() {
+		List<Long> selectedIdList = new LinkedList<Long>();
 
-            @Override
-            public void onClick(ClickEvent event) {
-            	CategoryDataSource.getInstance().remove(id);
-            }
-        });
+		int row = 2;
+		for(CheckBox checkbox : checkBoxList) {
 
-        return removeButton;
-    }
+			if (checkbox.getValue()) {
+				selectedIdList.add(Long.valueOf(getText(row, 1)));
+			}
+
+			row++;
+		}
+
+		return selectedIdList;
+	}
 }

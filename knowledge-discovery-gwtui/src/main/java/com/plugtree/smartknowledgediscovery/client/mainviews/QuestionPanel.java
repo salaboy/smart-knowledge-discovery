@@ -98,7 +98,6 @@ public class QuestionPanel extends HorizontalPanel {
 
 						@Override
 						public void onSuccess(Question question) {
-							questionTable.getSelectedIds().clear();
 							QuestionDialog.createEditDialog(question).show();
 						}
 
