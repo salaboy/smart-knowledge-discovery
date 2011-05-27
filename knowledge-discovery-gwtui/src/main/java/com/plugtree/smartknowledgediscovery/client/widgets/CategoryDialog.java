@@ -17,7 +17,15 @@ public class CategoryDialog extends PopupPanel {
     private Button addEditButton = new Button();
     private Button cancelButton = new Button("Cancel");
 
-    public CategoryDialog(final Category category) {
+    public static CategoryDialog createEditDialog(Category category) {
+    	return new CategoryDialog(category);
+    }
+    
+    public static CategoryDialog createAddDialog() {
+    	return new CategoryDialog(null);
+    }
+    
+    private CategoryDialog(final Category category) {
 
         final CategoryDataSource categoryDataSource = CategoryDataSource.getInstance();
         final CategoryForm categoryForm = new CategoryForm(category);

@@ -2,6 +2,8 @@ package com.plugtree.smartknowledgediscovery.client.widgets;
 
 import java.util.List;
 
+import com.google.gwt.event.dom.client.ClickEvent;
+import com.google.gwt.event.dom.client.ClickHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.plugtree.smartknowledgediscovery.client.datasources.CategoryDataSource;
 import com.plugtree.smartprocessdiscovery.model.common.Category;
@@ -35,13 +37,33 @@ public class CategoryTable extends SmartTable<Category> {
         }
     }
 
-    private Button createEditButton(Category category) {
-        // TODO Auto-generated method stub
-        return new Button("edit");
+    private Button createEditButton(final Category category) {
+        
+    	Button editButton = new Button("edit");
+
+        editButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+                CategoryDialog.createEditDialog(category).show();
+            }
+        });
+
+        return editButton;
     }
 
-    private Button createRemoveButton(Long id) {
-        // TODO Auto-generated method stub
-        return new Button("x");
+    private Button createRemoveButton(final Long id) {
+        
+        Button removeButton = new Button("x");
+
+        removeButton.addClickHandler(new ClickHandler() {
+
+            @Override
+            public void onClick(ClickEvent event) {
+            	CategoryDataSource.getInstance().remove(id);
+            }
+        });
+
+        return removeButton;
     }
 }

@@ -21,8 +21,7 @@ public class CategoryPanel extends VerticalPanel {
 
             @Override
             public void onClick(ClickEvent event) { 
-                CategoryDialog categoryDialog = new CategoryDialog(null);
-                categoryDialog.show();
+                CategoryDialog.createAddDialog().show();
             }
         });
 
