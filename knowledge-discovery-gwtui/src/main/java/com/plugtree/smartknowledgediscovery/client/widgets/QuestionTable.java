@@ -11,7 +11,7 @@ import com.plugtree.smartprocessdiscovery.model.questionaire.Question;
 
 public class QuestionTable extends SmartTable<Question> {
 
-	private LinkedList<Long> checkedIds = new LinkedList<Long>();
+	private LinkedList<CheckBox> checkBoxList = new LinkedList<CheckBox>();
 	
     public QuestionTable() {
 
@@ -20,26 +20,29 @@ public class QuestionTable extends SmartTable<Question> {
     
     public void addRows(List<Question> questionList) {
 
+    	checkBoxList.clear();
+    	
         int row = 2;
 
         for (final Question question : questionList) {
         	
         	CheckBox checkbox = new CheckBox();
+        	checkBoxList.add(checkbox);
+        	
+        	final int rowSelected = row; 
         	
         	checkbox.addClickHandler(new ClickHandler() {
-        		
-        		public void onClick(ClickEvent event) {
-        			
-        			boolean boxIsChecked = ((CheckBox) event.getSource()).getValue();
-        			Long id = question.getId();
-        			
-        			if (boxIsChecked) {
-        				checkedIds.add(id);
-        			} else {
-        				checkedIds.remove(id);
-        			}
-        		}
-        	});
+				
+				@Override
+				public void onClick(ClickEvent event) {
+					CheckBox checkbox = (CheckBox)event.getSource();
+					if (checkbox.getValue()) {
+						getRowFormatter().addStyleName(rowSelected, "selected");
+					} else {
+						getRowFormatter().removeStyleName(rowSelected, "selected");
+					}
+				}
+			});
         	
         	setWidget(row, 0, checkbox);        	
         	setText(row, 1, String.valueOf(question.getId()));
@@ -51,6 +54,19 @@ public class QuestionTable extends SmartTable<Question> {
     }
     
     public List<Long> getSelectedIds() {
-    	return checkedIds;
+    	
+    	List<Long> selectedIdList = new LinkedList<Long>();
+    	
+    	int row = 2;
+    	for(CheckBox checkbox : checkBoxList) {
+    		
+    		if (checkbox.getValue()) {
+    			selectedIdList.add(Long.valueOf(getText(row, 1)));
+    		}
+    		
+    		row++;
+    	}
+    	
+    	return selectedIdList;
     }
 }
